@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns="http://java.sun.com/xml/ns/j2ee" xmlns:web="http://java.sun.com/xml/ns/javaee"
+	xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd http://java.sun.com/xml/ns/j2ee http://java.sun.com/xml/ns/j2ee/web-app_2_5.xsd"
+	id="WebApp" version="2.5">
+	<display-name>meeting</display-name>
+	<filter>
+	<filter-name>accessControl</filter-name>
+	<filter-class>com.meeting.core.filter.AccessControlFilter</filter-class>
+	<init-param>
+	<param-name>isControl</param-name>
+	<param-value>true</param-value>
+	</init-param>
+	</filter>
+	<filter-mapping>
+	<filter-name>accessControl</filter-name>
+	<url-pattern>*.do</url-pattern>
+	</filter-mapping>
+	<servlet>
+		<servlet-name>AuthorityServlet</servlet-name>
+		<servlet-class>com.meeting.core.servlet.AuthorityServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>AuthorityServlet</servlet-name>
+		<url-pattern>/auth.do</url-pattern>
+	</servlet-mapping>
+	<servlet>
+		<servlet-name>ReportServlet</servlet-name>
+		<servlet-class>com.meeting.core.servlet.ReportServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>ReportServlet</servlet-name>
+		<url-pattern>/chart.do</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>ReportServlet</servlet-name>
+		<url-pattern>/report.do</url-pattern>
+	</servlet-mapping>
+	
+	<servlet>
+		<servlet-name>ResourceServlet</servlet-name>
+		<servlet-class>com.meeting.core.servlet.ResourceServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>ResourceServlet</servlet-name>
+		<url-pattern>/resource.do</url-pattern>
+	</servlet-mapping>
+	
+	<servlet>
+		<servlet-name>DwrServlet</servlet-name>
+		<servlet-class>org.directwebremoting.servlet.DwrServlet</servlet-class>
+		<init-param>
+			<param-name>debug</param-name>
+			<param-value>false</param-value>
+		</init-param>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>DwrServlet</servlet-name>
+		<url-pattern>/dwr/*</url-pattern>
+	</servlet-mapping>
+
+	<!-- 配置快逸导出报表文件的Servlet -->
+	<servlet>
+		<servlet-name>reportServlet</servlet-name>
+		<servlet-class>com.runqian.util.webutil.SetContextServlet</servlet-class>
+		<init-param>
+			<param-name>configFile</param-name>
+			<param-value>/WEB-INF/reportConfig.xml</param-value>
+		</init-param>
+		<load-on-startup>1</load-on-startup>
+	</servlet>
+
+	<servlet-mapping>
+		<servlet-name>reportServlet</servlet-name>
+		<url-pattern>/reportServlet</url-pattern>
+	</servlet-mapping>
+	<welcome-file-list>
+		<welcome-file>index.jsp</welcome-file>
+	</welcome-file-list>
+</web-app>

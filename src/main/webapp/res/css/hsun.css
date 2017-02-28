@@ -1,0 +1,225 @@
+/* Toggle */
+.toggle {
+  -webkit-transition: background linear .1s;
+  -moz-transition: background linear .1s;
+  -o-transition: background linear .1s;
+  transition: background linear .1s;
+  -webkit-backface-visibility: hidden;
+  -moz-backface-visibility: hidden;
+  backface-visibility: hidden;
+  margin-bottom: 0;
+  height: 30px;
+  width: 66px;
+  color: #fff;
+  display: inline-block;
+  overflow: hidden;
+  zoom: 1;
+  background-image: url("../image/component.png");
+  background-position: 0 -202px;
+  cursor: pointer;
+  vertical-align: middle;
+}
+.toggle:before,
+.toggle:after {
+  display: table;
+  content: "";
+}
+.toggle:after {
+  clear: both;
+}
+.toggle input {
+  position: absolute;
+  outline: none !important;
+  display: block\9;
+  opacity: 0.01;
+  filter: alpha(opacity=1);
+  zoom: 1;
+}
+.toggle-off {
+  background-position: -66px -202px;
+}
+.toggle-disabled {
+  cursor: default;
+  background-position: -132px -202px;
+}
+.toggle-disabled.toggle-off {
+  background-position: -198px -202px;
+}
+
+
+/* Icon */
+
+/* 圆形按钮，配合具体图标使用 */
+.cbtn {
+  display: inline-block;
+  vertical-align: middle;
+  width: 30px;
+  height: 30px;
+  line-height: 30px;
+}
+.cbtn:focus { outline: 0 none; }
+
+.operate-group { color: #82939E;}
+.operate-group:hover{ text-decoration: none; }
+.o-plus,
+.o-edit,
+.o-trash,
+.o-cancel,
+.o-conf,
+.o-view{
+	background-image: url(../image/db_icon.png);
+	background-repeat: no-repeat;
+}
+.operate-group:hover .o-plus,
+.o-plus:hover{ background-position: 0 -40px;}
+.o-edit{ background-position: -40px 0;}
+.operate-group:hover .o-edit,
+.o-edit:hover{ background-position: -40px -40px;}
+.o-trash{ background-position: -80px -0;}
+.operate-group:hover .o-trash,
+.o-trash:hover{ background-position: -80px -40px;}
+.o-cancel{ background-position: -120px 0;}
+.operate-group:hover .o-cancel,
+.o-cancel:hover{ background-position: -120px -40px;}
+.o-conf{ background-position: -160px 0;}
+.operate-group:hover .o-conf,
+.o-conf:hover{ background-position: -160px -40px;}
+.o-view{ background-position: -200px 0;}
+.operate-group:hover .o-view,
+.o-view:hover{ background-position: -200px -40px;}
+
+table {
+  max-width: 100%;
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+th {
+  text-align: left;
+}
+.table {
+  width: 100%;
+  margin-bottom: 20px;
+  background-color: #ffffff;
+}
+.table th,
+.table td {
+  padding: 10px 10px;
+  line-height: 20px;
+  vertical-align: middle;
+  font-family: Arial, "Microsoft Yahei";
+  background-color: #ffffff;
+  height: 40px;
+}
+.table th:first-child,
+.table td:first-child {
+  padding-left: 20px;
+}
+.table th:last-child,
+.table td:last-child {
+  padding-right: 20px;
+}
+.table thead th {
+  background-color: #f9fbff;
+  color: #3497db;
+  border-bottom: 2px solid #3497db;
+  font-weight: 400;
+}
+.table caption + thead tr:first-child th,
+.table caption + thead tr:first-child td,
+.table colgroup + thead tr:first-child th,
+.table colgroup + thead tr:first-child td,
+.table thead:first-child tr:first-child th,
+.table thead:first-child tr:first-child td {
+  border-top: 0;
+}
+.table tbody + tbody {
+  border-top: 2px solid #3497db;
+}
+.table tfoot td {
+  border-top: 1px solid #ebeff6;
+}
+.table-condensed td {
+  height: 30px;
+}
+.table-bordered {
+  border: 1px solid #eaeced;
+  border-collapse: separate;
+  border-left: 0;
+  border-radius: 4px;
+  -webkit-box-shadow: 0 0 4px #edeeef;
+  box-shadow: 0 0 4px #edeeef;
+}
+.table-bordered th:first-child,
+.table-bordered td:first-child {
+  border-left: 1px solid #eaeced;
+}
+.table-bordered caption + thead tr:first-child th,
+.table-bordered caption + tbody tr:first-child th,
+.table-bordered caption + tbody tr:first-child td,
+.table-bordered colgroup + thead tr:first-child th,
+.table-bordered colgroup + tbody tr:first-child th,
+.table-bordered colgroup + tbody tr:first-child td,
+.table-bordered thead:first-child tr:first-child th,
+.table-bordered tbody:first-child tr:first-child th,
+.table-bordered tbody:first-child tr:first-child td {
+  border-top: 0;
+}
+.table-bordered thead:first-child tr:first-child > th:first-child,
+.table-bordered tbody:first-child tr:first-child > td:first-child,
+.table-bordered tbody:first-child tr:first-child > th:first-child {
+  border-top-left-radius: 4px;
+}
+.table-bordered thead:first-child tr:first-child > th:last-child,
+.table-bordered tbody:first-child tr:first-child > td:last-child,
+.table-bordered tbody:first-child tr:first-child > th:last-child {
+  border-top-right-radius: 4px;
+}
+.table-bordered thead:last-child tr:last-child > th:first-child,
+.table-bordered tbody:last-child tr:last-child > td:first-child,
+.table-bordered tbody:last-child tr:last-child > th:first-child,
+.table-bordered tfoot:last-child tr:last-child > td:first-child,
+.table-bordered tfoot:last-child tr:last-child > th:first-child {
+  border-bottom-left-radius: 4px;
+}
+.table-bordered thead:last-child tr:last-child > th:last-child,
+.table-bordered tbody:last-child tr:last-child > td:last-child,
+.table-bordered tbody:last-child tr:last-child > th:last-child,
+.table-bordered tfoot:last-child tr:last-child > td:last-child,
+.table-bordered tfoot:last-child tr:last-child > th:last-child {
+  border-bottom-right-radius: 4px;
+}
+.table-bordered tfoot + tbody:last-child tr:last-child > td:first-child {
+  border-bottom-left-radius: 0;
+}
+.table-bordered tfoot + tbody:last-child tr:last-child > td:last-child {
+  border-bottom-right-radius: 0;
+}
+.table-bordered caption + thead tr:first-child th:first-child,
+.table-bordered caption + tbody tr:first-child td:first-child,
+.table-bordered colgroup + thead tr:first-child th:first-child,
+.table-bordered colgroup + tbody tr:first-child td:first-child {
+  border-top-left-radius: 4px;
+}
+.table-bordered caption + thead tr:first-child th:last-child,
+.table-bordered caption + tbody tr:first-child td:last-child,
+.table-bordered colgroup + thead tr:first-child th:last-child,
+.table-bordered colgroup + tbody tr:first-child td:last-child {
+  border-top-right-radius: 4px;
+}
+.table-striped tbody > tr:nth-child(even) > td,
+.table-striped tbody > tr:nth-child(even) > th {
+  background-color: #f9fafa;
+}
+.table-hover tbody tr:hover > td,
+.table-hover tbody tr:hover > th {
+  background-color: #fefaf5;
+}
+table col[class^="span"] {
+  float: none;
+  display: table-column;
+}
+table td[class^="span"],
+table th[class^="span"] {
+  float: none;
+  display: table-cell;
+}

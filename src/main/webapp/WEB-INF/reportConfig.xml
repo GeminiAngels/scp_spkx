@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE taglib PUBLIC "-//Sun Microsystems, Inc.//DTD JSP Tag Library 1.1//EN"
+"http://java.sun.com/j2ee/dtds/web-jsptaglibrary_1_1.dtd">
+<reportConfig>
+	<!-- 配置加载快逸属性文件 -->
+    <config>
+      <name>logConfig</name>
+      <value>/WEB-INF/classes/runqianReportLog.properties</value>
+    </config>
+    <!-- 配置加载快逸授权文件 -->
+    <config>
+      <name>license</name>
+      <value>quieeWindowServer.lic</value>
+    </config>
+    <!-- 配置加载快逸加载JSP文件的路径 -->
+    <config>
+      <name>reportFileHome</name>
+      <value>/report/reportFiles</value>
+    </config>
+   <!-- 配置快逸加载数据时候的datasource -->
+    <jdbc-ds-configs>
+    	<jdbc-ds-config>
+    		<name>MYSQL</name>
+    		<db-type>MYSQL</db-type>
+    		<driver-class>com.mysql.jdbc.Driver</driver-class>
+<!--     		<connection-url>jdbc:mysql://db.dworld.net.cn:3306/meeting</connection-url> -->
+<!--     		<user-name>meeting</user-name> -->
+<!--     		<password>meeting</password> -->
+    		
+    		<connection-url>jdbc:mysql://localhost:3306/scp_spkx</connection-url>
+    		<user-name>root</user-name>
+    		<password>mysql</password>
+    		<db-charset>UTF-8</db-charset>
+    		<client-charset>UTF-8</client-charset>
+    		<extend-properties></extend-properties>
+    	</jdbc-ds-config>
+    </jdbc-ds-configs>
+	<!-- 配置加载快逸的字符集 -->
+    <config>
+      <name>jspCharset</name>
+      <value>UTF-8</value>
+    </config>
+    
+	<config>
+      <name>alwaysReloadDefine</name>
+      <value>yes</value>
+    </config>
+    <config>
+      <name>cachedParamsTimeout</name>
+      <value>120</value>
+    </config>
+    <config>
+      <name>cachedReportDir</name>
+      <value>C:\Log\report\cached</value>
+    </config>
+    <config>
+      <name>cachedIdPrefix</name>
+      <value>A</value>
+    </config>
+    <config>
+      <name>cachedReportTimeout</name>
+      <value>120</value>
+    </config>
+    <config>
+      <name>maxCellNum</name>
+      <value>100000</value>
+    </config>
+    <config>
+      <name>maxConcurrentForReport</name>
+      <value></value>
+    </config>
+    <config>
+      <name>maxWaitForReport</name>
+      <value>10</value>
+    </config>
+    <config>
+      <name>maxWaitTimeForReport</name>
+      <value>30</value>
+    </config>
+    <config>
+      <name>appUrlPrefix</name>
+      <value></value>
+    </config>
+    <config>
+      <name>errorPage</name>
+      <value>/myError.jsp</value>
+    </config>
+</reportConfig>

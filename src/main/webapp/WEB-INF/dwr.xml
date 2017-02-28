@@ -1,0 +1,45 @@
+<!DOCTYPE dwr PUBLIC
+		"-//GetAhead Limited//DTD Direct Web Remoting 3.0//EN"
+		"http://getahead.org/dwr/dwr30.dtd">
+
+<dwr>
+	<allow>
+		<create creator="new" javascript="AuthorityService">
+			<param name="class" value="com.meeting.core.service.AuthorityService"/>
+		</create>
+		<create creator="new" javascript="RegisterService">
+			<param name="class" value="com.meeting.core.service.RegisterService"/>
+		</create>
+		<create creator="new" javascript="OrderService">
+			<param name="class" value="com.meeting.core.service.OrderService"/>
+		</create>
+		<create creator="new" javascript="EmailService">
+			<param name="class" value="com.meeting.core.service.EmailService"/>
+		</create>
+		<create creator="new" javascript="ResourceService">
+	      <param name="class" value="com.meeting.core.service.ResourceService"/>
+	    </create>
+		<create creator="new" javascript="NoticeService">
+	      <param name="class" value="com.meeting.core.service.NoticeService"/>
+	    </create>
+		<create creator="new" javascript="MailsetService">
+			<param name="class" value="com.meeting.core.service.MailsetService"/>
+		</create>
+
+		<convert converter="bean" match="com.meeting.core.bean.Resources"/>
+		<convert converter="bean" match="com.meeting.core.bean.Email"/>
+		<convert converter="bean" match="com.meeting.core.bean.Notice"/>
+		<convert converter="bean" match="com.meeting.core.bean.Mailset"/>
+		<convert converter="bean" match="com.meeting.core.bean.User"/>
+		<convert converter="bean" match="com.meeting.core.bean.Role"/>
+		<convert converter="bean" match="com.meeting.core.bean.Func"/>
+		<convert converter="bean" match="com.meeting.core.bean.Condition"/>
+		<convert converter="bean" match="com.meeting.core.bean.Register"/>
+		<convert converter="bean" match="com.meeting.core.bean.Order"/>
+		<convert converter="bean" match="cn.beecloud.bean.BCOrder"/>
+		<convert converter="enum" match="cn.beecloud.BCEumeration$PAY_CHANNEL"/>
+		<convert converter="bean" match="java.lang.StackTraceElement"/>
+
+		<convert converter="exception" match="java.lang.Exception"/>
+	</allow>
+</dwr>
