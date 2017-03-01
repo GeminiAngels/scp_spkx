@@ -213,7 +213,7 @@
 							<input type="text" name="fytm" id="fytm" value="${register.fytm}" class="form-control" autocomplete="off" ${not empty register?'disabled="disabled"':''}/>
 						</div>
 						<div class="inputContainer">
-							<label class="screen-reader-text">发言内容摘要（500字以内）：</label>
+							<label class="screen-reader-text">发言内容摘要（1000字以内）：</label>
 							<textarea name="fynrzy" id="fynrzy" class="form-control" autocomplete="off" ${not empty register?'disabled="disabled"':''}>${register.fynrzy}</textarea>
 						</div>
 					</div>
@@ -232,10 +232,6 @@
 					</div>
 					<div id="gj_area" class="alert alert-warning col-sm-8 col-sm-offset-2" style="${register.sffblw eq '是'?'':'display:none'}">
 						<div class="inputContainer">
-							<label class="screen-reader-text">稿件编号：</label>
-							<input type="text" name="gjbh" id="gjbh" value="${register.gjbh}" class="form-control" autocomplete="off" ${not empty register?'disabled="disabled"':''}/>
-						</div>
-						<div class="inputContainer">
 							<label class="screen-reader-text">投稿期刊：</label>
 							<!-- <input type="text" name="journalname" id="journalname" value="${register.journalname}" class="form-control" autocomplete="off" ${not empty register?'disabled="disabled"':''}/> -->
 							<select id="journalname" name="journalname" class="form-control" value="${register.journalname}" ${not empty register?'disabled="disabled"':''}>
@@ -251,6 +247,11 @@
 								</c:if>
 							</select>
 						</div>
+						<div class="inputContainer">
+							<label class="screen-reader-text">稿件编号：</label>
+							<input type="text" name="gjbh" id="gjbh" value="${register.gjbh}" class="form-control" autocomplete="off" ${not empty register?'disabled="disabled"':''}/>
+						</div>
+
 						<div class="inputContainer">
 							<label class="screen-reader-text">论文题目：</label>
 							<input type="text" name="gjtm" id="gjtm" value="${register.gjtm}" class="form-control" autocomplete="off" ${not empty register?'disabled="disabled"':''}/>

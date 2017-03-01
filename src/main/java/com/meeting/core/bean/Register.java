@@ -49,6 +49,9 @@ public class Register {
 	private String sxxl;		//实习线路-作废
 	private String usertype;	//代表性质
 
+	private String zzyqhfszt;	//纸质版邀请函发送状态
+	private String hwzbz;	//会务组备注
+
 	
 	public Register() {
 		super();
@@ -284,6 +287,22 @@ public class Register {
 
 	public void setUsertype(String usertype) {
 		this.usertype = usertype;
+	}
+
+	public String getZzyqhfszt() {
+		return zzyqhfszt;
+	}
+
+	public void setZzyqhfszt(String zzyqhfszt) {
+		this.zzyqhfszt = zzyqhfszt;
+	}
+
+	public String getHwzbz() {
+		return hwzbz;
+	}
+
+	public void setHwzbz(String hwzbz) {
+		this.hwzbz = hwzbz;
 	}
 
 	@Override
