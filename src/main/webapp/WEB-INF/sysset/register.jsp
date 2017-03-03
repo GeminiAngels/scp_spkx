@@ -32,6 +32,7 @@
 						<input type="text" class="form-control" style="width:160px;" id="condition"
 						       placeholder="手机号 / 邮箱 / 姓名">
 						<button type="button" class="btn btn-default" id="btn-query">查询</button>
+						<button type="button" class="btn btn-default" id="btn-print">打印二维码</button>
 					</div>
 				</div>
 			</div>
@@ -40,7 +41,7 @@
 	<div class="row-fluid">
 		<div class="col-md-4">
 			<div style="position:fixed;width: 30%">
-				<div class="alert alert-info" id="opt-info">修改在下方表单进行</div>
+				<div class="alert alert-info" id="opt-info">点击右侧表格需要修改的行进行编辑</div>
 				<form class="form-horizontal" id="form-user">
 					<input type="hidden" id="id">
 					<div class="form-group">
@@ -139,6 +140,7 @@
 			<table class="table table-hover table-striped table-bordered">
 				<thead style="background-color:#ccc">
 				<tr>
+					<th width="30"><input type="checkbox" class="input-control" id="table-checkbox-header" /></th>
 					<th>编码</th>
 					<th>姓名</th>
 					<th>个人信息</th>
@@ -257,7 +259,9 @@
 					item.zfflag = '';
 				}
 
-				var tr = $('<tr><td width="60">' + item.id * 1 + '</td>'
+				var tr = $('<tr dataId='+item.id+'>' +
+					'<td width="30"><input class="input-control" type="checkbox" value="" /></td>'
+					+   '<td width="60">' + item.id * 1 + '</td>'
 					+ '<td>' + item.nickname + '</td>'
 //					+'<td>'+item.sex+'</td>'
 //					+'<td>'+item.telphone+'</td>'
@@ -345,6 +349,24 @@
 				loadRegisters();
 		});
 	}
+	/**
+	 * 数据全选/全不选
+	 */
+	$('#table-checkbox-header').change(function() {
+		$('td > input').prop('checked', this.checked);
+	});
+	$("#btn-print").click(function () {
+		var ids = [];
+		$('td > input:checked').each(function(){
+			if($(this).parent().parent().attr('dataId'))
+				ids.push($(this).parent().parent().attr('dataId'));
+			else
+				$(this).parent().parent().remove();
+		});
+		window.ids = ids.join(",");
+		openwindow('<%=path%>/report/reportJsp/ewm.jsp?time='+Math.random()*10000000000000000,"",1010,600);
+
+	});
 	// 对Date的扩展，将 Date 转化为指定格式的String
 	// 月(M)、日(d)、小时(h)、分(m)、秒(s)、季度(q) 可以用 1-2 个占位符，
 	// 年(y)可以用 1-4 个占位符，毫秒(S)只能用 1 个占位符(是 1-3 位的数字)
@@ -368,5 +390,19 @@
 				fmt = fmt.replace(RegExp.$1, (RegExp.$1.length == 1) ? (o[k]) : (("00" + o[k]).substr(("" + o[k]).length)));
 		return fmt;
 	};
+	/**
+	 * window.open打开新页面
+	 * @param url 转向网页的地址
+	 * @param name 网页名称，可为空
+	 * @param iWidth 弹出窗口的宽度
+	 * @param iHeight 弹出窗口的高度
+	 */
+	function openwindow(url, name, iWidth, iHeight) {
+		//window.screen.height获得屏幕的高，
+		//window.screen.width获得屏幕的宽
+		var iTop = (window.screen.height - 30 - iHeight) / 2; //获得窗口的垂直位置;
+		var iLeft = (window.screen.width - 10 - iWidth) / 2; //获得窗口的水平位置;
+		window.open(url, name, 'height=' + iHeight + ',,innerHeight=' + iHeight + ',width=' + iWidth + ',innerWidth=' + iWidth + ',top=' + iTop + ',left=' + iLeft + ',toolbar=no,menubar=no,scrollbars=yes,resizeable=no,location=no,status=no');
+	}
 </script>
 </html>

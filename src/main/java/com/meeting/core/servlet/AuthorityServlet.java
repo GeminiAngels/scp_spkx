@@ -11,6 +11,7 @@ import java.util.Set;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.meeting.core.bean.Register;
 import com.meeting.core.service.AuthorityService;
 import com.meeting.core.service.RegisterService;
 
@@ -29,8 +30,40 @@ public class AuthorityServlet extends BaseServlet {
 	public String index(HttpServletRequest req , HttpServletResponse resp){
 		return "index.jsp";
 	}
-	
-	
+
+	/**
+	 * 签到
+	 * @param req
+	 * @param resp
+	 * @return
+	 */
+	@SuppressWarnings({ "rawtypes", "unchecked" })
+	public String signinByTel(HttpServletRequest req , HttpServletResponse resp){
+		RegisterService service = new RegisterService();
+		String telphone = req.getParameter("telphone");
+		Register reg = new Register();
+		reg.setTelphone(telphone);
+		try {
+			if(service.registerSignin(reg)){
+				Map register = service.getRegisterByTelphone(telphone);
+				req.setAttribute("telphone", telphone);
+				if(!register.isEmpty()){
+					req.setAttribute("register", register);
+					return "ctx:signinSuccess.jsp";
+				}else{
+					req.setAttribute("errormsg", "对不起，用户不存在！");
+					return "ctx:signinError.jsp";
+				}
+			}else{
+				req.setAttribute("errormsg", "对不起，用户不存在！");
+				return "ctx:signinError.jsp";
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+			req.setAttribute("errormsg", "对不起，用户不存在！");
+			return "ctx:signinError.jsp";
+		}
+	}
 	/**
 	 * 登录
 	 * @param req

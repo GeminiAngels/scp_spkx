@@ -97,15 +97,22 @@ public class RegisterService {
 					, reg.getFytm(), reg.getFynrzy(), reg.getSfzs(), reg.getZskssj(), reg.getZsjssj(), reg.getYqhfszt()
 					, new Date()});
 		} else {//修改
-			StringBuffer sql = new StringBuffer("update t_register set nickname=?,telphone=?,sex=?,job=?,company=?,usertype=?,zsyq=?,fptt=?");
+			StringBuffer sql = new StringBuffer("update t_register set nickname=?,sex=?,company=?,job=?,journalname=?,message=?"
+					+ ",degree=?,postcode=?,address=?,zsyq=?,sfcjsx=?,sxxl=?,fptt=?"
+					+ ",officephone=?,fax=?,gzqk=?,title=?,sffblw=?,gjbh=?,gjtm=?,sfztlw=?,sfsqhyfy=?,fytm=?,fynrzy=?,sfzs=?,zskssj=?,zsjssj=?");
 			if (reg.getPassword() != null && !"".equals(reg.getPassword())) {
 				sql.append(",password='" + StringUtil.MD5(reg.getPassword()) + "'");
 			}
 			sql.append(" where id = " + reg.getId());
 			System.out.println(sql.toString());
 			success = db.execute(sql.toString(), new Object[]{
-					reg.getNickname(), reg.getTelphone(), reg.getSex()
-					, reg.getJob(), reg.getCompany(), reg.getUsertype(), reg.getZsyq(), reg.getFptt()});
+					reg.getNickname(), reg.getSex(),
+					reg.getCompany(), reg.getJob(), reg.getJournalname(), reg.getMessage()
+					, reg.getDegree(), reg.getPostcode(), reg.getAddress(), reg.getZsyq(), reg.getSfcjsx(), reg.getSxxl(), reg.getFptt()
+					, reg.getOfficephone(), reg.getFax(), reg.getGzqk(), reg.getTitle(), reg.getSffblw()
+					, reg.getGjbh(), reg.getGjtm(), reg.getSfztlw(), reg.getSfsqhyfy()
+					, reg.getFytm(), reg.getFynrzy(), reg.getSfzs(), reg.getZskssj(), reg.getZsjssj()
+			});
 		}
 
 		if (success) {
