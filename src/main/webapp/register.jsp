@@ -566,12 +566,15 @@
 	}
 
 	$(document).ready(function() {
-		//生成二维码
-		var qrcode = new QRCode(document.getElementById("qrcode"), {
-			width : 300,//设置宽高
-			height : 300
-		});
-		qrcode.makeCode("http://www.egeoscience.com.cn/scp_spkx/auth.do?method=signin&telphone=${register.telphone}");
+		if(document.getElementById("qrcode")){
+			//生成二维码
+			var qrcode = new QRCode(document.getElementById("qrcode"), {
+				width : 300,//设置宽高
+				height : 300
+			});
+			qrcode.makeCode("http://www.egeoscience.com.cn/scp_spkx/auth.do?method=signin&telphone=${register.telphone}");
+
+		}
 
 		//重新上传论文按钮
 		$("#btn-clear").click(function () {

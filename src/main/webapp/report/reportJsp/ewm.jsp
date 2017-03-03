@@ -24,7 +24,6 @@
 	 */
 	$(document).ready(function() {
 		var ids = opener.ids;
-		console.log(ids);  //TODO:debug
 		var params = '?report=/ewm.raq';
 		params += '&ids='+ids;
 		url = '<%=path%>/report/reportJsp/report.jsp';

@@ -282,7 +282,7 @@
 				tbody.append(tr);
 			}
 			$("#data-content tr").bind("click", function () {
-				var dataId = $(this).find("td").eq(0).text();
+				var dataId = $(this).find("td").eq(1).text();
 				getRegisterById(dataId);
 			});
 		});
@@ -355,6 +355,9 @@
 	$('#table-checkbox-header').change(function() {
 		$('td > input').prop('checked', this.checked);
 	});
+	/**
+	 *打印二维码按钮
+	 **/
 	$("#btn-print").click(function () {
 		var ids = [];
 		$('td > input:checked').each(function(){
