@@ -51,7 +51,8 @@ public class AccessControlFilter implements Filter {
 					url.indexOf("/resource.do")>=0|| 
 					url.indexOf("/auth.do?method=forgotPwd")>=0 || 
 					url.indexOf("/auth.do?method=resetPwd")>=0 || 
-					url.indexOf("/auth.do?method=resetPwdOK")>=0
+					url.indexOf("/auth.do?method=resetPwdOK")>=0||
+					url.indexOf("/auth.do?method=signinByTel")>=0
 			){
 				chain.doFilter(servletRequest, servletResponse);
 				return;
