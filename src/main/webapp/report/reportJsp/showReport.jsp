@@ -8,11 +8,10 @@
 <body topmargin=0 leftmargin=0 rightmargin=0 bottomMargin=0>
 <%
 	request.setCharacterEncoding( "GBK" );
-	String report = request.getParameter( "raq" );
+	String report = request.getParameter( "report" );
 	String reportFileHome=Context.getInitCtx().getMainDir();
 	StringBuffer param=new StringBuffer();
 
-	session.setAttribute("user_id","111111");
 
 	/**保证报表名称的完整性**/
 	int iTmp = 0;
