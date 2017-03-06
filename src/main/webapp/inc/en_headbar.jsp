@@ -26,7 +26,7 @@
 <div class="topbox">
 	<div class="lang">
 		<c:if test="${not empty register}">
-			<button class="btn btn-default btn-showinfo-en">Welcome，${register.nickname}</button> <button class="btn btn-default btn-logout-en">Sign out</button>
+			<button class="btn btn-default btn-showinfo-en">Welcome,${register.nickname}</button> <button class="btn btn-default btn-logout-en">Sign out</button>
 		</c:if>
 		<c:if test="${empty register}">
 			<button class="btn btn-default btn-login-en">Sign in</button> <button class="btn btn-default btn-register-en">Register</button>

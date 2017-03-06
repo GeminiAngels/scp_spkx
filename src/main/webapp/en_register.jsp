@@ -12,11 +12,9 @@
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=no">
 	<meta name="description" content="3rd International Symposium of <i>Food Science and Human Wellness</i>">
-
 	<link rel="shortcut icon" href="<%=path%>/static/assets/ico/favicon.ico">
 
 	<title>3rd International Symposium of <i>Food Science and Human Wellness</i></title>
-
 
 	<!-- Bootstrap core CSS -->
 	<link href="<%=path%>/static/css/bootstrap.min.css" rel="stylesheet">
@@ -32,6 +30,7 @@
 	<script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
 	<script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
 	<![endif]-->
+
 </head>
 
 <body>
@@ -51,42 +50,43 @@
 				</div>
 				<div class="row">
 					<!-- <c:if test="${register.zfflag ne '1'}"> -->
+					<input type="text" name="id" id="id" class="hide"  value="${register.id}">
 					<div class="col-sm-4 col-sm-offset-2">
 						<div class="inputContainer">
-							<label>Name：</label>
-							<input type="text" name="nickname" id="nickname" class="form-control" autocomplete="off" value="${register.nickname}" ${not empty register?'disabled="disabled"':''}>
+							<label>Name:</label>
+							<input type="text" name="nickname" id="nickname" class="form-control" autocomplete="off" value="${register.nickname}" >
 						</div>
 					</div>
 					<div class="col-sm-4">
 						<div class="inputContainer">
-							<label class="screen-reader-text">Gender：</label>
+							<label class="screen-reader-text">Gender:</label>
 							<div class="form-control" style="line-height:20px;">
 								<label class="radio-inline">
-									<input type="radio" name="sex" id="sex1" value="男" ${register.sex eq '男' or empty regisgter?'checked':''} ${not empty register?'disabled="disabled"':''}> men
+									<input type="radio" name="sex" id="sex1" value="男" ${register.sex eq '男' or empty regisgter?'checked':''}> men
 								</label>
 								<label class="radio-inline">
-									<input type="radio" name="sex" id="sex2" value="女" ${register.sex eq '女'?'checked':''} ${not empty register?'disabled="disabled"':''}> women
+									<input type="radio" name="sex" id="sex2" value="女" ${register.sex eq '女'?'checked':''} > women
 								</label>
 							</div>
 						</div>
 					</div>
 					<div class="col-sm-4 col-sm-offset-2 register-adv" style="${empty register?'':'display:none'}">
 						<div class="inputContainer">
-							<label class="screen-reader-text">Password：</label>
+							<label class="screen-reader-text">Password:</label>
 							<input type="password" name="password" id="password" value="" class="form-control" autocomplete="off"  />
 						</div>
 					</div>
 					<div class="col-sm-4 register-adv" style="${empty register?'':'display:none'}">
 						<div class="inputContainer">
-							<label class="screen-reader-text">Repassword：</label>
+							<label class="screen-reader-text">Repassword:</label>
 							<input type="password" name="repassword" id="repassword" value="" class="form-control" autocomplete="off"  />
 						</div>
 					</div>
 					<div class="col-sm-4 col-sm-offset-2">
 						<div class="inputContainer">
-							<label class="screen-reader-text">Job：</label>
-							<input type="text" name="job" id="job" class="form-control" autocomplete="off" value="${register.job}" ${not empty register?'disabled="disabled"':''}>
-							<!-- <select id="job" name="job" class="form-control" value="${register.job}" ${not empty register?'disabled="disabled"':''}>
+							<label class="screen-reader-text">Job:</label>
+							<input type="text" name="job" id="job" class="form-control" autocomplete="off" value="${register.job}">
+							<!-- <select id="job" name="job" class="form-control" value="${register.job}" >
 								<c:if test="${empty register}">
 								<option value="无">无</option>
 								<option value="初级">初级</option>
@@ -102,196 +102,225 @@
 					</div>
 					<div class="col-sm-4">
 						<div class="inputContainer">
-							<label class="screen-reader-text">Title：</label>
-							<select id="title" name="title" class="form-control" value="${register.title}" ${not empty register?'disabled="disabled"':''}>
-								<c:if test="${empty register}">
-									<option value="">Please select title</option>
-									<option value="教授">professor</option>
-									<option value="副教授">associate professor</option>
-									<option value="讲师">lecturer</option>
-									<option value="助理讲师">assistant lecturer</option>
-									<option value="研究员">Researcher</option>
-									<option value="副研究员">Associate Research Fellow</option>
-									<option value="助理研究员">Assistant Research Fellow</option>
-									<option value="研究实习员">Research Intern</option>
-									<option value="教授级高级工程师">professor of engineering</option>
-									<option value="高级工程师">Senior Engineer</option>
-									<option value="工程师">Engineer</option>
-									<option value="助理工程师">Assistant Engineer</option>
-									<option value="高级教师">Senior teacher</option>
-									<option value="高级农艺师">Senior Agronomist</option>
-									<option value="农艺师">Agronomist</option>
-									<option value="助理农艺师">Assistant agronomist</option>
-									<option value="其他">Other</option>
-									<option value="其他（研究生等）">Others (graduate students, etc.)</option>
-								</c:if>
-								<c:if test="${not empty register}">
-									<option value="${register.title}" selected="selected">${register.title}</option>
-								</c:if>
+							<label class="screen-reader-text">Title:</label>
+							<select id="title" name="title" class="form-control"  >
+								<option value="教授" ${register.title eq "教授"?'selected="selected"':''}>professor</option>
+								<option value="副教授" ${register.title eq "副教授"?'selected="selected"':''}>associate professor</option>
+								<option value="讲师" ${register.title eq "讲师"?'selected="selected"':''}>lecturer</option>
+								<option value="助理讲师" ${register.title eq "助理讲师"?'selected="selected"':''}>assistant lecturer</option>
+								<option value="研究员" ${register.title eq "研究员"?'selected="selected"':''}>Researcher</option>
+								<option value="副研究员" ${register.title eq "副研究员"?'selected="selected"':''}>Associate Research Fellow</option>
+								<option value="助理研究员" ${register.title eq "助理研究员"?'selected="selected"':''}>Assistant Research Fellow</option>
+								<option value="研究实习员" ${register.title eq "研究实习员"?'selected="selected"':''}>Research Intern</option>
+								<option value="教授级高级工程师" ${register.title eq "教授级高级工程师"?'selected="selected"':''}>professor of engineering</option>
+								<option value="高级工程师" ${register.title eq "高级工程师"?'selected="selected"':''}>Senior Engineer</option>
+								<option value="工程师" ${register.title eq "工程师"?'selected="selected"':''}>Engineer</option>
+								<option value="助理工程师" ${register.title eq "助理工程师"?'selected="selected"':''}>Assistant Engineer</option>
+								<option value="高级教师" ${register.title eq "高级教师"?'selected="selected"':''}>Senior teacher</option>
+								<option value="高级农艺师" ${register.title eq "高级农艺师"?'selected="selected"':''}>Senior Agronomist</option>
+								<option value="农艺师" ${register.title eq "农艺师"?'selected="selected"':''}>Agronomist</option>
+								<option value="助理农艺师" ${register.title eq "助理农艺师"?'selected="selected"':''}>Assistant agronomist</option>
+								<option value="其他" ${register.title eq "其他"?'selected="selected"':''}>Other</option>
+								<option value="其他（研究生等）" ${register.title eq "其他（研究生等）"?'selected="selected"':''}>Others (graduate students, etc.)</option>
 							</select>
 						</div>
 					</div>
 					<div class="col-sm-8 col-sm-offset-2">
 						<div class="inputContainer">
-							<label class="screen-reader-text">Company：</label>
-							<input type="text" name="company" id="company" value="${register.company}" class="form-control" autocomplete="off" ${not empty register?'disabled="disabled"':''}/>
+							<label class="screen-reader-text">company：</label>
+							<input type="text" name="company" id="company" value="${register.company}" class="form-control" autocomplete="off" />
 						</div>
 					</div>
 					<div class="col-sm-4 col-sm-offset-2">
 						<div class="inputContainer">
-							<label class="screen-reader-text">Office phone：</label>
-							<input type="text" name="officephone" id="officephone" class="form-control" autocomplete="off" ${not empty register?'disabled="disabled"':''} value="${register.officephone}"/>
+							<label class="screen-reader-text">officephone:</label>
+							<input type="text" name="officephone" id="officephone" class="form-control" autocomplete="off" value="${register.officephone}"/>
 						</div>
 					</div>
 					<div class="col-sm-4">
 						<div class="inputContainer">
-							<label class="screen-reader-text">Telphone：</label>
+							<label class="screen-reader-text">Telphone:</label>
 							<input type="text" name="telphone" id="telphone" value="${register.telphone}" class="form-control" autocomplete="off" ${not empty register?'disabled="disabled"':''}/>
 						</div>
 					</div>
 					<div class="col-sm-8 col-sm-offset-2">
 						<div class="inputContainer">
-							<label class="screen-reader-text">Email：</label>
+							<label class="screen-reader-text">Email:</label>
 							<input type="text" name="email" id="email" class="form-control" autocomplete="off" ${not empty register?'disabled="disabled"':''} value="${register.email}"/>
 						</div>
 					</div>
 					<div class="col-sm-4 col-sm-offset-2">
 						<div class="inputContainer">
-							<label class="screen-reader-text">Address：</label>
-							<input type="text" name="address" id="address" value="${register.address}" class="form-control" autocomplete="off" ${not empty register?'disabled="disabled"':''}/>
+							<label class="screen-reader-text">Address:</label>
+							<input type="text" name="address" id="address" value="${register.address}" class="form-control" autocomplete="off" />
 						</div>
 					</div>
 					<div class="col-sm-4">
 						<div class="inputContainer">
-							<label class="screen-reader-text">Postcode：</label>
-							<input type="text" name="postcode" id="postcode" value="${register.postcode}" class="form-control" autocomplete="off" ${not empty register?'disabled="disabled"':''}/>
+							<label class="screen-reader-text">Postcode:</label>
+							<input type="text" name="postcode" id="postcode" value="${register.postcode}" class="form-control" autocomplete="off"/>
 						</div>
 					</div>
 					<div class="col-sm-4 col-sm-offset-2">
 						<div class="inputContainer">
-							<label class="screen-reader-text">Paper posting：</label>
+							<label class="screen-reader-text">Paper posting:</label>
 							<div class="form-control" style="line-height:20px;border:none">
 								<label class="radio-inline">
-									<input type="radio" name="sfztlw" id="sfztlw1" value="是" ${register.sfztlw eq '是'?'checked':''} ${not empty register?'disabled="disabled"':''}> YES
+									<input type="radio" name="sfztlw" id="sfztlw1" value="是" ${register.sfztlw eq '是'?'checked':''} > YES
 								</label>
 								<label class="radio-inline">
-									<input type="radio" name="sfztlw" id="sfztlw2" value="否" ${empty register or register.sfztlw eq '否'?'checked':''}  ${not empty register?'disabled="disabled"':''}> NO
+									<input type="radio" name="sfztlw" id="sfztlw2" value="否" ${empty register or register.sfztlw eq '否'?'checked':''}  > NO
 								</label>
 							</div>
 						</div>
 					</div>
 					<div id="lw_area" class="col-sm-4" style="${register.sfztlw eq '是'?'':'display:none'}">
-						<c:if test="${not empty thesis}">
-							<div class="inputContainer">
-								<label class="screen-reader-text">My paper：</label>
-								<a class="form-control" style="line-height: 23px;" href="<%=path%>/auth.do?method=download&fileid=${thesis.id}">${thesis.filename}.${thesis.type}</a>
-							</div>
-						</c:if>
-						<c:if test="${empty thesis}">
-							<div class="inputContainer">
-								<label class="screen-reader-text">Paper upload：</label>
-								<input type="file" name="thesis" id="thesis" class="form-control" ${not empty register?'disabled="disabled"':''}/>
-							</div>
-						</c:if>
+						<label class="screen-reader-text">My paper：</label>
+						<input type="file" name="thesis" id="thesis" class="form-control" value="${thesis.filename}.${thesis.type}" ${not empty thesis?'style="display: none"':'style="display: inline"'} />
+							<%--<a id="fileName" class="form-control " href="<%=path%>/auth.do?method=download&fileid=${thesis.id}" ${not empty thesis?'style="display: inline"':'style="display: none"'}>${thesis.filename}.${thesis.type}</a><span class="input-group-addon" >重新上传</span>--%>
+						<div class="" id="fileName" ${not empty thesis?'style="display: inline"':'style="display: none"'}>
+							<a  class="form-control "  href="<%=path%>/auth.do?method=download&fileid=${thesis.id}" >${thesis.filename}.${thesis.type}</a>
+							<span class="btn btn-default" style=" width: 25% ;float: right ;margin-top: -46px" id="btn-clear" >Re upload</span>
+						</div>
+
+
+							<%--<c:if test="${not empty thesis}">
+								<div class="inputContainer">
+									<label class="screen-reader-text">我的论文：</label>
+									<a class="form-control" style="line-height: 23px;" href="<%=path%>/auth.do?method=download&fileid=${thesis.id}">${thesis.filename}.${thesis.type}</a>
+									<span class="btn btn-default" style=" width: 25% ;float: right ;margin-top: -46px" id="btn-clear" >重新上传</span>
+								</div>
+							</c:if>
+							<c:if test="${empty thesis}">
+								<div class="inputContainer">
+									<label class="screen-reader-text">论文上传：</label>
+									<input type="file" name="thesis" id="thesis" class="form-control" />
+								</div>
+							</c:if>--%>
 					</div>
 					<div class="col-sm-8 col-sm-offset-2">
 						<div class="inputContainer">
-							<label class="screen-reader-text">Speaking at the application：</label>
+							<label class="screen-reader-text">Speaking at the application:</label>
 							<div class="form-control" style="line-height:20px;border:none">
 								<label class="radio-inline">
-									<input type="radio" name="sfsqhyfy" id="sfsqhyfy1" value="是" ${register.sfsqhyfy eq '是'?'checked':''} ${not empty register?'disabled="disabled"':''}> YES
+									<input type="radio" name="sfsqhyfy" id="sfsqhyfy1" value="是" ${register.sfsqhyfy eq '是'?'checked':''} > YES
 								</label>
 								<label class="radio-inline">
-									<input type="radio" name="sfsqhyfy" id="sfsqhyfy2" value="否" ${empty register or register.sfsqhyfy eq '否'?'checked':''}  ${not empty register?'disabled="disabled"':''}> NO
+									<input type="radio" name="sfsqhyfy" id="sfsqhyfy2" value="否" ${empty register or register.sfsqhyfy eq '否'?'checked':''}  > NO
 								</label>
 							</div>
 						</div>
 					</div>
 					<div id="fy_area" class="alert alert-warning col-sm-8 col-sm-offset-2" style="${register.sfsqhyfy eq '是'?'':'display:none'}">
 						<div class="inputContainer">
-							<label class="screen-reader-text">Speaking topic：</label>
-							<input type="text" name="fytm" id="fytm" value="${register.fytm}" class="form-control" autocomplete="off" ${not empty register?'disabled="disabled"':''}/>
+							<label class="screen-reader-text">Speaking topic:</label>
+							<input type="text" name="fytm" id="fytm" value="${register.fytm}" class="form-control" autocomplete="off" />
 						</div>
 						<div class="inputContainer">
-							<label class="screen-reader-text">Speech summary（Less than 500 words）：</label>
-							<textarea name="fynrzy" id="fynrzy" class="form-control" autocomplete="off" ${not empty register?'disabled="disabled"':''}>${register.fynrzy}</textarea>
+							<label class="screen-reader-text">Speech summary（Less than 1000 words）:</label>
+							<textarea name="fynrzy" id="fynrzy" class="form-control" autocomplete="off" >${register.fynrzy}</textarea>
 						</div>
 					</div>
 					<div class="col-sm-8 col-sm-offset-2">
 						<div class="inputContainer">
-							<label class="screen-reader-text">publish one’s thesis：</label>
+							<label class="screen-reader-text">publish one’s thesis:</label>
 							<div class="form-control" style="line-height:20px;border:none">
 								<label class="radio-inline">
-									<input type="radio" name="sffblw" id="sffblw1" value="是" ${register.sffblw eq '是'?'checked':''} ${not empty register?'disabled="disabled"':''}> YES
+									<input type="radio" name="sffblw" id="sffblw1" value="是" ${register.sffblw eq '是'?'checked':''} > YES
 								</label>
 								<label class="radio-inline">
-									<input type="radio" name="sffblw" id="sffblw2" value="否" ${empty register or register.sffblw eq '否'?'checked':''}  ${not empty register?'disabled="disabled"':''}> NO
+									<input type="radio" name="sffblw" id="sffblw2" value="否" ${empty register or register.sffblw eq '否'?'checked':''}  > NO
 								</label>
 							</div>
 						</div>
 					</div>
 					<div id="gj_area" class="alert alert-warning col-sm-8 col-sm-offset-2" style="${register.sffblw eq '是'?'':'display:none'}">
 						<div class="inputContainer">
-							<label class="screen-reader-text">Manuscript number：</label>
-							<input type="text" name="gjbh" id="gjbh" value="${register.gjbh}" class="form-control" autocomplete="off" ${not empty register?'disabled="disabled"':''}/>
+							<label class="screen-reader-text">Manuscript number:</label>
+							<input type="text" name="gjbh" id="gjbh" value="${register.gjbh}" class="form-control" autocomplete="off" />
 						</div>
 						<div class="inputContainer">
-							<label class="screen-reader-text">投稿期刊：</label>
+							<label class="screen-reader-text">Contributing journals:</label>
 							<!-- <input type="text" name="journalname" id="journalname" value="${register.journalname}" class="form-control" autocomplete="off" ${not empty register?'disabled="disabled"':''}/> -->
-							<select id="journalname" name="journalname" class="form-control" value="${register.journalname}" ${not empty register?'disabled="disabled"':''}>
-								<c:if test="${empty register}">
-									<option value="">Please select Journal</option>
-									<option value="《食品科学》">《食品科学》</option>
-									<option value="《肉类研究》">《肉类研究》</option>
-									<option value="《乳业科学与技术》">《乳业科学与技术》</option>
-									<option value="《Food Science and Human Wellness》">《Food Science and Human Wellness》</option>
-								</c:if>
-								<c:if test="${not empty register}">
-									<option value="${register.journalname}" selected="selected">${register.journalname}</option>
-								</c:if>
+							<select id="journalname" name="journalname" class="form-control" value="${register.journalname}" >
+								<option value="">请选择投稿期刊</option>
+								<option value="《食品科学》" ${not empty register and register.journalname eq '《食品科学》'?'selected="selected"':''}>《食品科学》</option>
+								<option value="《肉类研究》" ${not empty register and register.journalname eq '《肉类研究》'?'selected="selected"':''}>《肉类研究》</option>
+								<option value="《乳业科学与技术》" ${not empty register and register.journalname eq '《乳业科学与技术》'?'selected="selected"':''}>《乳业科学与技术》</option>
+								<option value="《Food Science and Human Wellness》" ${not empty register and register.journalname eq '《Food Science and Human Wellness》'?'selected="selected"':''}>《Food Science and Human Wellness》</option>
 							</select>
 						</div>
+
+
 						<div class="inputContainer">
-							<label class="screen-reader-text">Thesis topic：</label>
-							<input type="text" name="gjtm" id="gjtm" value="${register.gjtm}" class="form-control" autocomplete="off" ${not empty register?'disabled="disabled"':''}/>
+							<label class="screen-reader-text">Thesis topic:</label>
+							<input type="text" name="gjtm" id="gjtm" value="${register.gjtm}" class="form-control" autocomplete="off" />
 						</div>
 					</div>
-					<div class="col-sm-4 col-xs-12 col-sm-offset-2">
+					<div class="col-sm-4 col-sm-offset-2">
 						<div class="inputContainer">
-							<label class="screen-reader-text">Accommodation requirements：</label>
+							<label class="screen-reader-text">Accommodation requirements:</label>
 							<div class="form-control" style="line-height:20px;border:none">
 								<label class="radio-inline">
-									<input type="radio" name="zsyq" id="zsyq1" value="不住宿" ${empty register or register.zsyq eq '不住宿'?'checked':''} ${not empty register?'disabled="disabled"':''}> No
+									<input type="radio" name="zsyq" id="zsyq1" value="不住宿" ${empty register or register.zsyq eq '不住宿'?'checked':''} > No
 								</label>
 								<label class="radio-inline">
-									<input type="radio" name="zsyq" id="zsyq2" value="标间" ${register.zsyq eq '标间'?'checked':''} ${not empty register?'disabled="disabled"':''}> Standard room
+									<input type="radio" name="zsyq" id="zsyq2" value="标间" ${register.zsyq eq '标间'?'checked':''} > Standard room
 								</label>
 								<label class="radio-inline">
-									<input type="radio" name="zsyq" id="zsyq3" value="单床合住" ${register.zsyq eq '单床合住'?'checked':''} ${not empty register?'disabled="disabled"':''}> Single bed room
+									<input type="radio" name="zsyq" id="zsyq3" value="单床合住" ${register.zsyq eq '单床合住'?'checked':''} > Single bed room
 								</label>
 							</div>
 						</div>
 					</div>
-					<div id="zssj_area" class="col-sm-4 col-xs-12" style="display:none;">
-						<label class="screen-reader-text">Accommodation time：</label>
+					<div id="zssj_area" class="col-sm-4" style="${empty register or register.zsyq eq '不住宿'?'display:none':''}">
+						<label class="screen-reader-text">Accommodation time:</label>
 						<table style="width:100%">
 							<tr>
 								<td class="date">
-									<input type="text" name="zskssj" id="zskssj" value="${fn:substring(register.zskssj,0,10)}" class="form-control" style="width:130px;" autocomplete="off" ${not empty register?'disabled="disabled"':''}/>
+									<input type="text" name="zskssj" id="zskssj" value="${fn:substring(register.zskssj,0,10)}" class="form-control" style="width:130px;" autocomplete="off" />
 								</td>
 								<td width="20" style="padding:2px 4px">to</td>
 								<td align="right">
-									<input type="text" name="zsjssj" id="zsjssj" value="${fn:substring(register.zsjssj,0,10)}" class="form-control" style="width:130px;" autocomplete="off" ${not empty register?'disabled="disabled"':''}/>
+									<input type="text" name="zsjssj" id="zsjssj" value="${fn:substring(register.zsjssj,0,10)}" class="form-control" style="width:130px;" autocomplete="off" />
 								</td>
 							</tr>
 						</table>
 					</div>
 					<div class="col-sm-8 col-sm-offset-2">
 						<div class="inputContainer">
-							<label class="screen-reader-text"><i>Remarks：</i></label>
-							<textarea name="message" id="message" class="form-control" autocomplete="off" ${not empty register?'disabled="disabled"':''}>${register.message}</textarea>
+							<label class="screen-reader-text"><i>Remarks:</i></label>
+							<textarea name="message" id="message" class="form-control" autocomplete="off" >${register.message}</textarea>
 						</div>
 					</div>
+					<c:if test="${not empty register}">
+						<div class="col-sm-4 col-sm-offset-2">
+							<div class="inputContainer">
+								<label class="screen-reader-text">Payment status:</label>
+								<input type="text" name="zfflag" id="zfflag" class="form-control" autocomplete="off" value="<c:if test="${register.zfflag eq 0}">Unpaid conference fee</c:if><c:if test="${register.zfflag eq 1}">Conference fee paid</c:if><c:if test="${register.zfflag eq 2}">Electronic remittance form</c:if>" disabled="disabled" >
+							</div>
+						</div>
+						<div class="col-sm-4">
+							<div class="inputContainer">
+								<label class="screen-reader-text">Registration time:</label>
+								<input type="text" name="yqhfszt" id="registertime" class="form-control" autocomplete="off" value="<fmt:formatDate value="${register.registertime}" type="both"/>" disabled="disabled" >
+							</div>
+						</div>
+
+						<div class="col-sm-4 col-sm-offset-2">
+							<div class="inputContainer">
+								<label class="screen-reader-text">Invitation to send electronic version:</label>
+								<input type="text" name="yqhfszt" id="yqhfszt" class="form-control" autocomplete="off" value="${register.yqhfszt}" disabled="disabled" >
+							</div>
+
+						</div>
+						<div class="col-sm-4">
+							<div class="inputContainer">
+								<label class="screen-reader-text">Paper version invitation send status:</label>
+								<input type="text" name="zfflag" id="zzyqhfszt" class="form-control" autocomplete="off" value="${register.zzyqhfszt}" disabled="disabled" >
+							</div>
+						</div>
+					</c:if>
 					<!-- <div class="col-sm-4 col-sm-offset-2" id="register-pay">
 						<div class="inputContainer">
 						<label class="screen-reader-text">是否需要发票：</label>
@@ -368,13 +397,32 @@
 					</c:if> -->
 
 					<div class="col-sm-8 col-sm-offset-2">
-						<c:if test="${empty register}">
-							<button id="registerBtn" name="submit" type="button" class="btn btn-primary btn-lg">Submit application</button>
-						</c:if>
+							<%--<c:if test="${empty register}">
+								<button id="registerBtn" name="submit" type="button" class="btn btn-primary btn-lg">提交报名</button>
+							</c:if>--%>
+
+						<c:choose>
+							<c:when  test="${empty register}">
+								<button id="registerBtn" name="submit" type="button" class="btn btn-primary btn-lg">Submit application</button>
+							</c:when >
+							<c:otherwise>
+								<button id="editBtn" name="submit" type="button" class="btn btn-primary btn-lg">Determine modification</button>
+							</c:otherwise>
+						</c:choose>
+
 						<!-- <c:if test="${not empty register}">
 						<button id="payBtn" name="submit" type="button" class="btn btn-primary btn-lg" ${register.zfflag eq '1'?'disabled="disabled"':''}>${register.invoice eq '不需要'?'确定':'生成订单并支付'}</button>
 						</c:if> -->
 					</div>
+					<c:if test="${not empty register}">
+						<div class="col-sm-4 col-sm-offset-4" style="padding-top: 20px">
+								<%--<h3 style="text-align: center">二维码</h3>--%>
+							<div id="qrcode">
+							</div>
+
+						</div>
+					</c:if>
+
 					<!-- </c:if> -->
 					<!-- <c:if test="${register.zfflag eq '1'}">
 						<h3 style="padding-left:10px;">个人信息</h3>
@@ -499,6 +547,7 @@
 <script src="<%=path%>/res/js/jquery.inputmask.bundle.js"></script>
 <script src="<%=path%>/res/js/common.js"></script>
 <script src="<%=path%>/static/spkx/js/biz.js"></script>
+<script src="<%=path%>/res/js/qrcode.js"></script>
 
 <script type="text/javascript">
 	function not_pc(){
@@ -514,6 +563,27 @@
 	}
 
 	$(document).ready(function() {
+		if(document.getElementById("qrcode")){
+			//生成二维码
+			var qrcode = new QRCode(document.getElementById("qrcode"), {
+				width : 300,//设置宽高
+				height : 300
+			});
+			qrcode.makeCode("http://hy.chnfood.cn/2017spkx/auth.do?method=signin&telphone=${register.telphone}");
+
+		}
+
+		//重新上传论文按钮
+		$("#btn-clear").click(function () {
+			$("#fileName").attr('style','display: none');
+			$("#thesis").attr('style','display: inline');
+
+			var file = $("#file")
+			file.after(file.clone().val(""));
+			file.remove();
+			file.val('');
+		});
+
 		if(not_pc()){
 			$('.pc_show').hide();
 			$('#zftb_zfb').attr('src','<%=path%>/static/assets/img/aliwap.png');
@@ -623,7 +693,7 @@
 			}
 			return v||'不需要';
 		}
-
+		//注册按钮
 		$('#registerBtn').off('click').on('click',function(e){
 			var that = this;
 			var register = {
@@ -679,7 +749,7 @@
 				return;
 			}
 			if(register.password != $('#repassword').val()){
-				alert('Two input passwords are inconsistent！');
+				alert('两次输入密码不一致！');
 				$('#repassword').focus();
 				return;
 			}
@@ -723,16 +793,14 @@
 					return;
 				}
 			}
-
-			// $(that).addClass('disabled');
+			$(that).addClass('disabled');
 			RegisterService.hasRegisterByTel(register,function(has){
 				if(!has){
-					alert(has);
+					// alert(has);
 					//注册：参数说明register为注册信息,isSendMail表示是否发送邮件
 					var isSendMail = true;
 					var file = register.sfztlw == '是'?dwr.util.getValue("thesis"):null;
 					var fileName = register.sfztlw == '是'?$("#thesis").val():null;
-					debugger;
 					RegisterService.register(register,isSendMail,file,fileName,function(msg){
 						if(msg){
 							alert('Successful registration, please check the receipt of mail!');
@@ -750,19 +818,149 @@
 				}
 			});
 		});
+		//修改按钮
+		$('#editBtn').off('click').on('click', function (e) {
+			var that = this;
+			var register = {
+				id: $('#id').val(),
+				nickname:$('#nickname').val(),
+				sex:$('input[name="sex"]:checked').val(),
+				job:$('#job').val(),
+				title:$('#title').val(),
+				company:$('#company').val(),
+				officephone:$('#officephone').val(),
+				telphone:$('#telphone').val(),
+				email:$('#email').val(),
+				address:$('#address').val(),
+				postcode:$('#postcode').val(),
+				sfztlw:$('input[name="sfztlw"]:checked').val(),
+				sfsqhyfy:$('input[name="sfsqhyfy"]:checked').val(),
+				sffblw:$('input[name="sffblw"]:checked').val(),
+				gjbh:$('#gjbh').val(),
+				journalname:$('#journalname').val(),//稿件期刊
+				gjtm:$('#gjtm').val(),//论文题目
+				zsyq:$('input[name="zsyq"]:checked').val(),
+				zskssj:$('input[name="zsyq"]:checked').val() === '不住宿'?'':$('#zskssj').val(),
+				zsjssj:$('input[name="zsyq"]:checked').val() === '不住宿'?'':$('#zsjssj').val(),
+
+				gzqk:'',
+				fax:'',
+				degree:'',
+				invoice:'',
+				sfcjsx:'',
+				sxxl:'',
+				fptt:'',
+				gjzt:'',
+				fytm:$('#fytm').val(),
+				fynrzy:$('#fynrzy').val(),
+				sfzs:$('input[name="zsyq"]:checked').val() === '不住宿'?'否':'是',
+				yqhfszt:'',
+				// invoice:getInvoiceValue(),
+				// sfcjsx:$('input[name="sfcjsx"]:checked').val(),
+				// sxxl:$('input[name="sfcjsx"]:checked').val() == '参加'?$('#sxxl').val():'',
+				// fptt:$('#fptt').val(),
+
+				message:$('#message').val()
+			};
+console.log(register);  //TODO:debug
+			/*if (!register.email) {
+			 $('#email').focus().attr('placeholder', '该项不能为空！');
+			 return;
+			 }else {
+			 if(!isEmail(register.email)){
+			 alert("Email格式不正确");
+			 $('#email').focus();
+			 return;
+			 }
+			 }
+			 if (!register.telphone) {
+			 $('#telphone').focus().attr('placeholder', '该项不能为空！');
+			 return;
+			 }*/
+
+			/*//密码校验
+			 if (!register.password) {
+			 $('#password').focus().attr('placeholder', '密码不能为空！');
+			 return;
+			 }*/
+			if ((register.password) &&register.password != $('#repassword').val()) {
+				alert('两次输入密码不一致！');
+				$('#repassword').focus();
+				return;
+			}
+			if (!register.nickname) {
+				$('#nickname').focus().attr('placeholder', 'This item cannot be empty！');
+				return;
+			}
+			/*if (!register.title) {
+			 $('#title').focus().attr('placeholder', '该项不能为空！');
+			 return;
+			 }
+			 if (!register.job) {
+			 $('#job').focus().attr('placeholder', '该项不能为空！');
+			 return;
+			 }
+
+
+			 if (!register.company) {
+			 $('#company').focus().attr('placeholder', '该项不能为空！');
+			 return;
+			 }
+			 if (!register.postcode) {
+			 $('#postcode').focus().attr('placeholder', '该项不能为空！');
+			 return;
+			 }
+			 if (!register.address) {
+			 $('#address').focus().attr('placeholder', '该项不能为空！');
+			 return;
+			 }
+
+			 if ($('input[name="invoice"]:checked').val() == '需要') {
+			 if (!$('input[name="invoice_chk"]:checked').val()) {
+			 alert('请选择开票内容！');
+			 return;
+			 }
+			 if (!register.fptt) {
+			 $('#fptt').focus().attr('placeholder', '请填写发票抬头！');
+			 return;
+			 }
+			 }*/
+
+			// $(that).addClass('disabled');
+			$("#editBtn").prop('disabled', true);
+			//注册：参数说明register为注册信息,isSendMail表示是否发送邮件
+			var isSendMail = false;
+			var files=null;
+			var fileName =  $("#thesis").val();
+			if(fileName){
+				files = dwr.util.getValue("thesis");//这是dwr包提供的util.js文件里面的方法
+			}
+
+			RegisterService.register(register, isSendMail,files,fileName, function (msg) {
+				if (msg) {
+					alert('Modify success!');
+					$(that).removeClass('disabled');
+//							$('#registerForm')[0].reset();
+					$("#editBtn").prop('disabled', false);
+					// if($('#isAutoLogin').prop('checked')){
+					window.location.reload();
+					// }
+				}
+			});
+		});
 		$('input[name="invoice"]').change(function(event) {
 			if($('input[name="invoice"]:checked').val()=='不需要'){
 				$('.check-group').hide();
 				$('.register-pay').hide();
 				// $('#payBtn').prop('disabled',true);
-				$('#payBtn').html('Determine');
+				$('#payBtn').html('确定');
 				$('#invoice_msg').html('Note: please contact customer service line payment！');
 			} else {
 				$('.check-group').show();
 				$('.register-pay').show();
 				// $('#payBtn').prop('disabled',false);
-				$('#payBtn').html('Generate orders and pay');
-				$('#invoice_msg').html('Description: the meeting fee invoice by Beijing to Kezhi Technology Co. Ltd. issued by the local travel agency issued fee。');
+				$('#payBtn').html('生成订单并支付');
+				$('#invoice_msg').html('Description: the meeting fee invoice by Beijing to Kezhi Technology Co. Ltd. issued by the local travel agency issued fee.');
 			}
 		});
 
@@ -901,7 +1099,17 @@
 			autoclose:true ,//选择日期后自动关闭
 			width:'100%'
 		});
-		$('#zskssj,#zsjssj').val(new Date().format('yyyy-MM-dd'));
+
+		<c:choose>
+			<c:when  test="${not empty register}">
+				$('#zskssj').val('${fn:substring(register.zskssj,0,10)}');
+				$('#zsjssj').val('${fn:substring(register.zsjssj,0,10)}');
+			</c:when >
+			<c:otherwise>
+				$('#zskssj,#zsjssj').val(new Date().format('yyyy-MM-dd'));
+			</c:otherwise>
+		</c:choose>
+
 		$('#zskssj,#zsjssj').inputmask("2099-99-99");
 		$("#telphone").inputmask('19999999999');
 		$("#postcode").inputmask('999999');

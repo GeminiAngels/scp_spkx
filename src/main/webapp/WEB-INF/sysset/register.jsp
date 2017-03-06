@@ -32,7 +32,7 @@
 						<input type="text" class="form-control" style="width:160px;" id="condition"
 						       placeholder="手机号 / 邮箱 / 姓名">
 						<button type="button" class="btn btn-default" id="btn-query">查询</button>
-						<button type="button" class="btn btn-default" id="btn-print">打印二维码</button>
+						<button type="button" class="btn btn-default" id="btn-print">批量打印胸卡</button>
 					</div>
 				</div>
 			</div>

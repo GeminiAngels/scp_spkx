@@ -281,7 +281,7 @@
 						<table style="width:100%">
 							<tr>
 								<td class="date">
-									<input type="text" name="zskssj" id="zskssj" value="${fn:substring(register.zskssj,0,10)}" class="form-control" style="width:130px;" autocomplete="off" />
+									<input type="text" name="zskssj" id="zskssj" value="${fn:substring(c,0,10)}" class="form-control" style="width:130px;" autocomplete="off" />
 								</td>
 								<td width="20" style="padding:2px 4px">到</td>
 								<td align="right">
@@ -566,13 +566,14 @@
 	}
 
 	$(document).ready(function() {
+
 		if(document.getElementById("qrcode")){
 			//生成二维码
 			var qrcode = new QRCode(document.getElementById("qrcode"), {
 				width : 300,//设置宽高
 				height : 300
 			});
-			qrcode.makeCode("http://www.egeoscience.com.cn/scp_spkx/auth.do?method=signin&telphone=${register.telphone}");
+			qrcode.makeCode("http://hy.chnfood.cn/2017spkx/auth.do?method=signin&telphone=${register.telphone}");
 
 		}
 
@@ -1102,7 +1103,15 @@
 			autoclose:true ,//选择日期后自动关闭
 			width:'100%'
 		});
+		<c:choose>
+		<c:when  test="${not empty register}">
+		$('#zskssj').val('${fn:substring(register.zskssj,0,10)}');
+		$('#zsjssj').val('${fn:substring(register.zsjssj,0,10)}');
+		</c:when >
+		<c:otherwise>
 		$('#zskssj,#zsjssj').val(new Date().format('yyyy-MM-dd'));
+		</c:otherwise>
+		</c:choose>
 		$('#zskssj,#zsjssj').inputmask("2099-99-99");
 		$("#telphone").inputmask('19999999999');
 		$("#postcode").inputmask('999999');
