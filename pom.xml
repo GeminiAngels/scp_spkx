@@ -39,9 +39,9 @@
 		<dependency>
 			<groupId>com.runqian</groupId>
 			<artifactId>quiee</artifactId>
-			<version>4.0</version>
+			<version>4.5</version>
 			<scope>system</scope>
-			<systemPath>${project.basedir}/src/main/webapp/WEB-INF/lib/quiee4.0.jar</systemPath>
+			<systemPath>${project.basedir}/src/main/webapp/WEB-INF/lib/quiee4.5.jar</systemPath>
 		</dependency>
 
 

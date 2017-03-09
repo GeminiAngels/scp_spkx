@@ -62,7 +62,7 @@
 	<!-- 配置快逸导出报表文件的Servlet -->
 	<servlet>
 		<servlet-name>reportServlet</servlet-name>
-		<servlet-class>com.runqian.util.webutil.SetContextServlet</servlet-class>
+		<servlet-class>com.runqian.report4.view.ReportServlet</servlet-class>
 		<init-param>
 			<param-name>configFile</param-name>
 			<param-value>/WEB-INF/reportConfig.xml</param-value>

@@ -12,6 +12,19 @@
 	<title>Title</title>
 </head>
 <body>
+<script type="application/javascript">
+	/**
+	 * 设置iframe宽度
+	 * @param {} iframeId
+	 */
+	function iframeAutoHeight(iframeId){
+		var ifm= document.getElementById(iframeId);
+		var subWeb = document.frames ? document.frames[iframeId].document:ifm.contentDocument;
+		if(ifm != null && subWeb != null) {
+			ifm.height = subWeb.body.scrollHeight;
+		}
+	}
+</script>
 <iframe id="reportArea" name="reportArea" width="100%" frameborder="0" scrolling="no"  src=""
         onload="iframeAutoHeight(this.id)"></iframe>
 
@@ -36,16 +49,6 @@
 
 
 
-	/**
-	 * 设置iframe宽度
-	 * @param {} iframeId
-	 */
-	function iframeAutoHeight(iframeId){
-		var ifm= document.getElementById(iframeId);
-		var subWeb = document.frames ? document.frames[iframeId].document:ifm.contentDocument;
-		if(ifm != null && subWeb != null) {
-			ifm.height = subWeb.body.scrollHeight;
-		}
-	}
+
 </script>
 </html>
