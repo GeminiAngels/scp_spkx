@@ -748,7 +748,7 @@ ul.abdtbox li.right .jx {
 	}
 
 	.hw_zs .right {
-		background: url(<%=path%>/static/spkx/images/pic04_01.png) no-repeat 100px -1px;
+		background: url(../images/pic04_01.png) no-repeat 100px -1px;
 	}
 
 	.zzjg .left {
