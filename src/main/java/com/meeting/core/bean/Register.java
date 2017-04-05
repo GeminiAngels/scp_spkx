@@ -33,6 +33,7 @@ public class Register {
 	private String sfsqhyfy;	//是否申请会议发言
 	private String fytm;		//发言题目
 	private String fynrzy;		//发言内容摘要
+	private String fyrjj;		//发言人简介
 	private String sfzs;		//是否住宿
 	private String zsyq;		//住宿标准
 	private String zskssj;		//住宿开始时间
@@ -204,9 +205,14 @@ public class Register {
 	public String getFynrzy() {
 		return fynrzy;
 	}
-
 	public void setFynrzy(String fynrzy) {
 		this.fynrzy = fynrzy;
+	}
+	public String getFyrjj() {
+		return fyrjj;
+	}
+	public void setFyrjj(String fyrjj) {
+		this.fyrjj = fyrjj;
 	}
 	public String getSfzs() {
 		return sfzs;
@@ -307,15 +313,48 @@ public class Register {
 
 	@Override
 	public String toString() {
-		return "Register [id=" + id + ", username=" + username + ", password=" + password + ", registertime="
-				+ registertime + ", nickname=" + nickname + ", sex=" + sex + ", gzqk=" + gzqk + ", company=" + company
-				+ ", title=" + title + ", job=" + job + ", address=" + address + ", postcode=" + postcode
-				+ ", officephone=" + officephone + ", fax=" + fax + ", telphone=" + telphone + ", email=" + email
-				+ ", sffblw=" + sffblw + ", journalname=" + journalname + ", gjbh=" + gjbh + ", gjtm=" + gjtm
-				+ ", gjzt=" + gjzt + ", sfztlw=" + sfztlw + ", sfsqhyfy=" + sfsqhyfy + ", fytm=" + fytm + ", fynrzy="
-				+ fynrzy + ", sfzs=" + sfzs + ", zsyq=" + zsyq + ", zskssj=" + zskssj + ", zsjssj=" + zsjssj
-				+ ", invoice=" + invoice + ", zfflag=" + zfflag + ", fptt=" + fptt + ", yqhfszt=" + yqhfszt
-				+ ", message=" + message + ", degree=" + degree + ", sfcjsx=" + sfcjsx + ", sxxl=" + sxxl + "usertype="+usertype+"]";
+		return "Register{" +
+				"id=" + id +
+				", username='" + username + '\'' +
+				", password='" + password + '\'' +
+				", registertime='" + registertime + '\'' +
+				", nickname='" + nickname + '\'' +
+				", sex='" + sex + '\'' +
+				", gzqk='" + gzqk + '\'' +
+				", company='" + company + '\'' +
+				", title='" + title + '\'' +
+				", job='" + job + '\'' +
+				", address='" + address + '\'' +
+				", postcode='" + postcode + '\'' +
+				", officephone='" + officephone + '\'' +
+				", fax='" + fax + '\'' +
+				", telphone='" + telphone + '\'' +
+				", email='" + email + '\'' +
+				", sffblw='" + sffblw + '\'' +
+				", journalname='" + journalname + '\'' +
+				", gjbh='" + gjbh + '\'' +
+				", gjtm='" + gjtm + '\'' +
+				", gjzt='" + gjzt + '\'' +
+				", sfztlw='" + sfztlw + '\'' +
+				", sfsqhyfy='" + sfsqhyfy + '\'' +
+				", fytm='" + fytm + '\'' +
+				", fynrzy='" + fynrzy + '\'' +
+				", fyrjj='" + fyrjj + '\'' +
+				", sfzs='" + sfzs + '\'' +
+				", zsyq='" + zsyq + '\'' +
+				", zskssj='" + zskssj + '\'' +
+				", zsjssj='" + zsjssj + '\'' +
+				", invoice='" + invoice + '\'' +
+				", zfflag='" + zfflag + '\'' +
+				", fptt='" + fptt + '\'' +
+				", yqhfszt='" + yqhfszt + '\'' +
+				", message='" + message + '\'' +
+				", degree='" + degree + '\'' +
+				", sfcjsx='" + sfcjsx + '\'' +
+				", sxxl='" + sxxl + '\'' +
+				", usertype='" + usertype + '\'' +
+				", zzyqhfszt='" + zzyqhfszt + '\'' +
+				", hwzbz='" + hwzbz + '\'' +
+				'}';
 	}
-	
 }
