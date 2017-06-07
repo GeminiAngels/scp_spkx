@@ -1,24 +1,13 @@
 package com.meeting.core.db;
 
-import java.io.InputStream;
-import java.sql.Blob;
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.ResultSetMetaData;
-import java.sql.SQLException;
-import java.sql.Timestamp;
-import java.text.SimpleDateFormat;
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-
+import com.meeting.core.exception.SystemException;
 import org.apache.log4j.Logger;
 
-import com.meeting.core.exception.SystemException;
+import java.io.InputStream;
+import java.sql.*;
+import java.text.SimpleDateFormat;
+import java.util.*;
+import java.util.Date;
 
 /**
  * 2016/9/13 00:10:39
@@ -112,7 +101,7 @@ public class DBUtil {
 							stat.setTimestamp(i, java.sql.Timestamp.valueOf(time));
 						}else
 							stat.setString(i, p.toString());
-					}
+					}else stat.setNull(i,0);   //处理传入值为空的问题
 				}
 			}
 			int zt = stat.executeUpdate();
@@ -165,7 +154,7 @@ public class DBUtil {
 							stat.setTimestamp(i+2, java.sql.Timestamp.valueOf(time));
 						} else
 							stat.setString(i+2, p.toString());
-					}
+					}else stat.setNull(i+2,0);
 				}
 			}
 			int zt = stat.executeUpdate();
