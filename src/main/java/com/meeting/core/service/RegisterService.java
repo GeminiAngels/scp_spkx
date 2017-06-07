@@ -81,11 +81,11 @@ public class RegisterService {
 			String sql = "insert into t_register"
 					+ "(username,nickname,password,telphone,email,sex,company,job,journalname,message"
 					+ ",degree,postcode,address,zsyq,invoice,sfcjsx,sxxl,fptt"
-					+ ",officephone,fax,gzqk,title,sffblw,gjbh,gjtm,gjzt,sfztlw,sfsqhyfy,fytm,fynrzy,sfzs,zskssj,zsjssj,yqhfszt"
+					+ ",officephone,fax,gzqk,title,sffblw,gjbh,gjtm,gjzt,sfztlw,sfsqhyfy,fytm,fynrzy,fyrjj,sfzs,zskssj,zsjssj,yqhfszt"
 					+ ",registertime) "
 					+ "values(?,?,?,?,?,?,?,?,?,?"
 					+ ",?,?,?,?,?,?,?,?"
-					+ ",?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?"
+					+ ",?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?"
 					+ ",?)";
 			success = db.execute(sql, new Object[]{
 					reg.getUsername(), reg.getNickname(), StringUtil.MD5(reg.getPassword()),
@@ -94,12 +94,12 @@ public class RegisterService {
 					, reg.getDegree(), reg.getPostcode(), reg.getAddress(), reg.getZsyq(), reg.getInvoice(), reg.getSfcjsx(), reg.getSxxl(), reg.getFptt()
 					, reg.getOfficephone(), reg.getFax(), reg.getGzqk(), reg.getTitle(), reg.getSffblw()
 					, reg.getGjbh(), reg.getGjtm(), reg.getGjzt(), reg.getSfztlw(), reg.getSfsqhyfy()
-					, reg.getFytm(), reg.getFynrzy(), reg.getSfzs(), reg.getZskssj(), reg.getZsjssj(), reg.getYqhfszt()
+					, reg.getFytm(), reg.getFynrzy(), reg.getFyrjj(),reg.getSfzs(), reg.getZskssj(), reg.getZsjssj(), reg.getYqhfszt()
 					, new Date()});
 		} else {//修改
 			StringBuffer sql = new StringBuffer("update t_register set nickname=?,sex=?,company=?,job=?,journalname=?,message=?"
 					+ ",degree=?,postcode=?,address=?,zsyq=?,sfcjsx=?,sxxl=?,fptt=?"
-					+ ",officephone=?,fax=?,gzqk=?,title=?,sffblw=?,gjbh=?,gjtm=?,sfztlw=?,sfsqhyfy=?,fytm=?,fynrzy=?,sfzs=?,zskssj=?,zsjssj=?");
+					+ ",officephone=?,fax=?,gzqk=?,title=?,sffblw=?,gjbh=?,gjtm=?,sfztlw=?,sfsqhyfy=?,fytm=?,fynrzy=?,fyrjj=?,sfzs=?,zskssj=?,zsjssj=?");
 			if (reg.getPassword() != null && !"".equals(reg.getPassword())) {
 				sql.append(",password='" + StringUtil.MD5(reg.getPassword()) + "'");
 			}
@@ -111,7 +111,7 @@ public class RegisterService {
 					, reg.getDegree(), reg.getPostcode(), reg.getAddress(), reg.getZsyq(), reg.getSfcjsx(), reg.getSxxl(), reg.getFptt()
 					, reg.getOfficephone(), reg.getFax(), reg.getGzqk(), reg.getTitle(), reg.getSffblw()
 					, reg.getGjbh(), reg.getGjtm(), reg.getSfztlw(), reg.getSfsqhyfy()
-					, reg.getFytm(), reg.getFynrzy(), reg.getSfzs(), reg.getZskssj(), reg.getZsjssj()
+					, reg.getFytm(), reg.getFynrzy(), reg.getFyrjj(),reg.getSfzs(), reg.getZskssj(), reg.getZsjssj()
 			});
 		}
 

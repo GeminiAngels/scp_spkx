@@ -224,6 +224,10 @@
 							<label class="screen-reader-text">发言内容摘要（1000字以内）：</label>
 							<textarea name="fynrzy" id="fynrzy" class="form-control" autocomplete="off" >${register.fynrzy}</textarea>
 						</div>
+						<div class="inputContainer">
+							<label class="screen-reader-text">发言人简介（1000字以内）：</label>
+							<textarea name="fynrzy" id="fyrjj" class="form-control" autocomplete="off" >${register.fyrjj}</textarea>
+						</div>
 					</div>
 					<div class="col-sm-8 col-sm-offset-2">
 						<div class="inputContainer">
@@ -733,6 +737,7 @@
 				gjzt:'',
 				fytm:$('#fytm').val(),
 				fynrzy:$('#fynrzy').val(),
+				fyrjj:$('#fyrjj').val(),
 				sfzs:$('input[name="zsyq"]:checked').val() === '不住宿'?'否':'是',
 				yqhfszt:'',
 				// invoice:getInvoiceValue(),
@@ -857,6 +862,7 @@
 				gjzt:'',
 				fytm:$('#fytm').val(),
 				fynrzy:$('#fynrzy').val(),
+				fyrjj:$('#fyrjj').val(),
 				sfzs:$('input[name="zsyq"]:checked').val() === '不住宿'?'否':'是',
 				yqhfszt:'',
 				// invoice:getInvoiceValue(),
