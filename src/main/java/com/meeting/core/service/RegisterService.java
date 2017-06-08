@@ -5,8 +5,13 @@ import com.meeting.core.bean.Thesis;
 import com.meeting.core.db.DBUtil;
 import com.meeting.core.email.MailInfo;
 import com.meeting.core.email.MailUtil;
+import com.meeting.core.exception.SystemException;
 import com.meeting.core.util.StringUtil;
 import org.apache.commons.mail.EmailAttachment;
+import org.apache.poi.hssf.usermodel.HSSFCell;
+import org.apache.poi.hssf.usermodel.HSSFRow;
+import org.apache.poi.hssf.usermodel.HSSFSheet;
+import org.apache.poi.hssf.usermodel.HSSFWorkbook;
 import org.directwebremoting.WebContext;
 import org.directwebremoting.WebContextFactory;
 
@@ -371,6 +376,411 @@ public class RegisterService {
 		return db.execute("update t_register set signin = ? where id = ? ", new Object[]{signin, id});
 	}
 
+	public String importFiles(InputStream file, String fileName) {
+		String msg="";
+		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd ");
+		//文件上传
+		if (file != null && fileName != null && !"".equals(fileName)) {
+			HSSFWorkbook hwb = null;
+			try {
+				List<Register> regList = new ArrayList<Register>();
+				// 创建Excel工作薄
+				hwb = new HSSFWorkbook(file);
+				// 得到第一个工作表
+				for (int i = 0; i < hwb.getNumberOfSheets(); i++) {
+					HSSFSheet sheet = hwb.getSheetAt(i);
+					HSSFRow row = null;
+					for (int j = 2; j < sheet.getPhysicalNumberOfRows(); j++) {
+						row = sheet.getRow(j);
+						System.out.println("在导入第" + (i + 1) + "张表单的第" + (j + 1) + "行");
+						if (row.getCell(1) == null || row.getCell(1).getCellType() == 3) {
+							System.out.println("在导入第" + (i + 1) + "张表单的第" + (j + 1) + "行  ===跳出");
+							break;
+						}
+						Register reg = new Register();
+//						reg.setId(Integer.parseInt(m.get("id").toString()));
+//						reg.setEmail(m.get("email").toString());
+//						reg.setNickname(m.get("nickname").toString());
+//						reg.setPassword(m.get("password").toString());
+
+
+						try {
+							String email = getCellValue(row.getCell(1));
+							reg.setEmail(email);
+						} catch (Exception e) {
+							e.printStackTrace();
+							msg="在导入第" + (i + 1) + "张表单的第" + (j + 1) + "行第二格时出错,请检查！";
+							throw new SystemException("在导入第" + (i + 1) + "张表单的第" + (j + 1) + "行第二格时出错,请检查！");
+						}
+						try {
+//							String registertime = getCellValue(row.getCell(2));
+//							reg.setRegistertime(registertime);
+
+							if (row.getCell(2) != null && row.getCell(2).getDateCellValue() != null) {
+								Date registertime = row.getCell(2).getDateCellValue();
+								reg.setRegistertime(sdf.format(registertime));
+							}
+
+						} catch (Exception e) {
+							e.printStackTrace();
+							msg="在导入第" + (i + 1) + "张表单的第" + (j + 1) + "行第3格时出错,请检查！";
+							throw new SystemException("在导入第" + (i + 1) + "张表单的第" + (j + 1) + "行第三格时出错,请检查！");
+						}
+
+						try {
+							String nickname = getCellValue(row.getCell(3));
+							reg.setNickname(nickname);
+						} catch (Exception e) {
+							e.printStackTrace();
+							msg="在导入第" + (i + 1) + "张表单的第" + (j + 1) + "行第4格时出错,请检查！";
+							throw new SystemException("在导入第" + (i + 1) + "张表单的第" + (j + 1) + "行第四格时出错,请检查！");
+						}
+						try {
+							String sex = getCellValue(row.getCell(4));
+							reg.setSex(sex);
+						} catch (Exception e) {
+							e.printStackTrace();
+							msg="在导入第" + (i + 1) + "张表单的第" + (j + 1) + "行第5格时出错,请检查！";
+							throw new SystemException("在导入第" + (i + 1) + "张表单的第" + (j + 1) + "行第五格时出错,请检查！");
+						}
+						//工作单位
+						try {
+							String company = getCellValue(row.getCell(5));
+							reg.setCompany(company);
+						} catch (Exception e) {
+							e.printStackTrace();
+							msg="在导入第" + (i + 1) + "张表单的第" + (j + 1) + "行第6格时出错,请检查！";
+							throw new SystemException("在导入第" + (i + 1) + "张表单的第" + (j + 1) + "行第六格时出错,请检查！");
+						}
+						//职称
+						try {
+							String title = getCellValue(row.getCell(6));
+							reg.setTitle(title);
+						} catch (Exception e) {
+							e.printStackTrace();
+							msg="在导入第" + (i + 1) + "张表单的第" + (j + 1) + "行第7格时出错,请检查！";
+							throw new SystemException("在导入第" + (i + 1) + "张表单的第" + (j + 1) + "行第七格时出错,请检查！");
+						}
+						//职务
+						try {
+							String job = getCellValue(row.getCell(7));
+							reg.setJob(job);
+						} catch (Exception e) {
+							e.printStackTrace();
+							msg="在导入第" + (i + 1) + "张表单的第" + (j + 1) + "行第8格时出错,请检查！";
+							throw new SystemException("在导入第" + (i + 1) + "张表单的第" + (j + 1) + "行第八格时出错,请检查！");
+						}
+						//单位地址
+						try {
+							String address = getCellValue(row.getCell(8));
+							reg.setAddress(address);
+						} catch (Exception e) {
+							e.printStackTrace();
+							msg="在导入第" + (i + 1) + "张表单的第" + (j + 1) + "行第9格时出错,请检查！";
+							throw new SystemException("在导入第" + (i + 1) + "张表单的第" + (j + 1) + "行第9格时出错,请检查！");
+						}
+						//邮编
+						try {
+							String postcode = getCellValue(row.getCell(9));
+							reg.setPostcode(postcode);
+						} catch (Exception e) {
+							e.printStackTrace();
+							msg="在导入第" + (i + 1) + "张表单的第" + (j + 1) + "行时出错,请检查！";
+							throw new SystemException("在导入第" + (i + 1) + "张表单的第" + (j + 1) + "行第10格时出错,请检查！");
+						}
+						//办公电话
+						try {
+							String officephone = getCellValue(row.getCell(10));
+							reg.setOfficephone(officephone);
+						} catch (Exception e) {
+							e.printStackTrace();
+							msg="在导入第" + (i + 1) + "张表单的第" + (j + 1) + "行时出错,请检查！";
+							throw new SystemException("在导入第" + (i + 1) + "张表单的第" + (j + 1) + "行第11格时出错,请检查！");
+						}
+						//手机
+						try {
+							String telphone = getCellValue(row.getCell(11));
+							if(telphone==""||"".equals(telphone)){
+								msg="在导入第" + (i + 1) + "张表单的第" + (j + 1) + "行时出错,请检查！";
+								throw new SystemException("在导入第" + (i + 1) + "张表单的第" + (j + 1) + "行第12格手机号码时出错,手机号码不能为空！");
+							}
+							reg.setTelphone(telphone);
+						} catch (Exception e) {
+							e.printStackTrace();
+							msg="在导入第" + (i + 1) + "张表单的第" + (j + 1) + "行时出错,请检查！";
+							throw new SystemException("在导入第" + (i + 1) + "张表单的第" + (j + 1) + "行第12格时出错,请检查！");
+						}
+						//邮箱
+						try {
+							String email = getCellValue(row.getCell(12));
+							reg.setEmail(email);
+						} catch (Exception e) {
+							e.printStackTrace();
+							msg="在导入第" + (i + 1) + "张表单的第" + (j + 1) + "行时出错,请检查！";
+							throw new SystemException("在导入第" + (i + 1) + "张表单的第" + (j + 1) + "行第13格时出错,请检查！");
+						}
+						//是否发表论文
+						try {
+							String sffblw = getCellValue(row.getCell(13));
+							reg.setSffblw(sffblw);
+						} catch (Exception e) {
+							e.printStackTrace();
+							msg="在导入第" + (i + 1) + "张表单的第" + (j + 1) + "行时出错,请检查！";
+							throw new SystemException("在导入第" + (i + 1) + "张表单的第" + (j + 1) + "行第14格时出错,请检查！");
+						}
+						//投稿期刊
+						try {
+							String journalname = getCellValue(row.getCell(14));
+							reg.setJournalname(journalname);
+						} catch (Exception e) {
+							e.printStackTrace();
+							msg="在导入第" + (i + 1) + "张表单的第" + (j + 1) + "行时出错,请检查！";
+							throw new SystemException("在导入第" + (i + 1) + "张表单的第" + (j + 1) + "行第15格时出错,请检查！");
+						}
+						//稿件编号
+						try {
+							String gjbh = getCellValue(row.getCell(15));
+							reg.setGjbh(gjbh);
+						} catch (Exception e) {
+							e.printStackTrace();
+							msg="在导入第" + (i + 1) + "张表单的第" + (j + 1) + "行时出错,请检查！";
+							throw new SystemException("在导入第" + (i + 1) + "张表单的第" + (j + 1) + "行第16格时出错,请检查！");
+						}
+						//稿件题目
+						try {
+							String gjtm = getCellValue(row.getCell(16));
+							reg.setGjtm(gjtm);
+						} catch (Exception e) {
+							e.printStackTrace();
+							msg="在导入第" + (i + 1) + "张表单的第" + (j + 1) + "行时出错,请检查！";
+							throw new SystemException("在导入第" + (i + 1) + "张表单的第" + (j + 1) + "行第17格时出错,请检查！");
+						}
+						//稿件状态
+						try {
+							String gjzt = getCellValue(row.getCell(17));
+							reg.setGjzt(gjzt);
+						} catch (Exception e) {
+							e.printStackTrace();
+							msg="在导入第" + (i + 1) + "张表单的第" + (j + 1) + "行时出错,请检查！";
+							throw new SystemException("在导入第" + (i + 1) + "张表单的第" + (j + 1) + "行第18格时出错,请检查！");
+						}
+						//是否张贴论文
+						try {
+							String sfztlw = getCellValue(row.getCell(18));
+							reg.setSfztlw(sfztlw);
+						} catch (Exception e) {
+							e.printStackTrace();
+							msg="在导入第" + (i + 1) + "张表单的第" + (j + 1) + "行时出错,请检查！";
+							throw new SystemException("在导入第" + (i + 1) + "张表单的第" + (j + 1) + "行第19格时出错,请检查！");
+						}
+						//是否申请会议发言
+						try {
+							String sfsqhyfy = getCellValue(row.getCell(19));
+							reg.setSfsqhyfy(sfsqhyfy);
+						} catch (Exception e) {
+							e.printStackTrace();
+							msg="在导入第" + (i + 1) + "张表单的第" + (j + 1) + "行时出错,请检查！";
+							throw new SystemException("在导入第" + (i + 1) + "张表单的第" + (j + 1) + "行第20格时出错,请检查！");
+						}
+						//发言题目
+						try {
+							String fytm = getCellValue(row.getCell(20));
+							reg.setFytm(fytm);
+						} catch (Exception e) {
+							e.printStackTrace();
+							msg="在导入第" + (i + 1) + "张表单的第" + (j + 1) + "行时出错,请检查！";
+							throw new SystemException("在导入第" + (i + 1) + "张表单的第" + (j + 1) + "行第21格时出错,请检查！");
+						}
+						//发言内容摘要
+						try {
+							String fynrzy = getCellValue(row.getCell(21));
+							reg.setFynrzy(fynrzy);
+						} catch (Exception e) {
+							e.printStackTrace();
+							msg="在导入第" + (i + 1) + "张表单的第" + (j + 1) + "行时出错,请检查！";
+							throw new SystemException("在导入第" + (i + 1) + "张表单的第" + (j + 1) + "行第22格时出错,请检查！");
+						}
+						//发言人简介
+						try {
+							String fyrjj = getCellValue(row.getCell(22));
+							reg.setFyrjj(fyrjj);
+						} catch (Exception e) {
+							e.printStackTrace();
+							msg="在导入第" + (i + 1) + "张表单的第" + (j + 1) + "行时出错,请检查！";
+							throw new SystemException("在导入第" + (i + 1) + "张表单的第" + (j + 1) + "行第23格时出错,请检查！");
+						}
+						//是否住宿
+						try {
+							String sfzs = getCellValue(row.getCell(23));
+							reg.setSfzs(sfzs);
+						} catch (Exception e) {
+							e.printStackTrace();
+							msg="在导入第" + (i + 1) + "张表单的第" + (j + 1) + "行时出错,请检查！";
+							throw new SystemException("在导入第" + (i + 1) + "张表单的第" + (j + 1) + "行第24格时出错,请检查！");
+						}
+						//住宿类型
+						try {
+							String zsyq = getCellValue(row.getCell(24));
+							reg.setZsyq(zsyq);
+						} catch (Exception e) {
+							e.printStackTrace();
+							msg="在导入第" + (i + 1) + "张表单的第" + (j + 1) + "行时出错,请检查！";
+							throw new SystemException("在导入第" + (i + 1) + "张表单的第" + (j + 1) + "行第25格时出错,请检查！");
+						}
+						//住宿开始时间
+						try {
+//							String zskssj = getCellValue(row.getCell(25));
+//							reg.setZskssj(zskssj);
+
+							if (row.getCell(25) != null && row.getCell(25).getDateCellValue() != null) {
+								Date zskssj = row.getCell(25).getDateCellValue();
+								reg.setZskssj(sdf.format(zskssj));
+							}
+
+						} catch (Exception e) {
+							e.printStackTrace();
+							msg="在导入第" + (i + 1) + "张表单的第" + (j + 1) + "行时出错,请检查！";
+							throw new SystemException("在导入第" + (i + 1) + "张表单的第" + (j + 1) + "行第26格时出错,请检查！");
+						}
+						//住宿结束时间
+						try {
+//							String zsjssj = getCellValue(row.getCell(26));
+//							reg.setZsjssj(zsjssj);
+
+							if (row.getCell(26) != null && row.getCell(26).getDateCellValue() != null) {
+								Date zsjssj = row.getCell(26).getDateCellValue();
+								reg.setZsjssj(sdf.format(zsjssj));
+							}
+						} catch (Exception e) {
+							e.printStackTrace();
+							msg="在导入第" + (i + 1) + "张表单的第" + (j + 1) + "行时出错,请检查！";
+							throw new SystemException("在导入第" + (i + 1) + "张表单的第" + (j + 1) + "行第27格时出错,请检查！");
+						}
+						//会议费
+						try {
+							String invoice = getCellValue(row.getCell(27));
+							reg.setInvoice(invoice);
+						} catch (Exception e) {
+							e.printStackTrace();
+							msg="在导入第" + (i + 1) + "张表单的第" + (j + 1) + "行时出错,请检查！";
+							throw new SystemException("在导入第" + (i + 1) + "张表单的第" + (j + 1) + "行第28格时出错,请检查！");
+						}
+						//缴费状态
+						try {
+							String zfflag = getCellValue(row.getCell(28));
+							reg.setZfflag(zfflag);
+						} catch (Exception e) {
+							e.printStackTrace();
+							msg="在导入第" + (i + 1) + "张表单的第" + (j + 1) + "行时出错,请检查！";
+							throw new SystemException("在导入第" + (i + 1) + "张表单的第" + (j + 1) + "行第29格时出错,请检查！");
+						}
+						//电子版邀请函发送状态
+						try {
+							String yqhfszt = getCellValue(row.getCell(29));
+							reg.setYqhfszt(yqhfszt);
+						} catch (Exception e) {
+							e.printStackTrace();
+							msg="在导入第" + (i + 1) + "张表单的第" + (j + 1) + "行时出错,请检查！";
+							throw new SystemException("在导入第" + (i + 1) + "张表单的第" + (j + 1) + "行第30格时出错,请检查！");
+						}
+						//纸质版邀请函发送状态
+						try {
+							String zzyqhfszt = getCellValue(row.getCell(30));
+							reg.setZzyqhfszt(zzyqhfszt);
+						} catch (Exception e) {
+							e.printStackTrace();
+							msg="在导入第" + (i + 1) + "张表单的第" + (j + 1) + "行时出错,请检查！";
+							throw new SystemException("在导入第" + (i + 1) + "张表单的第" + (j + 1) + "行第31格时出错,请检查！");
+						}
+						//会务组备注
+						try {
+							String hwzbz = getCellValue(row.getCell(31));
+							reg.setHwzbz(hwzbz);
+						} catch (Exception e) {
+							e.printStackTrace();
+							msg="在导入第" + (i + 1) + "张表单的第" + (j + 1) + "行时出错,请检查！";
+							throw new SystemException("在导入第" + (i + 1) + "张表单的第" + (j + 1) + "行第32格时出错,请检查！");
+						}
+						//备注
+						try {
+							String message = getCellValue(row.getCell(32));
+							reg.setMessage(message);
+						} catch (Exception e) {
+							e.printStackTrace();
+							msg="在导入第" + (i + 1) + "张表单的第" + (j + 1) + "行时出错,请检查！";
+							throw new SystemException("在导入第" + (i + 1) + "张表单的第" + (j + 1) + "行第33格时出错,请检查！");
+						}
+
+						/*try {
+							if (row.getCell(8) != null && row.getCell(8).getDateCellValue() != null) {
+								Date leadTime = row.getCell(8).getDateCellValue();
+								eam.setLeadTime(leadTime);
+							}
+						} catch (Exception e) {
+							e.printStackTrace();
+							throw new SystemException("在导入第" + (i + 1) + "张表单的第" + (j + 1) + "行第九格时出错,请检查领用时间！");
+						}*/
+						reg.setPassword(reg.getTelphone().length()>=4?reg.getTelphone().substring(reg.getTelphone().length()-4,reg.getTelphone().length()):reg.getTelphone());
+						regList.add(reg);
+					}
+					for (Register reg : regList) {
+						String sql = "insert into t_register"
+								+ "(username,nickname,password,telphone,email,sex,company,job,journalname,message"
+								+ ",degree,postcode,address,zsyq,invoice,sfcjsx,sxxl,fptt"
+								+ ",officephone,fax,gzqk,title,sffblw,gjbh,gjtm,gjzt,sfztlw,sfsqhyfy,fytm,fynrzy,fyrjj,sfzs,zskssj,zsjssj,yqhfszt"
+								+ ",registertime) "
+								+ "values(?,?,?,?,?,?,?,?,?,?"
+								+ ",?,?,?,?,?,?,?,?"
+								+ ",?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?"
+								+ ",?)";
+						boolean success = db.execute(sql, new Object[]{
+								"", reg.getNickname(), StringUtil.MD5(reg.getPassword()),
+								reg.getTelphone(), reg.getEmail(), reg.getSex(),
+								reg.getCompany(), reg.getJob(), reg.getJournalname(), reg.getMessage()
+								, "", "", reg.getAddress(), reg.getZsyq(), reg.getInvoice(), "", "", ""
+								, reg.getOfficephone(), "", "", reg.getTitle(), reg.getSffblw()
+								, reg.getGjbh(), reg.getGjtm(), reg.getGjzt(), reg.getSfztlw(), reg.getSfsqhyfy()
+								, reg.getFytm(), reg.getFynrzy(), reg.getFyrjj(),reg.getSfzs(), reg.getZskssj()!=null?sdf.parse(reg.getZskssj()):null, reg.getZsjssj()!=null?sdf.parse(reg.getZsjssj()):null, reg.getYqhfszt()
+								,reg.getRegistertime()!=null?sdf.parse(reg.getRegistertime()):null});
+					}
+				}
+				msg="导入成功!!";
+			} catch (Exception e) {
+				e.printStackTrace();
+				return msg;
+			}
+		}
+		return msg;
+	}
+	// 判断从Excel文件中解析出来数据的格式
+	private String getCellValue(HSSFCell cell) {
+		String value = null;
+		// 简单的查检列类型
+		switch (cell.getCellType()) {
+			case HSSFCell.CELL_TYPE_STRING:// 字符串
+				value = cell.getRichStringCellValue().getString();
+				break;
+			case HSSFCell.CELL_TYPE_NUMERIC:// 数字
+				double dd = (double) cell.getNumericCellValue();
+				value = dd + "";
+				break;
+			case HSSFCell.CELL_TYPE_BLANK: // 空
+				value = "";
+				break;
+			case HSSFCell.CELL_TYPE_FORMULA:
+				value = String.valueOf(cell.getCellFormula());
+				break;
+			case HSSFCell.CELL_TYPE_BOOLEAN:// boolean型值
+				value = String.valueOf(cell.getBooleanCellValue());
+				break;
+			case HSSFCell.CELL_TYPE_ERROR:
+				value = String.valueOf(cell.getErrorCellValue());
+				break;
+			default:
+				break;
+		}
+		return value;
+	}
 	public static void main(String[] args) throws ParseException {
 		RegisterService s = new RegisterService();
 		Register reg = new Register();

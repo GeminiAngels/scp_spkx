@@ -33,13 +33,14 @@
 						       placeholder="手机号 / 邮箱 / 姓名">
 						<button type="button" class="btn btn-default" id="btn-query">查询</button>
 						<button type="button" class="btn btn-default" id="btn-print">批量打印胸卡</button>
+						<button type="button" class="btn btn-default" id="btn-import">导入</button>
 					</div>
 				</div>
 			</div>
 		</div>
 	</div>
 	<div class="row-fluid">
-		<div class="col-md-4">
+		<%--<div class="col-md-4">
 			<div style="position:fixed;width: 30%">
 				<div class="alert alert-info" id="opt-info">点击右侧表格需要修改的行进行编辑</div>
 				<form class="form-horizontal" id="form-user">
@@ -117,7 +118,7 @@
 								<span class="input-group-addon"><span
 										class="glyphicon glyphicon-calendar"></span></span>
 							</div>
-							<%--<input type="text" class="form-control" id="registertime" placeholder="建议英文缩写帐号">--%>
+							&lt;%&ndash;<input type="text" class="form-control" id="registertime" placeholder="建议英文缩写帐号">&ndash;%&gt;
 						</div>
 					</div>
 					<div class="form-group">
@@ -129,14 +130,14 @@
 
 					<div class="form-group">
 						<div class="col-sm-offset-3 col-sm-9">
-							<%--<a type="reset" class="cbtn o-plus" id="btn-user-add" title="新增（清空表单）"></a>--%>
+							&lt;%&ndash;<a type="reset" class="cbtn o-plus" id="btn-user-add" title="新增（清空表单）"></a>&ndash;%&gt;
 							<a type="button" class="cbtn o-ok pull-right" id="btn-commit" title="提交"></a>
 						</div>
 					</div>
 				</form>
 			</div>
-		</div>
-		<div class="col-md-8">
+		</div>--%>
+		<div class="col-md-12">
 			<table class="table table-hover table-striped table-bordered">
 				<thead style="background-color:#ccc">
 				<tr>
@@ -156,7 +157,7 @@
 					<%--<th>缴费凭据</th>--%>
 					<%--<th>缴费</th>--%>
 					<th>启停<a id="icon-refresh" class="cbtn o-cancel" title="重新加载表格数据"></a></th>
-					<%--<th>操作 </th>--%>
+					<th>操作 </th>
 				</tr>
 				</thead>
 				<tbody id="data-content">
@@ -176,8 +177,133 @@
 
 	</div>
 </div>
+
+<!-- 新增数据模态窗口 -->
+<div class="modal fade" id="modal-add" tabindex="-1" role="dialog" aria-labelledby="myModal" aria-hidden="true"
+	 data-backdrop="static">
+	<div class="modal-dialog" style="width:70%;">
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal" id="btn-closeSort-encode">
+					<span aria-hidden="true">&times;</span><span class="sr-only"></span>
+				</button>
+				<h4 class="modal-title" id="opt-info">编辑</h4>
+			</div>
+			<div class="modal-body">
+				<form id="form-user" class="form-horizontal" onsubmit="return false;">
+						<input type="hidden" id="id">
+						<div class="form-group">
+							<label for="gjzt" class="col-sm-3 control-label">稿件状态</label>
+							<div class="col-sm-9">
+								<select id="gjzt" name="gjzt">
+									<option value="收稿">收稿</option>
+									<option value="初审">初审</option>
+									<option value="待交稿件处理费">待交稿件处理费</option>
+									<option value="已交稿件处理费">已交稿件处理费</option>
+									<option value="送审">送审</option>
+									<option value="外审">外审</option>
+									<option value="终审">终审</option>
+									<option value="终审退修">终审退修</option>
+									<option value="复审">复审</option>
+									<option value="复审退修">复审退修</option>
+									<option value="待发录用通知">待发录用通知</option>
+									<option value="发录用通知">发录用通知</option>
+									<option value="登记版面费">登记版面费</option>
+									<option value="已到款">已到款</option>
+									<option value="编辑加工">编辑加工</option>
+									<option value="排版">排版</option>
+									<option value="校对">校对</option>
+									<option value="定稿">定稿</option>
+									<option value="组版">组版</option>
+								</select>
+							</div>
+						</div>
+						<div class="form-group">
+							<label for="invoice" class="col-sm-3 control-label">会议费</label>
+							<div class="col-sm-9">
+								<select id="invoice" name="invoice">
+									<option value="1400元">1400元</option>
+									<option value="2000元">2000元</option>
+								</select>
+							</div>
+						</div>
+						<div class="form-group">
+							<label for="zfflag" class="col-sm-3 control-label">缴费状态</label>
+							<div class="col-sm-9">
+								<select id="zfflag" name="zfflag">
+									<option value=0>未缴纳会议费</option>
+									<option value=1>已缴纳会议费</option>
+									<option value=2>收到电子版汇款单</option>
+								</select>
+							</div>
+						</div>
+						<div class="form-group">
+							<label for="yqhfszt" class="col-sm-3 control-label">电子版邀请函发送状态</label>
+							<div class="col-sm-9">
+								<select id="yqhfszt" name="yqhfszt">
+									<option value="未发送">未发送</option>
+									<option value="已发送，请查收电子邮箱">已发送，请查收电子邮箱</option>
+								</select>
+							</div>
+						</div>
+						<div class="form-group">
+							<label for="zzyqhfszt" class="col-sm-3 control-label">纸质版邀请函发送状态</label>
+							<div class="col-sm-9">
+								<select id="zzyqhfszt" name="zzyqhfszt">
+									<option value="未邮寄">未邮寄</option>
+									<option value="纸质版邀请函已经邮寄">纸质版邀请函已经邮寄</option>
+									<option value="会议签到现场领取">会议签到现场领取</option>
+								</select>
+							</div>
+						</div>
+						<div class="form-group">
+							<label for="registertime" class="col-sm-3 control-label">注册时间</label>
+							<div class="col-sm-9">
+								<div class="input-group date" id="input-registertime">
+									<input class="form-control input-sm" id="registertime" type="text" value=""
+										   name="sampleTime" data-bv-feedbackicons="false">
+									<span class="input-group-addon"><span
+											class="glyphicon glyphicon-calendar"></span></span>
+								</div>
+								<%--&lt;%&ndash;<input type="text" class="form-control" id="registertime" placeholder="建议英文缩写帐号">&ndash;%&gt;--%>
+							</div>
+						</div>
+						<div class="form-group">
+							<label for="hwzbz" class="col-sm-3 control-label">会务组备注</label>
+							<div class="col-sm-9">
+								<textarea type="text" class="form-control" id="hwzbz" placeholder="会务组备注"></textarea>
+							</div>
+						</div>
+
+						<%--<div class="form-group">
+							<div class="col-sm-offset-3 col-sm-9">
+								&lt;%&ndash;<a type="reset" class="cbtn o-plus" id="btn-user-add" title="新增（清空表单）"></a>&ndash;%&gt;
+								<a type="button" class="cbtn o-ok pull-right" id="btn-commit" title="提交"></a>
+							</div>
+						</div>--%>
+				</form>
+			</div>
+			<div class="modal-footer">
+				<button type="button" class="btn btn-default pull-left" data-dismiss="modal" id="btn-cancle-input">
+					<i class="glyphicon glyphicon-floppy-remove"></i> 取消
+				</button>
+				<button type="button" class="btn btn-default pull-right" id="btn-commit" data-loading-text="保存中..."
+						autocomplete="off">
+					<i class="glyphicon glyphicon-floppy-disk"></i> 保存
+				</button>
+			</div>
+		</div>
+	</div>
+</div>
+
+<!-- 导入用form -->
+<form id="form-file-upload" style="display:none;">
+	<input class="form-control" id="fileupload" name="uploadFile" type="file"/>
+</form>
+
 </body>
 <script type='text/javascript' src='<%=path%>/dwr/engine.js'></script>
+<script type='text/javascript' src='<%=path%>/dwr/util.js'></script>
 <script type='text/javascript' src='<%=path%>/dwr/interface/RegisterService.js'></script>
 <script type="text/javascript" src="<%=path%>/res/asset/js/jquery.min.js"></script>
 <script type="text/javascript" src="<%=path%>/res/asset/js/echartsHome.js"></script>
@@ -212,6 +338,7 @@
 	//提交按钮
 	$('#btn-commit').click(function (event) {
 		saveRegister();
+        $("#modal-add").modal("hide");
 	});
 	//更新用户信息
 	function saveRegister() {
@@ -280,13 +407,14 @@
 //					+"<td align='center' width='100' ><label  class='toggle"+(item.zfflag!=0?'':'  toggle-off') +"' title='已缴/未交'><input type='checkbox' onclick='confirmPayment(this,"+item.id*1+")' class='visi-hidden'></label></td>"
 					+ '<td align="center" width="100"><label class="toggle'
 					+ (item.status != 1 ? '' : '  toggle-off')
-					+ '" title="启用/禁用"><input type="checkbox" onclick="updateRegisterStatus(this,' + item.id * 1 + ')" class="visi-hidden"></label></td></tr>');
+					+ '" title="启用/禁用"><input type="checkbox" onclick="updateRegisterStatus(this,' + item.id * 1 + ')" class="visi-hidden"></label></td>' +
+					'<td style="text-align: center;" title=""><a class="cbtn o-edit" href="javascript:editData(this,' + item.id * 1 + ')" title="修改">&nbsp;&nbsp;</a>&nbsp;<a class="cbtn o-trash" href="javascript:deleteRegister(' + item.id * 1 + ')" title="删除">&nbsp;&nbsp;</a></td></tr>');
 				tbody.append(tr);
 			}
-			$("#data-content tr").bind("click", function () {
+			/*$("#data-content tr").bind("click", function () {
 				var dataId = $(this).find("td").eq(1).text();
 				getRegisterById(dataId);
-			});
+			});*/
 		});
 	}
 	//加载form表单数据 根据数据id
@@ -300,9 +428,27 @@
 			$('#zzyqhfszt').val(register.zzyqhfszt);
 			$('#registertime').val(register.registertime ? (register.registertime).format('yyyy-MM-dd hh:mm') : '');
 			$('#hwzbz').val(register.huzbz);
-			$('#opt-info').html('当前编辑会员姓名：' + register.nickname);
+			$('#opt-info').text('当前编辑会员姓名：' + register.nickname);
 		});
 	}
+	function editData(e,dataId){
+        $("#modal-add").modal("show");
+        getRegisterById(dataId);
+	}
+
+    /**
+     * 点击上方新增标签时
+     */
+    $("#btn-add").click(function () {
+
+        $('#id').val('');
+        resetForm('#form-user', '');
+        $('#input-dept').data('combobox').setValue({id: App.person.dept.id, name: App.person.dept.name});
+    });
+
+    function resetForm(fs, ns) {
+        $(':input', fs).not(':button, :submit, :reset').not("input[type='hidden']").val('').removeAttr('checked').removeAttr('selected');
+    }
 
 	function getfiles(tid, id, zfflag) {
 		if (tid) {
@@ -346,7 +492,11 @@
 	}
 
 	function deleteRegister(fileid) {
-		RegisterService.deleteFile(fileid, function (msg) {
+
+
+
+
+		RegisterService.deleteRegister(fileid, function (msg) {
 			if (msg === true)
 				loadRegisters();
 		});
@@ -409,5 +559,36 @@
 		var iLeft = (window.screen.width - 10 - iWidth) / 2; //获得窗口的水平位置;
 		window.open(url, name, 'height=' + iHeight + ',,innerHeight=' + iHeight + ',width=' + iWidth + ',innerWidth=' + iWidth + ',top=' + iTop + ',left=' + iLeft + ',toolbar=no,menubar=no,scrollbars=yes,resizeable=no,location=no,status=no');
 	}
+
+
+    $('#btn-import').click(function () {
+        $('#fileupload').click();
+    });
+    $('#fileupload').change(function () {
+        var fileName = $(this).val();
+        var fileType = fileName.substr(fileName.lastIndexOf(".") + 1);
+        fileName = fileName.substr(fileName.lastIndexOf("\\") + 1);
+        $('#file-name').val(fileName);
+        if (fileType && !(fileType.toLowerCase() == "xls" || fileType.toLowerCase() == "xlsx" || fileType.toLowerCase() == "xlsm")) {
+            alert("只能选择excel类型！");
+//            $('#fileupload').val('');
+//            $('#file-name').val('');
+            return;
+        }
+        var file =dwr.util.getValue("fileupload");
+        var fileName = $("#fileupload").val();
+
+        RegisterService.importFiles(file,fileName,function(msg){
+//                loadRegisters();//只刷新表格效果不明显 改成下面整个网页刷新
+                window.location.reload();
+                alert(msg);
+
+        });
+
+    });
+
+
+
+
 </script>
 </html>
