@@ -42,6 +42,30 @@ public class RegisterService {
 		boolean success = true;
 
 		StringBuffer sql = new StringBuffer("update t_register set gjzt=?,zfflag=?,invoice=?," +
+				"yqhfszt=?,zzyqhfszt=?,registertime=?,hwzbz=?,zsjssj=?,zskssj=?," +
+				"nickname=?,sex=?," +
+				"job=?,title=?,company=?,officephone=?,telphone=?," +
+				"email=?,address=?,postcode=?,sfztlw=?," +
+				"sfsqhyfy=?,fytm=?,fynrzy=?," +
+				"fyrjj=?,sffblw=?,journalname=?,gjbh=?,gjtm=?,zsyq=? where id=?");
+		System.out.println(sql.toString());
+		success = db.execute(sql.toString(), new Object[]{
+				reg.getGjzt(), reg.getZfflag(), reg.getInvoice()
+				, reg.getYqhfszt(), reg.getZzyqhfszt(), reg.getRegistertime(), reg.getHwzbz(),
+				reg.getZsjssj(),reg.getZskssj(),
+				reg.getNickname(),reg.getSex(),
+				reg.getJob(),reg.getTitle(),reg.getCompany(),reg.getOfficephone(),reg.getTelphone(),
+				reg.getEmail(),reg.getAddress(),reg.getPostcode(),reg.getSfztlw(),
+				reg.getSfsqhyfy(),reg.getFytm(),reg.getFynrzy(),
+				reg.getFyrjj(),reg.getSffblw(),reg.getJournalname(),reg.getGjbh(),reg.getGjtm(),reg.getZsyq(),
+				reg.getId()});
+		return success;
+	}
+	//后台管理员更新注册信息
+	public boolean updateRegisterInfo2(Register reg) {
+		boolean success = true;
+
+		StringBuffer sql = new StringBuffer("update t_register set gjzt=?,zfflag=?,invoice=?," +
 				"yqhfszt=?,zzyqhfszt=?,registertime=?,hwzbz=? where id=?");
 		System.out.println(sql.toString());
 		success = db.execute(sql.toString(), new Object[]{
