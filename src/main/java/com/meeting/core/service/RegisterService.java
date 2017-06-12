@@ -7,6 +7,7 @@ import com.meeting.core.email.MailInfo;
 import com.meeting.core.email.MailUtil;
 import com.meeting.core.exception.SystemException;
 import com.meeting.core.util.StringUtil;
+import com.swetake.util.Qrcode;
 import org.apache.commons.mail.EmailAttachment;
 import org.apache.poi.hssf.usermodel.HSSFCell;
 import org.apache.poi.hssf.usermodel.HSSFRow;
@@ -15,9 +16,12 @@ import org.apache.poi.hssf.usermodel.HSSFWorkbook;
 import org.directwebremoting.WebContext;
 import org.directwebremoting.WebContextFactory;
 
+import javax.imageio.ImageIO;
+import java.awt.*;
+import java.awt.image.BufferedImage;
+import java.io.File;
 import java.io.InputStream;
 import java.sql.SQLException;
-import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
@@ -123,7 +127,7 @@ public class RegisterService {
 					, reg.getDegree(), reg.getPostcode(), reg.getAddress(), reg.getZsyq(), reg.getInvoice(), reg.getSfcjsx(), reg.getSxxl(), reg.getFptt()
 					, reg.getOfficephone(), reg.getFax(), reg.getGzqk(), reg.getTitle(), reg.getSffblw()
 					, reg.getGjbh(), reg.getGjtm(), reg.getGjzt(), reg.getSfztlw(), reg.getSfsqhyfy()
-					, reg.getFytm(), reg.getFynrzy(), reg.getFyrjj(),reg.getSfzs(), reg.getZskssj(), reg.getZsjssj(), reg.getYqhfszt()
+					, reg.getFytm(), reg.getFynrzy(), reg.getFyrjj(),reg.getSfzs(), "".equals(reg.getZskssj())?null:reg.getZskssj(), "".equals(reg.getZsjssj())?null:reg.getZsjssj(), reg.getYqhfszt()
 					, new Date()});
 		} else {//修改
 			StringBuffer sql = new StringBuffer("update t_register set nickname=?,sex=?,company=?,job=?,journalname=?,message=?"
@@ -140,7 +144,7 @@ public class RegisterService {
 					, reg.getDegree(), reg.getPostcode(), reg.getAddress(), reg.getZsyq(), reg.getSfcjsx(), reg.getSxxl(), reg.getFptt()
 					, reg.getOfficephone(), reg.getFax(), reg.getGzqk(), reg.getTitle(), reg.getSffblw()
 					, reg.getGjbh(), reg.getGjtm(), reg.getSfztlw(), reg.getSfsqhyfy()
-					, reg.getFytm(), reg.getFynrzy(), reg.getFyrjj(),reg.getSfzs(), reg.getZskssj(), reg.getZsjssj()
+					, reg.getFytm(), reg.getFynrzy(), reg.getFyrjj(),reg.getSfzs(), "".equals(reg.getZskssj())?null:reg.getZskssj(), "".equals(reg.getZsjssj())?null:reg.getZsjssj()
 			});
 		}
 
@@ -215,7 +219,18 @@ public class RegisterService {
 //        atts.add(att);
 //        mailInfo.setAttachments(atts);
 
-		mailInfo.setToAddress(toList);//收件人
+        try {
+            File file = create_image("http://www.egeoscience.com.cn/scp_spkx/auth.do?method=signin&telphone="+reg.getTelphone());
+            att.setPath(file.getAbsolutePath());
+            att.setName("签到二维码.jpg");
+            List<EmailAttachment> atts = new ArrayList<EmailAttachment>();
+            atts.add(att);
+            mailInfo.setAttachments(atts);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        mailInfo.setToAddress(toList);//收件人
 //        mailInfo.setCcAddress(ccList);//抄送人
 		mailInfo.setBccAddress(bccList);//密送人
 
@@ -387,6 +402,14 @@ public class RegisterService {
 	public boolean registerSignin(Register reg) {
 		String sql = "update t_register set signin = 1 where telphone = ? ";
 		return db.execute(sql, new Object[]{reg.getTelphone()});
+	}
+	/**
+	 * 标记用户打印状态
+	 * @return
+	 */
+	public boolean updateIsPrint(int id) {
+		String sql = "update t_register set is_print = 1 where id = ? ";
+		return db.execute(sql, new Object[]{id});
 	}
 
 	/**
@@ -805,7 +828,7 @@ public class RegisterService {
 		}
 		return value;
 	}
-	public static void main(String[] args) throws ParseException {
+	/*public static void main(String[] args) throws ParseException {
 		RegisterService s = new RegisterService();
 		Register reg = new Register();
 		reg.setEmail("462716@qq.com");
@@ -814,4 +837,68 @@ public class RegisterService {
 
 //		System.out.println(DateUtils.parseDate("2016-12-27 18:00", new String[]{"yyyy-MM-dd HH:mm"}));
 	}
+*/
+
+
+	public File create_image(String sms_info)throws Exception{
+        BufferedImage bufImg = null;
+        try {
+            Qrcode qrcodeHandler = new Qrcode();
+            // 设置二维码排错率，可选L(7%)、M(15%)、Q(25%)、H(30%)，排错率越高可存储的信息越少，但对二维码清晰度的要求越小
+            qrcodeHandler.setQrcodeErrorCorrect('M');
+            qrcodeHandler.setQrcodeEncodeMode('B');
+            // 设置设置二维码尺寸，取值范围1-40，值越大尺寸越大，可存储的信息越大
+            qrcodeHandler.setQrcodeVersion(7);
+            // 获得内容的字节数组，设置编码格式
+            byte[] contentBytes = sms_info.getBytes("utf-8");
+            // 图片尺寸
+            int imgSize = 67 + 12 * (7 - 1);
+            bufImg = new BufferedImage(imgSize, imgSize, BufferedImage.TYPE_INT_RGB);
+            Graphics2D gs = bufImg.createGraphics();
+            // 设置背景颜色
+            gs.setBackground(Color.WHITE);
+            gs.clearRect(0, 0, imgSize, imgSize);
+
+            // 设定图像颜色> BLACK
+            gs.setColor(Color.BLACK);
+            // 设置偏移量，不设置可能导致解析出错
+            int pixoff = 2;
+            // 输出内容> 二维码
+            if (contentBytes.length > 0 && contentBytes.length < 800) {
+                boolean[][] codeOut = qrcodeHandler.calQrcode(contentBytes);
+                for (int i = 0; i < codeOut.length; i++) {
+                    for (int j = 0; j < codeOut.length; j++) {
+                        if (codeOut[j][i]) {
+                            gs.fillRect(j * 3 + pixoff, i * 3 + pixoff, 3, 3);
+                        }
+                    }
+                }
+            } else {
+                throw new Exception("QRCode content bytes length = " + contentBytes.length + " not in [0, 800].");
+            }
+            gs.dispose();
+            bufImg.flush();
+
+            File f = new File("a.jpg");
+            if(!f.exists()) f.createNewFile();
+            ImageIO.write(bufImg, "jpg", f);
+            return f;
+        } catch (Exception e) {
+            e.printStackTrace();
+            return null;
+        }
+	}
+	public static void main(String[] args) throws Exception {
+        File file = new File("a.jpg");
+        System.out.println(file.getAbsolutePath());//获取绝对路径
+		long start = System.currentTimeMillis();
+		String string = "http://jss.360buy.com/outLinkServicePoint/e4f76f55-8661-4d76-8465-d4cd0e0cc4c5.0.3_Beta_signed_20130609_.apk";
+        RegisterService a =new RegisterService();
+        File f = a.create_image(string);
+
+		long end = System.currentTimeMillis();
+		long last = end  - start;
+		System.out.println("time consume:" + last);
+	}
+
 }
