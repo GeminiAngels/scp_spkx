@@ -48,7 +48,7 @@ public class AuthorityServlet extends BaseServlet {
 				Map register = service.getRegisterByTelphone(telphone);
 				req.setAttribute("telphone", telphone);
 				if(!register.isEmpty()){
-					req.setAttribute("register", register);
+					req.setAttribute("reg", register);
 					if((Integer)register.get("is_print")==1){
 						return "ctx:signinSuccess.jsp";//已经签到页面
 					}else{

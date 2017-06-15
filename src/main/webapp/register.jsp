@@ -557,6 +557,8 @@
 <script src="<%=path%>/res/js/qrcode.js"></script>
 
 <script type="text/javascript">
+
+	var projectAddress="http://hy.chnfood.cn/2017spkx";
 	function not_pc(){
 		var os = new Array("Android","iPhone","Windows Phone","iPod","BlackBerry","MeeGo","SymbianOS");  // 其他类型的移动操作系统类型，自行添加
 		var info = navigator.userAgent;
@@ -577,7 +579,8 @@
 				width : 300,//设置宽高
 				height : 300
 			});
-			qrcode.makeCode("http://hy.chnfood.cn/2017spkx/auth.do?method=signin&telphone=${register.telphone}");
+			<%--qrcode.makeCode(projectAddress+"/auth.do?method=signin&telphone=${register.telphone}");--%>
+			qrcode.makeCode(projectAddress+"/auth.do?method=signinByTel&telphone=${register.telphone}");
 
 		}
 
@@ -810,7 +813,7 @@
 					var isSendMail = true;
 					var file = register.sfztlw == '是'?dwr.util.getValue("thesis"):null;
 					var fileName = register.sfztlw == '是'?$("#thesis").val():null;
-					RegisterService.register(register,isSendMail,file,fileName,function(msg){
+					RegisterService.register(register,isSendMail,file,fileName,projectAddress,function(msg){
 						if(msg){
 							alert('报名成功，请查收邮件回执!');
 							$(that).removeClass('disabled');

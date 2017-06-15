@@ -108,7 +108,7 @@ public class RegisterService {
 	 * @param fileName
 	 * @return
 	 */
-	public boolean register(Register reg, boolean isSendMail, InputStream file, String fileName) {
+	public boolean register(Register reg, boolean isSendMail, InputStream file, String fileName,String projectAddress) {
 		boolean success = true;
 		if ("null".equals(String.valueOf(reg.getId())) || "0".equals(String.valueOf(reg.getId()))) {
 			String sql = "insert into t_register"
@@ -177,7 +177,7 @@ public class RegisterService {
 			}
 
 			if (isSendMail)
-				sendEmailToRegister(reg, "注册", "emailtemplate.html");
+				sendEmailToRegister(reg, "注册", "emailtemplate.html",projectAddress);
 		}
 		return success;
 	}
@@ -192,12 +192,12 @@ public class RegisterService {
 			reg.setEmail(m.get("email").toString());
 			reg.setNickname(m.get("nickname").toString());
 			reg.setPassword(m.get("password").toString());
-			success = sendEmailToRegister(reg, "重置密码", "forgotpwdtemplate.html");
+			success = sendEmailToRegister(reg, "重置密码", "forgotpwdtemplate.html",null);
 		}
 		return success;
 	}
 
-	public boolean sendEmailToRegister(Register reg, String flag, String templateFile) {
+	public boolean sendEmailToRegister(Register reg, String flag, String templateFile,String projectAddress) {
 		Map ms = db.queryOne("select * from t_mailset where isactive = 1 ", null);
 		MailUtil.init(ms);
 		MailInfo mailInfo = new MailInfo();
@@ -218,18 +218,18 @@ public class RegisterService {
 //        List<EmailAttachment> atts = new ArrayList<EmailAttachment>();
 //        atts.add(att);
 //        mailInfo.setAttachments(atts);
-
-        try {
-            File file = create_image("http://www.egeoscience.com.cn/scp_spkx/auth.do?method=signin&telphone="+reg.getTelphone());
-            att.setPath(file.getAbsolutePath());
-            att.setName("签到二维码.jpg");
-            List<EmailAttachment> atts = new ArrayList<EmailAttachment>();
-            atts.add(att);
-            mailInfo.setAttachments(atts);
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-
+		if(projectAddress!=null){
+			try {
+				File file = create_image(projectAddress+"/auth.do?method=signinByTel&telphone="+reg.getTelphone());
+				att.setPath(file.getAbsolutePath());
+				att.setName("签到二维码.jpg");
+				List<EmailAttachment> atts = new ArrayList<EmailAttachment>();
+				atts.add(att);
+				mailInfo.setAttachments(atts);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		}
         mailInfo.setToAddress(toList);//收件人
 //        mailInfo.setCcAddress(ccList);//抄送人
 		mailInfo.setBccAddress(bccList);//密送人
