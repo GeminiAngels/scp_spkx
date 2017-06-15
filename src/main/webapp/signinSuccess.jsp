@@ -29,6 +29,11 @@
 	<script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
 	<script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
 	<![endif]-->
+	<style>
+		input{
+			disabled:"disabled"
+		}
+	</style>
 </head>
 
 <body>
@@ -39,19 +44,117 @@
 			<div class="container">
 				<div class="row">
 						<div class="col-xs-12">
-						<h2 class="sectionTitle">签到成功</h2>
+						<%--<h2 class="sectionTitle">已经签到过!</h2>--%>
 					</div>
 				</div>
 				<div class="row">
 					<div class="col-sm-8 col-sm-offset-2">
-						<div class="alert alert-success"><i class="fa fa-check" style="border:1px solid;border-radius: 100%"></i> ${telphone}签到成功！</div>
+						<div class="alert alert-success"><i class="fa fa-check" style="border:1px solid;border-radius: 100%"></i> ${telphone}已经签到过！</div>
+					</div>
+
+					<div class="col-sm-4 col-sm-offset-2">
+						<div class="inputContainer">
+							<label>姓名：</label>
+							<input type="text" disabled=disabled" name="nickname" id="nickname" class="form-control" autocomplete="off" value="${register.nickname}" >
+						</div>
+					</div>
+					<div class="col-sm-4">
+						<div class="inputContainer">
+							<label class="screen-reader-text">性别：</label>
+							<div class="form-control" style="line-height:20px;">
+								<label class="radio-inline">
+									<input type="radio"  disabled=disabled" name="sex" id="sex1" value="男" ${register.sex eq '男' or empty regisgter?'checked':''} > 男
+								</label>
+								<label class="radio-inline">
+									<input type="radio" disabled=disabled" name="sex" id="sex2" value="女" ${register.sex eq '女'?'checked':''} > 女
+								</label>
+							</div>
+						</div>
+					</div>
+					<div class="col-sm-4 col-sm-offset-2">
+						<div class="inputContainer">
+							<label class="screen-reader-text">职务：</label>
+							<input type="text" disabled=disabled" name="job" id="job" class="form-control" autocomplete="off" value="${register.job}" >
+							<!-- <select id="job" name="job" class="form-control" value="${register.job}" >
+								<c:if test="${empty register}">
+								<option value="无">无</option>
+								<option value="初级">初级</option>
+								<option value="中级" selected="selected">中级</option>
+								<option value="副高">副高</option>
+								<option value="正高">正高</option>
+								</c:if>
+								<c:if test="${not empty register}">
+								<option value="${register.job}" selected="selected">${register.job}</option>
+								</c:if>
+							</select> -->
+						</div>
+					</div>
+					<div class="col-sm-4">
+						<div class="inputContainer">
+							<label class="screen-reader-text">职称：</label>
+							<select id="title" disabled=disabled" name="title" class="form-control" >
+								<option value="">请选择职称</option>
+								<option value="教授" ${not empty register and register.title eq '教授'?'selected="selected"':''}>教授</option>
+								<option value="副教授" ${not empty register and register.title eq '副教授'?'selected="selected"':''}>副教授</option>
+								<option value="讲师" ${not empty register and register.title eq '讲师'?'selected="selected"':''}>讲师</option>
+								<option value="助理讲师" ${not empty register and register.title eq '助理讲师'?'selected="selected"':''}>助理讲师</option>
+								<option value="研究员" ${not empty register and register.title eq '研究员'?'selected="selected"':''}>研究员</option>
+								<option value="副研究员" ${not empty register and register.title eq '副研究员'?'selected="selected"':''}>副研究员</option>
+								<option value="助理研究员" ${not empty register and register.title eq '助理研究员'?'selected="selected"':''}>助理研究员</option>
+								<option value="研究实习员" ${not empty register and register.title eq '研究实习员'?'selected="selected"':''}>研究实习员</option>
+								<option value="教授级高级工程师" ${not empty register and register.title eq '教授级高级工程师'?'selected="selected"':''}>教授级高级工程师</option>
+								<option value="高级工程师" ${not empty register and register.title eq '高级工程师'?'selected="selected"':''}>高级工程师</option>
+								<option value="工程师" ${not empty register and register.title eq '工程师'?'selected="selected"':''}>工程师</option>
+								<option value="助理工程师" ${not empty register and register.title eq '助理工程师'?'selected="selected"':''}>助理工程师</option>
+								<option value="高级教师" ${not empty register and register.title eq '高级教师'?'selected="selected"':''}>高级教师</option>
+								<option value="高级农艺师" ${not empty register and register.title eq '高级农艺师'?'selected="selected"':''}>高级农艺师</option>
+								<option value="农艺师" ${not empty register and register.title eq '农艺师'?'selected="selected"':''}>农艺师</option>
+								<option value="助理农艺师" ${not empty register and register.title eq '助理农艺师'?'selected="selected"':''}>助理农艺师</option>
+								<option value="其他" ${not empty register and register.title eq '其他'?'selected="selected"':''}>其他</option>
+								<option value="其他（研究生等）" ${not empty register and register.title eq '其他（研究生等）'?'selected="selected"':''}>其他（研究生等）</option>
+
+							</select>
+						</div>
 					</div>
 					<div class="col-sm-8 col-sm-offset-2">
+						<div class="inputContainer">
+							<label class="screen-reader-text">单位：</label>
+							<input type="text" name="company" disabled=disabled" id="company" value="${register.company}" class="form-control" autocomplete="off" />
+						</div>
+					</div>
+					<div class="col-sm-4 col-sm-offset-2">
+						<div class="inputContainer">
+							<label class="screen-reader-text">办公电话：</label>
+							<input type="text" name="officephone" disabled=disabled" id="officephone" class="form-control" autocomplete="off" value="${register.officephone}"/>
+						</div>
+					</div>
+					<div class="col-sm-4">
+						<div class="inputContainer">
+							<label class="screen-reader-text">手机：</label>
+							<input type="text" name="telphone" id="telphone" value="${register.telphone}" class="form-control" autocomplete="off" ${not empty register?'disabled="disabled"':''}/>
+						</div>
+					</div>
+					<div class="col-sm-8 col-sm-offset-2">
+						<div class="inputContainer">
+							<label class="screen-reader-text">Email：</label>
+							<input  disabled=disabled" type="text" name="email" id="email" class="form-control" autocomplete="off" ${not empty register?'disabled="disabled"':''} value="${register.email}"/>
+							<p style="color:red ;${not empty register?'display:none':''} " >请尽量不要选择QQ邮箱，否则可能无法收到会务组发出的邮件</p>
+						</div>
+					</div>
+					<div class="col-sm-4 col-sm-offset-2">
+						<div class="inputContainer">
+							<label class="screen-reader-text">联系地址：</label>
+							<input  disabled=disabled" type="text" name="address" id="address" value="${register.address}" class="form-control" autocomplete="off" />
+						</div>
+					</div>
+					<div class="col-sm-4">
+						<div class="inputContainer">
+							<label class="screen-reader-text">邮编：</label>
+							<input disabled=disabled" type="text" name="postcode" id="postcode" value="${register.postcode}" class="form-control" autocomplete="off"/>
+						</div>
 					</div>
 				</div>
-			</div>
-		</div>
-	</div> <!-- /contactWrap -->
+
 	<%@include file="/inc/footer.jsp"%>
 
     <!-- Bootstrap core JavaScript
@@ -62,5 +165,31 @@
     <script src="<%=path%>/static/js/jquery-1.11.1.min.js"></script>
     <script src="<%=path%>/static/js/bootstrap.min.js"></script>
     <script src="<%=path%>/static/spkx/js/biz.js"></script>
+	<script type="application/javascript">
+		<%--alert(${register.id});--%>
+       /* /!**
+         * 设置iframe宽度
+         * @param {} iframeId
+         *!/
+        function iframeAutoHeight(iframeId){
+            var ifm= document.getElementById(iframeId);
+            var subWeb = document.frames ? document.frames[iframeId].document:ifm.contentDocument;
+            if(ifm != null && subWeb != null) {
+                ifm.height = subWeb.body.scrollHeight;
+            }
+        }
+        /!**
+         * 初始化
+         *!/
+        $(document).ready(function() {
+            var ids = ${register.id};
+            var params = '?report=/ewm.raq';
+            params += '&ids='+ids;
+            url = '<%=path%>/report/reportJsp/report.jsp';
+            url += params;
+            url+='&timestamp='+Date.parse(new Date());
+            $('#reportArea').attr('src',url);
+        });*/
+	</script>
 </body>
 </html>

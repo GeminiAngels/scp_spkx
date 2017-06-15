@@ -1,7 +1,5 @@
 package com.meeting.core.bean;
 
-import java.util.Date;
-
 /**
  * 2016/9/13 01:36:34
  * @author 白云飞
@@ -52,6 +50,8 @@ public class Register {
 
 	private String zzyqhfszt;	//纸质版邀请函发送状态
 	private String hwzbz;	//会务组备注
+
+	private String is_print;	//标记用户胸卡已打印
 
 	
 	public Register() {
@@ -309,6 +309,14 @@ public class Register {
 
 	public void setHwzbz(String hwzbz) {
 		this.hwzbz = hwzbz;
+	}
+
+	public String getIs_print() {
+		return is_print;
+	}
+
+	public void setIs_print(String is_print) {
+		this.is_print = is_print;
 	}
 
 	@Override

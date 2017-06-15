@@ -1,5 +1,11 @@
 package com.meeting.core.servlet;
 
+import com.meeting.core.bean.Register;
+import com.meeting.core.service.AuthorityService;
+import com.meeting.core.service.RegisterService;
+
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import java.io.InputStream;
 import java.io.OutputStream;
 import java.sql.Blob;
@@ -7,13 +13,6 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
-
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-
-import com.meeting.core.bean.Register;
-import com.meeting.core.service.AuthorityService;
-import com.meeting.core.service.RegisterService;
 
 /**
  * 2016/9/13 00:39:21
@@ -32,7 +31,8 @@ public class AuthorityServlet extends BaseServlet {
 	}
 
 	/**
-	 * 签到
+	 * 签到 http://www.egeoscience.com.cn/scp_spkx/auth.do?method=signin&telphone=18033334444
+	 * 签到 http://localhost:8080/scp/auth.do?method=signinByTel&telphone=18033334444
 	 * @param req
 	 * @param resp
 	 * @return
@@ -49,7 +49,11 @@ public class AuthorityServlet extends BaseServlet {
 				req.setAttribute("telphone", telphone);
 				if(!register.isEmpty()){
 					req.setAttribute("register", register);
-					return "ctx:signinSuccess.jsp";
+					if((Integer)register.get("is_print")==1){
+						return "ctx:signinSuccess.jsp";//已经签到页面
+					}else{
+						return "ctx:printingBadge.jsp";//打印胸卡页面
+					}
 				}else{
 					req.setAttribute("errormsg", "对不起，用户不存在！");
 					return "ctx:signinError.jsp";
