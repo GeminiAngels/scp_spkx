@@ -949,7 +949,7 @@
 				files = dwr.util.getValue("thesis");//这是dwr包提供的util.js文件里面的方法
 			}
 
-			RegisterService.register(register, isSendMail,files,fileName, function (msg) {
+			RegisterService.register(register, isSendMail,files,fileName,projectAddress, function (msg) {
 				if (msg) {
 					alert('修改成功!');
 					$(that).removeClass('disabled');
