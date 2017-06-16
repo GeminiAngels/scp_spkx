@@ -88,7 +88,7 @@
          * 初始化
          */
         $(document).ready(function() {
-            var ids = ${register.id};
+            var ids = ${reg.id};
             var params = '?report=/ewm.raq';
             params += '&ids='+ids;
             url = '<%=path%>/report/reportJsp/report.jsp';
@@ -97,7 +97,12 @@
             $('#reportArea').attr('src',url);
         });
         $("#btn-printOk").click(function () {
-            RegisterService.updateIsPrint( ${register.id}, function (data) {
+            RegisterService.updateIsPrint( ${reg.id}, function (data) {
+                if(data){
+                    window.location.href=window.location.href;
+				}else{
+
+				}
 
             });
         });
