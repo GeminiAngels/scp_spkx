@@ -29,8 +29,8 @@
     		
     		<connection-url>jdbc:mysql://localhost:3306/scp_spkx?useOldAliasMetadataBehavior=true</connection-url>
     		<user-name>root</user-name>
-    		<password>spkxmysql</password>
-            <!--<password>mysql</password>-->
+    		<!--<password>spkxmysql</password>-->
+            <password>mysql</password>
     		<db-charset>UTF-8</db-charset>
     		<client-charset>UTF-8</client-charset>
     		<extend-properties></extend-properties>

@@ -559,6 +559,7 @@
 <script type="text/javascript">
 
 	var projectAddress="http://hy.chnfood.cn/2017spkx";
+//    var projectAddress="http://10.0.0.8/scp_spkx";
 	function not_pc(){
 		var os = new Array("Android","iPhone","Windows Phone","iPod","BlackBerry","MeeGo","SymbianOS");  // 其他类型的移动操作系统类型，自行添加
 		var info = navigator.userAgent;
