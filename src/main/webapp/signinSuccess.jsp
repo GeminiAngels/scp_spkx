@@ -49,7 +49,7 @@
 				</div>
 				<div class="row">
 					<div class="col-sm-8 col-sm-offset-2">
-						<div class="alert alert-success"><i class="fa fa-check" style="border:1px solid;border-radius: 100%"></i> 用户【${reg.nickname}】已经签到，胸卡打印完毕！</div>
+						<div class="alert alert-success"><i class="fa fa-check" style="border:1px solid;border-radius: 100%"></i> 尊敬的【${reg.nickname}】先生 / 女士，欢迎您！以下是您的个人信息，如需修改请登录系统！</div>
 					</div>
 
 					<div class="col-sm-4 col-sm-offset-2">
@@ -154,6 +154,9 @@
 						</div>
 					</div>
 				</div>
+			</div>
+		</div>
+	</div>
 
 	<%@include file="/inc/footer.jsp"%>
 
@@ -165,31 +168,5 @@
     <script src="<%=path%>/static/js/jquery-1.11.1.min.js"></script>
     <script src="<%=path%>/static/js/bootstrap.min.js"></script>
     <script src="<%=path%>/static/spkx/js/biz.js"></script>
-	<script type="application/javascript">
-		<%--alert(${register.id});--%>
-       /* /!**
-         * 设置iframe宽度
-         * @param {} iframeId
-         *!/
-        function iframeAutoHeight(iframeId){
-            var ifm= document.getElementById(iframeId);
-            var subWeb = document.frames ? document.frames[iframeId].document:ifm.contentDocument;
-            if(ifm != null && subWeb != null) {
-                ifm.height = subWeb.body.scrollHeight;
-            }
-        }
-        /!**
-         * 初始化
-         *!/
-        $(document).ready(function() {
-            var ids = ${reg.id};
-            var params = '?report=/ewm.raq';
-            params += '&ids='+ids;
-            url = '<%=path%>/report/reportJsp/report.jsp';
-            url += params;
-            url+='&timestamp='+Date.parse(new Date());
-            $('#reportArea').attr('src',url);
-        });*/
-	</script>
 </body>
 </html>

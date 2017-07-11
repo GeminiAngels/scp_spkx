@@ -31,8 +31,8 @@
 	<div class="fyhk" style="padding-bottom:50px;">
 		<h3>会务组</h3>
 		<p style="font-size:16px; line-height:36px;">秘书处： 张睿梅、吴楠<br>
-			电  话：010-83155446/47/48/49/50-8030、8032<br>
-			传  真：010-83155436<br>
+			电　话：010-83155446/47/48/49/50-8030、8032<br>
+			传　真：010-83155436<br>
 			E-mail：chnfood@163.com </p>
 	</div>
 </div>

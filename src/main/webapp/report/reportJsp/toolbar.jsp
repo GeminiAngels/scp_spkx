@@ -11,7 +11,7 @@
 	String submitImage = "<img src='" + appmap + "/report/images/savedata.gif' border=no >";
 %>
 
-<table id=titleTable width=100% cellspacing=0 cellpadding=0 border=0 ><tr>
+<table id=titleTable width=100% cellspacing=0 cellpadding=0 border=0 class=""><tr>
 	<td height="25" width=100% valign="middle"  style="font-size:13px" background="../images/toolbar-bg.gif">
 		<table width="100%">
 			<tr >
@@ -19,7 +19,8 @@
 				<td width="100%" align="right" valign="middle"   style="font-size:12px; line-height:12px; margin:3px 0 0 0 ;" >&nbsp;
 				<span style=" margin:0 10px 0 0 ; padding:5px 0 0 0 ; background: url(../images/toolbar-line.gif) no-repeat right top;">
 				<a id="printAppletDiv" style=""></a>
-				<a href="#" onClick="report1_print();return false;" title="打印预览"><%=printImage%></a>
+				<%--<a href="#" onClick="report1_print();return false;" title="打印预览"><%=printImage%></a>--%>
+				<a href="#"class="btn-print" title="打印预览"><%=printImage%></a>
 				<a href="#" onClick="report1_saveAsExcel();return false;" title="导出Excel"><%=excelImage%></a>
 				<a href="#" onClick="report1_saveAsPdf();return false;" title="导出PDF"><%=pdfImage%></a>
 				<a href="#" onClick="report1_saveAsWord();return false;" title="导出Word"><%=wordImage%></a>

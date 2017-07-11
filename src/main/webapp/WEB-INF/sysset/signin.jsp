@@ -28,7 +28,7 @@
 				<div class="control-group alert alert-warning">
 				    <div class="controls">
 				        <div class="input-append">
-				            每隔10秒数据自动刷新 <input type="text" class="form-control" style="width:160px;" id="condition" placeholder="手机号 / 邮箱 / 姓名"><button type="button" class="btn btn-default" id="btn-query">查询</button>
+				            每隔10秒数据自动刷新 <input type="text" class="form-control" style="width:160px;" id="condition" placeholder="手机号 / 邮箱 / 姓名" value="${reg.telphone}"><button type="button" class="btn btn-default" id="btn-query">查询</button>
 				        </div>
 				    </div>
 				</div>
@@ -103,7 +103,7 @@
 					+'<td>'+item.company+' | '+item.job+'</td>'
 					+'<td align="center" width="100"><label class="toggle'
 					+(item.signin==1?'':'  toggle-off')
-					+'" title="已签到/未签到"><input type="checkbox" onclick="updateRegisterSignin(this,'+item.id*1+')" class="visi-hidden"></label></td></tr>');
+					+'" title="'+(item.signin==1?'已签到':'未签到')+'"><input type="checkbox" onclick="updateRegisterSignin(this,'+item.id*1+')" class="visi-hidden"></label></td></tr>');
 				tbody.append(tr);
 			}
 		});

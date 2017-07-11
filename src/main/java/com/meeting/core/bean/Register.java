@@ -52,6 +52,7 @@ public class Register {
 	private String hwzbz;	//会务组备注
 
 	private String is_print;	//标记用户胸卡已打印
+	private String isupdated;	//是否修改0否，1是
 
 	
 	public Register() {
@@ -319,6 +320,14 @@ public class Register {
 		this.is_print = is_print;
 	}
 
+	public String getIsupdated() {
+		return isupdated;
+	}
+
+	public void setIsupdated(String isupdated) {
+		this.isupdated = isupdated;
+	}
+
 	@Override
 	public String toString() {
 		return "Register{" +
@@ -363,6 +372,8 @@ public class Register {
 				", usertype='" + usertype + '\'' +
 				", zzyqhfszt='" + zzyqhfszt + '\'' +
 				", hwzbz='" + hwzbz + '\'' +
+				", is_print='" + is_print + '\'' +
+				", isupdated='" + isupdated + '\'' +
 				'}';
 	}
 }

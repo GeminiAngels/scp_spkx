@@ -51,7 +51,7 @@ public class RegisterService {
 				"job=?,title=?,company=?,officephone=?,telphone=?," +
 				"email=?,address=?,postcode=?,sfztlw=?," +
 				"sfsqhyfy=?,fytm=?,fynrzy=?," +
-				"fyrjj=?,sffblw=?,journalname=?,gjbh=?,gjtm=?,zsyq=? where id=?");
+				"fyrjj=?,sffblw=?,journalname=?,gjbh=?,gjtm=?,zsyq=? , isupdated=1 , updatetime = now() where id=?");
 		System.out.println(sql.toString());
 		success = db.execute(sql.toString(), new Object[]{
 				reg.getGjzt(), reg.getZfflag(), reg.getInvoice()
@@ -132,7 +132,7 @@ public class RegisterService {
 		} else {//修改
 			StringBuffer sql = new StringBuffer("update t_register set nickname=?,sex=?,company=?,job=?,journalname=?,message=?"
 					+ ",degree=?,postcode=?,address=?,zsyq=?,sfcjsx=?,sxxl=?,fptt=?"
-					+ ",officephone=?,fax=?,gzqk=?,title=?,sffblw=?,gjbh=?,gjtm=?,sfztlw=?,sfsqhyfy=?,fytm=?,fynrzy=?,fyrjj=?,sfzs=?,zskssj=?,zsjssj=?");
+					+ ",officephone=?,fax=?,gzqk=?,title=?,sffblw=?,gjbh=?,gjtm=?,sfztlw=?,sfsqhyfy=?,fytm=?,fynrzy=?,fyrjj=?,sfzs=?,zskssj=?,zsjssj=?,isupdated=1 , updatetime = now() ");
 			if (reg.getPassword() != null && !"".equals(reg.getPassword())) {
 				sql.append(",password='" + StringUtil.MD5(reg.getPassword()) + "'");
 			}

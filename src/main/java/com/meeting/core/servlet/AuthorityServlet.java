@@ -6,6 +6,7 @@ import com.meeting.core.service.RegisterService;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import java.io.InputStream;
 import java.io.OutputStream;
 import java.sql.Blob;
@@ -37,30 +38,28 @@ public class AuthorityServlet extends BaseServlet {
 	 * @param resp
 	 * @return
 	 */
-	@SuppressWarnings({ "rawtypes", "unchecked" })
 	public String signinByTel(HttpServletRequest req , HttpServletResponse resp){
 		RegisterService service = new RegisterService();
 		String telphone = req.getParameter("telphone");
-		Register reg = new Register();
-		reg.setTelphone(telphone);
 		try {
-			if(service.registerSignin(reg)){
-				Map register = service.getRegisterByTelphone(telphone);
-				req.setAttribute("telphone", telphone);
-				if(!register.isEmpty()){
-					req.setAttribute("reg", register);
-					if((Integer)register.get("is_print")==1){
-						return "ctx:signinSuccess.jsp";//已经签到页面
-					}else{
-						return "ctx:printingBadge.jsp";//打印胸卡页面
-					}
-				}else{
-					req.setAttribute("errormsg", "对不起，用户不存在！");
-					return "ctx:signinError.jsp";
-				}
-			}else{
+			Map reg = service.getRegisterByTelphone(telphone);
+			if(reg==null) {
 				req.setAttribute("errormsg", "对不起，用户不存在！");
 				return "ctx:signinError.jsp";
+			} else {
+				req.setAttribute("reg",reg);
+				HttpSession session = req.getSession(false);
+				if(session==null||session.getAttribute("user")==null) {
+					return "ctx:signinSuccess.jsp";//个人信息展示页面
+				}
+
+				Set<String> fiSet = (Set<String>) session
+						.getAttribute("auths");
+				if (fiSet == null || !fiSet.contains("/auth.do?method=register")) {
+					return "ctx:signinSuccess.jsp";//个人信息展示页面
+				} else {
+					return "ctx:auth.do?method=register";
+				}
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -68,6 +67,39 @@ public class AuthorityServlet extends BaseServlet {
 			return "ctx:signinError.jsp";
 		}
 	}
+
+//	作废
+//	@SuppressWarnings({ "rawtypes", "unchecked" })
+//	public String signinByTel(HttpServletRequest req , HttpServletResponse resp){
+//		RegisterService service = new RegisterService();
+//		String telphone = req.getParameter("telphone");
+//		Register reg = new Register();
+//		reg.setTelphone(telphone);
+//		try {
+//			if(service.registerSignin(reg)){
+//				Map register = service.getRegisterByTelphone(telphone);
+//				req.setAttribute("telphone", telphone);
+//				if(!register.isEmpty()){
+//					req.setAttribute("reg", register);
+//					if((Integer)register.get("is_print")==1){
+//						return "ctx:signinSuccess.jsp";//已经签到页面
+//					}else{
+//						return "ctx:printingBadge.jsp";//打印胸卡页面
+//					}
+//				}else{
+//					req.setAttribute("errormsg", "对不起，用户不存在！");
+//					return "ctx:signinError.jsp";
+//				}
+//			}else{
+//				req.setAttribute("errormsg", "对不起，用户不存在！");
+//				return "ctx:signinError.jsp";
+//			}
+//		} catch (Exception e) {
+//			e.printStackTrace();
+//			req.setAttribute("errormsg", "对不起，用户不存在！");
+//			return "ctx:signinError.jsp";
+//		}
+//	}
 	/**
 	 * 登录
 	 * @param req

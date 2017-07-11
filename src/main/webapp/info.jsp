@@ -37,17 +37,17 @@
 
 <div class="main_bg">
 	<div class="main">
-		<h2><img src="<%=path%>/static/spkx/images/ico_tt.png" alt=""/><a href="#">报名&签到</a></h2>
+		<h2><img src="<%=path%>/static/spkx/images/ico_tt.png" alt=""/>报名&签到</h2>
 		<div class="fyhk">
 			<div class="container-fluid">
-				<div class="row">
-					<div class="col-sm-12">
-						<p style="text-align:center;">
-							<img src="<%=path%>/static/spkx/images/qrcode.png" width="280" height="280"/>
-							<br/>会议签到二维码
-						</p>
-					</div>
-				</div>
+				<%--<div class="row">--%>
+					<%--<div class="col-sm-12">--%>
+						<%--<p style="text-align:center;">--%>
+							<%--<img src="<%=path%>/static/spkx/images/qrcode.png?v=0.1" width="280" height="280"/>--%>
+							<%--<br/>会议签到二维码--%>
+						<%--</p>--%>
+					<%--</div>--%>
+				<%--</div>--%>
 				<div class="row" style="text-align: center">
 					<div class="col-sm-3 col-sm-offset-3">
 						<br/>

@@ -27,7 +27,7 @@
 <!-- 头部模块 -->
 <%@include file="/inc/en_headbar.jsp" %>
 <div class="main">
-	<h2 style="margin-bottom:30px;"><img src="<%=path%>/static/spkx/images/ico_tt.png" alt=""/>组织委员会</h2>
+	<h2 style="margin-bottom:30px;"><img src="<%=path%>/static/spkx/images/ico_tt.png" alt=""/>Organizing Committee</h2>
 	<div class="zzjgbox">
 		<ul class="abdtbox">
 			<li class="left">Honorary Chairman</li>
@@ -258,7 +258,7 @@
 		</ul>
 	</div>
 	<a name="jwh" id="jwh"></a>
-	<h2 style="margin-bottom:30px;"><img src="<%=path%>/static/spkx/images/ico_tt.png" alt=""/>技术委员会</h2>
+	<h2 style="margin-bottom:30px;"><img src="<%=path%>/static/spkx/images/ico_tt.png" alt=""/>Scientific Committee</h2>
 	<div class="zzjgbox">
 		<ul class="abdtbox">
 			<li class="left">Name list</li>

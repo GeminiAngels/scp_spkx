@@ -349,7 +349,7 @@ ul.abdtbox li.right .jx {
 }
 .hyjs img {
 	float: left;
-	/*    margin: 0 30px 10px 0;*/
+	margin: 0 30px 10px 0;
 }
 .hyjs p {
 	font: normal 15px/30px Microsoft Yahei;
@@ -558,7 +558,7 @@ ul.abdtbox li.right .jx {
 }
 .bmfs .ewm span {
 	float: left;
-	padding: 78px 30px 0 10px;
+	padding: 78px 0px 0px 10px;
 	font: normal 15px/30px Microsoft Yahei;
 	color: #666;
 }
@@ -636,6 +636,10 @@ ul.abdtbox li.right .jx {
 	font: normal 14px/30px Microsoft Yahei, Arial;
 	color: #222;
 	margin: 0;
+}
+
+.txt-sj-28 {
+	text-indent:-28px;margin-left:28px;
 }
 
 /*.liebbox .txtbox strong{font-weight:bold;}*/
@@ -790,6 +794,10 @@ ul.abdtbox li.right .jx {
 		display: none;
 	}
 
+	.bmfs {
+		padding-bottom: 180px;
+	}
+
 	.bmfs .time{
 		width:100%;
 		height:auto;
@@ -811,5 +819,10 @@ ul.abdtbox li.right .jx {
 	}
 	.lang {
 		display: none;
+	}
+
+	.txt-sj-28 {
+		text-indent:0px;
+		margin:0;
 	}
 }

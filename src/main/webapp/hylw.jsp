@@ -29,17 +29,40 @@
 <%@include file="/inc/headbar.jsp" %>
 <div class="main">
 	<h2 style="margin-bottom:30px;"><img src="<%=path%>/static/spkx/images/ico_tt.png" alt=""/>会议论文</h2>
-	<div class="hylw" style="padding-bottom:50px;">
-		<h4 style="font-size:16px; line-height:36px;">论文范围及要求</h4>
-		<p style="font-size:16px; line-height:36px;">与会议主题相关的学术论文，请严格按照杂志撰稿要求和投稿模板撰写。<br>
-			《食品科学》投稿：请登录食品科学网<a href="http://www.chnfood.cn" target="_blank">www.chnfood.cn</a>，从首页采编系统投稿；<br>
-			《Food Science and Human Wellness》投稿：请登录网站<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="http://ees.elsevier.com/fshw/" target="_blank">http://ees.elsevier.com/fshw/</a>投稿；<br>
-			《肉类研究》投稿：请登录网站<a href="http://rlyj.cbpt.cnki.net" target="_blank">http://rlyj.cbpt.cnki.net</a>投稿； <br>
-			《乳业科学与技术》投稿：请登录网站<a href="http://rykj.cbpt.cnki.net" target="_blank">http://rykj.cbpt.cnki.net</a>投稿。</p>
-		<h4 style="font-size:16px; line-height:36px;">论文发表费</h4>
-		<p style="font-size:16px; line-height:36px;">审核通过的稿件按书面录用通知缴纳版面费。</p>
-		<h4 style="font-size:16px; line-height:36px;">补充说明</h4>
-		<p style="font-size:16px; line-height:36px;">投递会议论文的代表，请先将论文通过四本杂志在线采编系统投递并获得稿件编号后，再及时进行会议注册，并将稿件标题、编号填入注册信息中。</p>
+	<div class="hylw row">
+		<div class="col-sm-8 col-xs-12">
+			<div class="left">
+				<h4>论文范围及要求</h4>
+				<p>与会议主题相关的学术论文，请严格按照杂志撰稿要求和投稿模板撰写。
+					<br> 《食品科学》投稿：请登录食品科学网
+					<a href="http://www.chnfood.cn" target="_blank">www.chnfood.cn</a>，从首页采编系统投稿；
+					<br> 《Food Science and Human Wellness》投稿：请登录网站<a href="http://ees.elsevier.com/fshw/" target="_blank">http://ees.elsevier.com/fshw/</a>投稿；
+					<br> 《Current Topics in Nutraceutical Research》投稿：请发送邮件至CTNutriRes@126.com；
+					<br> 《肉类研究》投稿：请登录网站
+					<a href="http://www.rlyj.pub" target="_blank">http://www.rlyj.pub</a>投稿；
+					<br> 《乳业科学与技术》投稿：请登录网站
+					<a href="http://rykj.cbpt.cnki.net" target="_blank">http://rykj.cbpt.cnki.net</a>投稿。</p>
+				<h4>论文发表费</h4>
+				<p>审核通过的稿件按书面录用通知缴纳版面费。</p>
+			</div>
+		</div>
+		<div class="col-sm-4 col-xs-12">
+			<div class="right">
+				<img src="<%=path%>/static/spkx/images/pic03.png" alt=""/>
+				<%--<h3>支持协办</h3>
+				<p>美国国际谷物化学家学会（AACCI）
+					<br> 《Journal of Food Science》杂志（SCI收录）
+					<br> 《Journal of Agricultural and Food Chemistry》杂志（SCI收录）
+					<br> 《Food and Bioprocess Technology》杂志（SCI收录）
+					<br> 《Journal of Functional Foods》杂志（SCI收录）
+					<br> 《Food Chemistry》杂志（SCI收录）
+					<br> 《Journal of Food and Drug Analysis》杂志（SCI收录）</p>--%>
+			</div>
+		</div>
+		<div class="col-sm-12 col-xs-12">
+			<h4>补充说明</h4>
+			<p>投递会议论文的代表，请先将论文通过四本杂志在线采编系统投递并获得稿件编号后，再及时进行会议注册，并将稿件标题、编号填入注册信息中。</p>
+		</div>
 	</div>
 </div>
 <%@include file="/inc/footer.jsp"%>

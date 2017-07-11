@@ -11,10 +11,12 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no" />
 <title>3rd International Symposium of <i>Food Science and Human Wellness</i></title>
-	<link rel="stylesheet" type="text/css" href="<%=path%>/static/spkx/css/style.css"/>
+    <link rel="stylesheet" type="text/css" href="<%=path%>/static/spkx/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="<%=path%>/static/spkx/css/style.css" />
 	<script src="<%=path%>/static/spkx/js/jquery.min.js" type="text/javascript"></script>
 	<script src="<%=path%>/static/spkx/js/tab.js" type="text/javascript"></script>
 	<script src="<%=path%>/static/spkx/js/bootstrap.min.js"></script>
+    <script src="<%=path%>/static/spkx/js/biz.js"></script>
 </head>
 
 <body>

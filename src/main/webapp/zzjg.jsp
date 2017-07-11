@@ -48,18 +48,23 @@
 		<ul class="abdtbox">
 			<li class="left">支持协办</li>
 			<li class="right"><div class="ico"></div>
-				<p>美国国际谷物化学家学会（AACCI）<br>
+				<p>
+					美国国际谷物化学家学会（AACCI）<br>
 					《Journal of Food Science》杂志（SCI收录）<br>
 					《Journal of Agricultural and Food Chemistry》杂志（SCI收录）<br>
 					《Food and Bioprocess Technology》杂志（SCI收录）<br>
 					《Journal of Functional Foods》杂志（SCI收录）<br>
 					《Food Chemistry》杂志（SCI收录）<br>
-					《Journal of Food and Drug Analysis》杂志（SCI收录）</p><div class="jx"></div></li>
+					《Journal of Food and Drug Analysis》杂志（SCI收录）<br>
+					《Current Topics in Nutraceutical Research》杂志（SCI收录）
+				</p>
+				<div class="jx"></div>
+			</li>
 			<div class="clear"></div>
 		</ul>
 		<ul class="abdtbox">
 			<li class="left">赞助单位</li>
-			<li class="right"><div class="ico"></div><p>北京盈盛恒泰科技有限公司</p><div class="jx"></div></li>
+			<li class="right"><div class="ico"></div><p>北京盈盛恒泰科技有限责任公司<br/>赛默飞世尔科技（中国）有限公司</p><div class="jx"></div></li>
 			<div class="clear"></div>
 		</ul>
 	</div>

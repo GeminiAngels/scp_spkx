@@ -37,8 +37,13 @@
 	<link rel="shortcut icon" href="<%=path%>/static/assets/ico/favicon.ico">
 
 	<title>E-science 会议平台-报名统计表</title>
+	<style type="text/css">
+		.no_print {
+			display:none;
+		}
+	</style>
 </head>
-<body scroll="no" style="margin: 0">
+<body style="margin: 0">
 <div id="paramsArea" style="width:100%">
 <jsp:include page="toolbar.jsp" flush="false" />
 </div>
@@ -77,6 +82,12 @@
 		if(window.parent){
 			if(window.parent.callbackToReport)window.parent.callbackToReport();
 		}
+
+		$('.btn-print').click(function(e){
+			$('#titleTable').addClass('no_print');
+			window.print();
+			$('#titleTable').removeClass('no_print');
+		});
 	});
 
 	var reportParamsId = document.all.reportParamsId.value;

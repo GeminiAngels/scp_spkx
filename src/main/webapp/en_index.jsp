@@ -5,6 +5,7 @@
 <%
 	String path = request.getContextPath();
 %>
+<c:set var="ctx" value="${pageContext.request.contextPath}"></c:set>
 <!doctype html>
 <html>
 <head>
@@ -34,7 +35,7 @@
 	</marquee>--%>
 </div>
 <div class="main">
-	<h2><span><a href="#">MORE+</a></span><img src="<%=path%>/static/spkx/images/ico_tt.png" alt=""/><a href="#">Organizational Unit</a></h2>
+	<h2><span><a href="${ctx}/en_zzjg.jsp">MORE+</a></span><img src="<%=path%>/static/spkx/images/ico_tt.png" alt=""/><a href="${ctx}/en_zzjg.jsp">Organizational Unit</a></h2>
 	<div class="zzjg row">
 		<div class="col-sm-6 col-xs-12">
 			<div class="left">
@@ -69,7 +70,7 @@
 </div>
 <div class="main_bg">
 	<div class="main">
-		<h2><span><a href="#">MORE+</a></span><img src="<%=path%>/static/spkx/images/ico_tt.png" alt=""/><a href="#">Meeting Profile</a></h2>
+		<h2><span><a href="${ctx}/en_hyjj.jsp">MORE+</a></span><img src="<%=path%>/static/spkx/images/ico_tt.png" alt=""/><a href="${ctx}/en_hyjj.jsp">Meeting Profile</a></h2>
 		<div class="hyjs row"> <img src="<%=path%>/static/spkx/images/pic02.png" alt="" class="col-sm-5 col-xs-6" />
 			<p class="col-sm-7 col-xs-12">It is self-evident that food is much important to human wellness. In China, it has been the traditional
 				lifestyle to utilize the medicinal properties of food in daily diets to regulate body’s nutrition level
@@ -99,7 +100,7 @@
 	</div>
 </div>
 <div class="main">
-	<h2><span><a href="#">MORE+</a></span><img src="<%=path%>/static/spkx/images/ico_tt.png" alt=""/><a href="#">Organizing Committee</a><b class="dc"><a href="#">Scientific Committee
+	<h2><span><a href="${ctx}/en_zwh.jsp">MORE+</a></span><img src="<%=path%>/static/spkx/images/ico_tt.png" alt=""/><a href="${ctx}/en_zwh.jsp">Organizing Committee</a><b class="dc"><a href="${ctx}/en_zwh.jsp#jwh">Scientific Committee
 		Members</a></b></h2>
 	<div class="box_qh" id="qh01">
 		<div class="qh_top">
@@ -356,7 +357,7 @@
 </div>
 <div class="main_bg">
 	<div class="main">
-		<h2><span><a href="#">MORE+</a></span><img src="<%=path%>/static/spkx/images/ico_tt.png" alt=""/><a href="#">Symposium Content</a></h2>
+		<h2><span><a href="${ctx}/en_hynr.jsp">MORE+</a></span><img src="<%=path%>/static/spkx/images/ico_tt.png" alt=""/><a href="${ctx}/en_hynr.jsp">Symposium Content</a></h2>
 		<div class="hynr">
 			<div class="left col-sm-8 col-xs-12">
 				<h3>Symposium Theme: Theoretical research on food sciences and human wellness</h3>
@@ -394,7 +395,7 @@
 	</div>
 </div>
 <div class="main">
-	<h2><span><a href="#">MORE+</a></span><img src="<%=path%>/static/spkx/images/ico_tt.png" alt=""/><a href="#">Papers</a></h2>
+	<h2><span><a href="${ctx}/en_hylw.jsp">MORE+</a></span><img src="<%=path%>/static/spkx/images/ico_tt.png" alt=""/><a href="${ctx}/en_hylw.jsp">Papers</a></h2>
 	<div class="hylw row" >
 		<div class="col-sm-8 col-xs-12">
 			<div class="left">
@@ -423,7 +424,7 @@
 </div>
 <div class="main_bg">
 	<div class="main">
-		<h2><span><a href="#">MORE+</a></span><img src="<%=path%>/static/spkx/images/ico_tt.png" alt=""/><a href="#">Fees</a></h2>
+		<h2><span><a href="${ctx}/en_fyhk.jsp">MORE+</a></span><img src="<%=path%>/static/spkx/images/ico_tt.png" alt=""/><a href="${ctx}/en_fyhk.jsp">Fees</a></h2>
 		<div class="fyhk">
 			<div class="down">
 				<h4>Download:</h4>
@@ -444,7 +445,7 @@
 	</div>
 </div>
 <div class="main">
-	<h2><span><a href="#">MORE+</a></span><img src="<%=path%>/static/spkx/images/ico_tt.png" alt=""/><a href="#">The Conference Secretary</a></h2>
+	<h2><span><a href="${ctx}/en_hwz.jsp">MORE+</a></span><img src="<%=path%>/static/spkx/images/ico_tt.png" alt=""/><a href="${ctx}/en_hwz.jsp">The Conference Secretary</a></h2>
 	<div class="hw_zs">
 		<h3>The Conference Secretary</h3>
 		<p>Ms. Zhang Rui-mei, Ms.Wu Nan<br>

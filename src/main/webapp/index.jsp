@@ -5,6 +5,7 @@
 <%
 	String path = request.getContextPath();
 %>
+<c:set var="ctx" value="${pageContext.request.contextPath}"></c:set>
 <!doctype html>
 <html>
 
@@ -36,22 +37,24 @@
 	</marquee>--%>
 </div>
 <div class="main">
-	<h2><span><a href="#">查看更多+</a></span><img src="<%=path%>/static/spkx/images/ico_tt.png" alt=""/><a href="#">组织机构</a></h2>
+	<h2><span><a href="${ctx}/zzjg.jsp">查看更多+</a></span><img src="<%=path%>/static/spkx/images/ico_tt.png" alt=""/><a href="${ctx}/zzjg.jsp">组织机构</a></h2>
 	<div class="zzjg row">
 		<div class="col-sm-6 col-xs-12">
 			<div class="left">
 				<h3>主办单位</h3>
-				<p>北京食品科学研究院</p>
-				<p> 中国食品杂志社《食品科学》杂志</p>
-				<p> 中国食品杂志社《Food Science and Human Wellness》杂志</p>
-				<p> 国际谷物科技学会（ICC）</p>
+				<p>北京食品科学研究院<br/>
+				中国食品杂志社《食品科学》杂志<br/>
+				中国食品杂志社《Food Science and Human Wellness》杂志<br/>
+				国际谷物科技学会（ICC）</p>
 
 				<h3>共同主办</h3>
 				<p>吉林大学食品科学与工程学院
 					<br> 华美食品学会（CAFS）
 				</p>
 				<h3>赞助单位</h3>
-				<p>北京盈盛恒泰科技有限公司</p>
+				<p>北京盈盛恒泰科技有限责任公司
+				<br/>赛默飞世尔科技（中国）有限公司
+				</p>
 			</div>
 		</div>
 		<div class="col-sm-6 col-xs-12">
@@ -64,7 +67,8 @@
 					<br> 《Food and Bioprocess Technology》杂志（SCI收录）
 					<br> 《Journal of Functional Foods》杂志（SCI收录）
 					<br> 《Food Chemistry》杂志（SCI收录）
-					<br> 《Journal of Food and Drug Analysis》杂志（SCI收录）</p>
+					<br> 《Journal of Food and Drug Analysis》杂志（SCI收录）
+					<br> 《Current Topics in Nutraceutical Research》杂志（SCI收录）</p>
 			</div>
 		</div>
 		<div class="clear"></div>
@@ -72,15 +76,15 @@
 </div>
 <div class="main_bg">
 	<div class="main">
-		<h2><span><a href="#">查看更多+</a></span><img src="<%=path%>/static/spkx/images/ico_tt.png" alt=""/><a href="#">会议介绍</a></h2>
-		<div class="hyjs row"> <img src="<%=path%>/static/spkx/images/pic02.png" alt="" class="col-sm-5 col-xs-6" />
+		<h2><span><a href="${ctx}/hyjj.jsp">查看更多+</a></span><img src="<%=path%>/static/spkx/images/ico_tt.png" alt=""/><a href="${ctx}/hyjj.jsp">会议介绍</a></h2>
+		<div class="hyjs row"> <img src="<%=path%>/static/spkx/images/pic02.png" alt="" class="col-sm-5 col-xs-6" style="margin:0"/>
 			<p class="col-sm-7 col-xs-12">食品对于人类健康的重要性不言而喻，中华民族自古就有“寓医于食”的传统，“饮食者，人之命脉也”则是明代医药学巨匠李时珍对膳食营养的健康作用所做的高度概括。世界卫生组织（WHO）近年对影响人类健康的众多因素的评估结果也表明：膳食营养因素的影响（13%）仅次于居首位的遗传因素（15%），远高于医疗因素（仅8%）的作用。不断快速发展的食品科学技术极大地促进了食品种类的多样化和营养的全面均衡，不仅带来了食品产业的繁荣，还促进了人类寿命的延长和生活品质的提高。随着新科技革命的蓬勃发展，尤其是在信息技术、生命科学和纳米技术等领域的快速发展，更是促进了食品科学技术的巨大变革，大力推进了先进科学技术在食品产业中的应用。随着中国工业化、城镇化、老龄化进程加快，肥胖、高血压、糖尿病和冠心病等慢性病患病率呈现持续、快速增长的趋势。如何为消费者提供更营养、更健康的食物，成为我国乃至全球关注的重大课题。全球一系列重大食品安全事件的发生，凸显出技术进步和社会发展对食品数量、质量与安全问题的严峻考验，这已关系到人类乃至下一代的健康和安全，保障食品安全已经成为了保护人类生命健康、提高生活质量、促进食品贸易、维护社会和谐发展的重大政策问题，因此食品科学任重而道远，仍将不断上下求索来应对所有的挑战。</p>
 			<div class="clear"></div>
 		</div>
 	</div>
 </div>
 <div class="main">
-	<h2><span><a href="#">查看更多+</a></span><img src="<%=path%>/static/spkx/images/ico_tt.png" alt=""/><a href="#">组织委员会</a><b class="dc"><a href="#">技术委员会</a></b></h2>
+	<h2><span><a href="${ctx}/zwh.jsp">查看更多+</a></span><img src="<%=path%>/static/spkx/images/ico_tt.png" alt=""/><a href="${ctx}/zwh.jsp">组织委员会</a><b class="dc"><a href="${ctx}/zwh.jsp#jwh">技术委员会</a></b></h2>
 	<div class="box_qh" id="qh01">
 		<div class="qh_top">
 			<ul id="tabs_head">
@@ -97,11 +101,11 @@
 					<div class="txt01">按姓氏拼音排序</div>
 					<div class="txtbox col-sm-8 col-xs-12"> Gerard Downey教授：美国国际谷物化学家学会（AACCI）前主席、爱尔兰都柏林大学教授
 						<br> Robert G (Bob) Gilbert院士：澳大利亚科学院院士、昆士兰大学营养与食品科学系教授
-						<br> 陈 坚教授：国际食品科学院院士、江南大学校长
+						<br> 陈　坚教授：国际食品科学院院士、江南大学校长
 						<br> 管华诗院士：中国工程院院士、山东省科协主席、中国海洋大学原校长
-						<br> 李 琳教授：东莞理工学院校长
+						<br> 李　琳教授：东莞理工学院校长
 						<br> 李树君教授：亚洲农业工程学会主席、中国食品和包装机械工业协会理事长、中国农业机械化科学研究院院长
-						<br> 李 玉院士：中国工程院院士、吉林农业大学原校长
+						<br> 李　玉院士：中国工程院院士、吉林农业大学原校长
 						<br> 李元昆教授：国际微生物学会联盟主席、新加坡国立大学医学院
 						<br> 贾敬敦先生：科技部中国农村技术开发中心主任
 						<br> 潘迎捷教授：上海海洋大学原校长
@@ -120,49 +124,75 @@
 				<!--tab模块2-->
 				<li id="s_2" style="display:none;">
 					<div class="txt01">按主办协办单位排序</div>
-					<div class="txtbox col-sm-8 col-xs-12"><strong>王守伟教授</strong>：北京食品科学研究院院长、中国食品杂志社社长、中国肉类食品综合研究中心主任
-						<br>
-						<strong>王凤成教授</strong>：国际谷物科技学会（ICC）主席、河南工业大学国际粮食研究中心主任、国家粮食局粮油食品工程技术研究中心主任、国家粮食加工装备工程技术研究中心主任
-						<br>
-						<strong>李元元院士</strong>：中国工程院院士、吉林大学校长
-						<br>
-						<strong>陈  岗教授</strong>：吉林大学副校长
-						<br>
-						<strong>Michaela Pichler博士</strong>：国际谷物科技学会（ICC）秘书长
-						<br>
-						<strong>潘忠礼教授</strong>：华美食品学会（CAFS）主席、美国农业部农业服务局西部研究中心资深研究员、加利福尼亚大学戴维斯分校生物与农业工程系教授
-						<br>
+					<div class="txtbox col-sm-8 col-xs-12"><strong>王守伟教授</strong>：北京食品科学研究院院长、中国食品杂志社社长、中国肉类食品综合研究中心主任<br>
+						<strong> Hamit Köksel教授</strong>：国际谷物科技学会（ICC）主席、土耳其哈斯特帕大学<br>
+						<strong>李元元院士</strong>：中国工程院院士、吉林大学校长<br>
+						<strong>孙友宏教授</strong>：吉林大学副校长<br>
+						<strong>Michaela Pichler博士</strong>：国际谷物科技学会（ICC）秘书长<br>
+						<div class="txt-sj-28">
+						<strong>潘忠礼教授</strong>：华美食品学会（CAFS）主席、美国农业部农业服务局西部研究中心资深研究员、加利福尼亚大学戴维斯分校生物与农业工程系教授<br>
+						</div>
+						<div class="txt-sj-28">
 						<strong>Robert L. Cracknell教授</strong>：美国国际谷物化学家学会（AACCI）主席，澳大利亚谷物科学协会（AGSA）主席，国际谷物科学技术学会（ICC）前主席
-						<br>
-						<strong>Amy Hope女士</strong>：美国国际谷物化学家学会（AACCI）秘书长
-						<br>
-						<strong>Thomas F. Hofmann教授</strong>：《Journal of Agricultural and Food Chemistry》杂志主编
-						<br>
+						</div>
+						<strong>Amy Hope女士</strong>：美国国际谷物化学家学会（AACCI）秘书长<br>
+						<div class="txt-sj-28">
+						<strong>王凤成教授</strong>：国际谷物科技学会（ICC）前任主席、河南工业大学国际粮食研究中心主任、国家粮食局粮油食品工程技术研究中心主任、国家粮食加工装备工程技术研究中心主任
+						</div>
+						<strong>Thomas F. Hofmann教授</strong>：《Journal of Agricultural and Food Chemistry》杂志主编<br>
+						<div class="txt-sj-28">
 						<strong>孙大文院士</strong>：欧洲人文和自然科学院院士、爱尔兰皇家科学院院士、国际食品科学院院士、国际农业工程学会（CIGR）前主席、《Food and Bioprocess Technology》杂志总编、爱尔兰国立都柏林大学教授
-						<br>
-						<strong>刘瑞海教授</strong>：国际食品科学院院士、《Food Science and Human Wellness》杂志总编、《Journal of Food Science》杂志副主编、美国康乃尔大学农业与生命科学学院食品科学系教授
-						<br>
+						</div>
+						<div class="txt-sj-28">
+						<strong>刘瑞海教授</strong>：国际食品科学院院士、《Food Science and Human Wellness》杂志总编、《Journal of Food Science》杂志副主编、美国康乃尔大学农业与生命科学学院食品科学系教授、中国教育部长江学者、
+						英国皇家化学学会（FRSC)会士、美国科学促进会（AAAS）会士
+						</div>
+						<div class="txt-sj-28">
 						<strong>何其傥教授</strong>：国际食品科学院院士、《Journal of Agricultural and Food Chemistry》杂志副主编、美国罗格斯大学食品科学系杰出教授
-						<br>
+						</div>
+						<div class="txt-sj-28">
 						<strong>Fereidoon Shahidi 教授</strong>：国际食品科学院院士、英国皇家化学会会士、国际营养与功能食品学会主要创始人、《Journal of Functional Foods》杂志主编、《Food Chemistry》杂志副主编、加拿大纽芬兰纪念大学教授
-						<br>
-						<strong>孙璐西教授</strong>：国际食品科学院院士、《Journal of Food and Drug Analysis》杂志主编、台湾大学食品科技研究所教授 </div>
+						</div>
+						<div class="txt-sj-28">
+						<strong>熊幼翎教授</strong>：国际食品科学院院士、美国肯塔基大学农业学院动物和食品科学系科研部主任、《Journal of Food Science》杂志科学主编、《FoodBioscience》副主编、教育部长江学者特聘教授
+						</div>
+						<strong>孙璐西教授</strong>：国际食品科学院院士、《Journal of Food and Drug Analysis》杂志主编、台湾大学食品科技研究所教授<br>
+						<strong>Chandan Prasad 教授</strong>：美国德州女子大学营养与食品科学系教授、《Current Topics in Nutraceutical Research》主编
+ 					</div>
 				</li>
 			</ul>
 			<ul>
 				<!--tab模块3-->
 				<li id="s_3" style="display:none;">
 					<div class="txt01">按主办协办单位排序</div>
-					<div class="txtbox col-sm-8 col-xs-12">赵 燕女士：北京食品科学研究院副院长、中国食品杂志社执行社长、北京市食品酿造研究所所长
-						<br> 郭明若教授：吉林大学食品科学与工程学院院长
-						<br> 高福和研究员：吉林大学食品科学与工程学院党委书记
-						<br> 刘静波教授：吉林大学食品科学与工程学院副院长
-						<br> 陈振宇教授：香港中文大学生命科学学院食品及营养学部主任、《Journal of Agricultural and Food Chemistry》杂志副主编
-						<br> 熊幼翎教授：美国肯塔基大学农业学院动物和食品科学系科研部主任、《Journal of Food Science》杂志科学主编、《Food Bioscience》副主编、教育部长江学者特聘教授
-						<br> 潘敏雄教授：台湾大学食品科技研究所、《Journal of Food and Drug Analysis》杂志副主编
-						<br> Louise Wicker教授：美国路易斯安那州立大学巴吞鲁日分校农业研究中心营养与食品科学学院主任、美国Phi Tau Sigma食品科技荣誉学会前任主席、《Food Science and Human Wellness》杂志科学主编
-						<br> Klaus W. Lange教授：国际运动与营养学会主席、德国雷根斯堡大学实验心理学系主任、《Food Science and Human Wellness》杂志科学主编
-						<br> 李士明教授：湖北黄冈师范学院生命科学学院、湖北省百人计划教授、楚天学者特聘教授、美国新泽西州罗格斯大学食品科学系访问教授、《Food Science and Human Wellness》杂志科学主编
+					<div class="txtbox col-sm-8 col-xs-12">
+						<div class="txt-sj-28">
+						赵　燕女士：北京食品科学研究院副院长、中国食品杂志社执行社长、北京市食品酿造研究所所长
+						</div>
+						<div class="txt-sj-28">
+						周　强教授：吉林大学科学技术处处长
+						</div>
+						<div class="txt-sj-28">
+						高福和研究员：吉林大学食品科学与工程学院党委书记
+						</div>
+						<div class="txt-sj-28">
+						刘静波教授：吉林大学食品科学与工程学院副院长
+						</div>
+						<div class="txt-sj-28">
+						陈振宇教授：香港中文大学生命科学学院食品及营养学部主任、《Journal of Agricultural and Food Chemistry》杂志副主编
+						</div>
+						<div class="txt-sj-28">
+						潘敏雄教授：台湾大学食品科技研究所、《Journal of Food and Drug Analysis》杂志副主编
+						</div>
+						<div class="txt-sj-28">
+						Louise Wicker教授：美国路易斯安那州立大学巴吞鲁日分校农业研究中心营养与食品科学学院主任、美国Phi Tau Sigma食品科技荣誉学会前任主席、《Food Science and Human Wellness》杂志科学主编
+						</div>
+						<div class="txt-sj-28">
+						Klaus W. Lange教授：国际运动与营养学会主席、德国雷根斯堡大学实验心理学系主任、《Food Science and Human Wellness》杂志科学主编
+						</div>
+						<div class="txt-sj-28">
+						李士明教授：湖北黄冈师范学院生命科学学院、湖北省百人计划教授、楚天学者特聘教授、美国新泽西州罗格斯大学食品科学系访问教授、《Food Science and Human Wellness》杂志科学主编
+						</div>
 					</div>
 				</li>
 			</ul>
@@ -170,18 +200,35 @@
 				<!--tab模块4-->
 				<li id="s_4" style="display:none;">
 					<div class="txt01">按主办协办单位排序</div>
-					<div class="txtbox col-sm-8 col-xs-12">孙勇副研究员：北京食品科学研究院副总工程师、中国食品杂志社副社长、《食品科学》杂志主编、《Food Science and Human Wellness》执行主编
-						<br> 李永军研究员：吉林大学食品科学与工程学院副院长
-						<br> 张铁华教授：吉林大学食品科学与工程学院副院长
-						<br> 王 昕教授: 吉林大学食品科学与工程学院副院长
-						<br> 梅士伟研究员：吉林大学食品科学与工程学院副书记兼副院长
-						<br> IL KIM教授：韩国釜山国立大学化学工程（高分子科学与工程）系主任、韩国教育部“面向21世纪智力韩国计划（Brain Korea (BK) 21 PLUS）”高等化学工艺研究中心主任
-						<br> 陈宁研究员：武汉体育学院楚天学者特聘教授、《Food Science and Human Wellness》副主编
-						<br> 吴建平教授：加拿大阿尔伯塔大学农业、食品与营养科学系、《Food Science and Human Wellness》副主编
-						<br> 王惠民教授：台湾国立中兴大学、《Food Science and Human Wellness》副主编
-						<br> 沈清武教授：湖南农业大学食品科技学院、《Food Science and Human Wellness》副主编
-						<br> Alexander M. Gosslau副教授：美国纽约城市大学生命科学系、美国罗格斯大学化学生物学系、《Food Science and Human Wellness》副主编
-						<br> 徐宝军副教授：北京师范大学-香港浸会大学联合国际学院、《Food Science and Human Wellness》副主编</div>
+					<div class="txtbox col-sm-8 col-xs-12">
+						<div class="txt-sj-28">
+						孙勇副研究员：北京食品科学研究院副总工程师、中国食品杂志社副社长、《食品科学》杂志主编、《Food Science and Human Wellness》执行主编 
+						</div>
+						<div class="txt-sj-28">
+						张铁华教授：吉林大学食品科学与工程学院副院长 
+						</div>
+						<div class="txt-sj-28">
+						IL KIM教授：韩国釜山国立大学化学工程（高分子科学与工程）系主任、韩国教育部“面向21世纪智力韩国计划（Brain Korea(BK) 21 PLUS）”高等化学工艺研究中心主任
+						</div>
+						<div class="txt-sj-28">
+						陈宁研究员：武汉体育学院楚天学者特聘教授、《Food Science and Human Wellness》副主编 
+						</div>
+						<div class="txt-sj-28">
+						吴建平教授：加拿大阿尔伯塔大学农业、食品与营养科学系、《Food Science and Human Wellness》副主编 
+						</div>
+						<div class="txt-sj-28">
+						王惠民教授：台湾国立中兴大学、《Food Science and Human Wellness》副主编 
+						</div>
+						<div class="txt-sj-28">
+						沈清武教授：湖南农业大学食品科技学院、《Food Science and Human Wellness》副主编 
+						</div>
+						<div class="txt-sj-28">
+						Alexander M. Gosslau副教授：美国纽约城市大学生命科学系、美国罗格斯大学化学生物学系、《Food Science and Human Wellness》副主编 
+						</div>
+						<div class="txt-sj-28">
+						徐宝军副教授：北京师范大学-香港浸会大学联合国际学院、《Food Science and Human Wellness》副主编
+						</div>
+					</div>
 				</li>
 			</ul>
 		</div>
@@ -199,7 +246,7 @@
 </div>
 <div class="main_bg">
 	<div class="main">
-		<h2><span><a href="#">查看更多+</a></span><img src="<%=path%>/static/spkx/images/ico_tt.png" alt=""/><a href="#">会议内容</a></h2>
+		<h2><span><a href="${ctx}/hynr.jsp">查看更多+</a></span><img src="<%=path%>/static/spkx/images/ico_tt.png" alt=""/><a href="${ctx}/hynr.jsp">会议内容</a></h2>
 		<div class="hynr">
 			<div class="left col-sm-8 col-xs-12">
 				<h3>会议主题：食品科学与人类健康理论研究</h3>
@@ -227,8 +274,8 @@
 				<div class="line01"></div>
 				<h3>会议地点</h3>
 				<p>中国 吉林 长春
-					<br> 会场：吉林会展中心
-					<br> 住宿：吉林某酒店
+					<br> 会场：长春（详细地点稍后通知）
+					<br> 住宿：长春（详细地点稍后通知）
 				</p>
 			</div>
 			<div class="clear"></div>
@@ -236,7 +283,7 @@
 	</div>
 </div>
 <div class="main">
-	<h2><span><a href="#">查看更多+</a></span><img src="<%=path%>/static/spkx/images/ico_tt.png" alt=""/><a href="#">会议论文</a></h2>
+	<h2><span><a href="${ctx}/hylw.jsp">查看更多+</a></span><img src="<%=path%>/static/spkx/images/ico_tt.png" alt=""/><a href="${ctx}/hylw.jsp">会议论文</a></h2>
 	<div class="hylw row">
 		<div class="col-sm-8 col-xs-12">
 			<div class="left">
@@ -245,8 +292,9 @@
 					<br> 《食品科学》投稿：请登录食品科学网
 					<a href="http://www.chnfood.cn" target="_blank">www.chnfood.cn</a>，从首页采编系统投稿；
 					<br> 《Food Science and Human Wellness》投稿：请登录网站<a href="http://ees.elsevier.com/fshw/" target="_blank">http://ees.elsevier.com/fshw/</a>投稿；
+					<br> 《Current Topics in Nutraceutical Research》投稿：请发送邮件至CTNutriRes@126.com；
 					<br> 《肉类研究》投稿：请登录网站
-					<a href="http://rlyj.cbpt.cnki.net" target="_blank">http://rlyj.cbpt.cnki.net</a>投稿；
+					<a href="http://www.rlyj.pub" target="_blank">http://www.rlyj.pub</a>投稿；
 					<br> 《乳业科学与技术》投稿：请登录网站
 					<a href="http://rykj.cbpt.cnki.net" target="_blank">http://rykj.cbpt.cnki.net</a>投稿。</p>
 				<h4>论文发表费</h4>
@@ -271,26 +319,10 @@
 			<p>投递会议论文的代表，请先将论文通过四本杂志在线采编系统投递并获得稿件编号后，再及时进行会议注册，并将稿件标题、编号填入注册信息中。</p>
 		</div>
 	</div>
-
-	<%--<div class="hylw">
-		<h4>论文范围及要求</h4>
-		<p>与会议主题相关的学术论文，请严格按照杂志撰稿要求和投稿模板撰写。
-			<br> 《食品科学》投稿：请登录食品科学网
-			<a href="http://www.chnfood.cn" target="_blank">www.chnfood.cn</a>，从首页采编系统投稿；
-			<br> 《Food Science and Human Wellness》投稿：请登录网站<a href="http://ees.elsevier.com/fshw/" target="_blank">http://ees.elsevier.com/fshw/</a>投稿；
-			<br> 《肉类研究》投稿：请登录网站
-			<a href="http://rlyj.cbpt.cnki.net" target="_blank">http://rlyj.cbpt.cnki.net</a>投稿；
-			<br> 《乳业科学与技术》投稿：请登录网站
-			<a href="http://rykj.cbpt.cnki.net" target="_blank">http://rykj.cbpt.cnki.net</a>投稿。</p>
-		<h4>论文发表费</h4>
-		<p>审核通过的稿件按书面录用通知缴纳版面费。</p>
-		<h4>补充说明</h4>
-		<p>投递会议论文的代表，请先将论文通过四本杂志在线采编系统投递并获得稿件编号后，再及时进行会议注册，并将稿件标题、编号填入注册信息中。</p>
-	</div>--%>
 </div>
 <div class="main_bg">
 	<div class="main">
-		<h2><span><a href="#">查看更多+</a></span><img src="<%=path%>/static/spkx/images/ico_tt.png" alt=""/><a href="#">费用及汇款</a></h2>
+		<h2><span><a href="${ctx}/fyhk.jsp">查看更多+</a></span><img src="<%=path%>/static/spkx/images/ico_tt.png" alt=""/><a href="${ctx}/fyhk.jsp">费用及汇款</a></h2>
 		<div class="fyhk">
 			<h3>会议费</h3>
 			<p>国内：2000元/人（含会议费、餐费等）；普通在校研究生1400元（不含在职攻读学位人员）。
@@ -299,10 +331,9 @@
 			</p>
 			<h3>汇款事项</h3>
 			<p>请参会代表收到正式邀请函（纸质版或电子版均可）后，尽快将会议费汇至中国食品杂志社，以便大会日常筹备工作顺利进行。
-				<br> 户 名：中国食品杂志社
+				<br> 户　名：中国食品杂志社
 				<br> 开户行：工行阜外大街支行
-				<br> 帐 号：0200049209024922112
-				<br> 如寄现金请直接汇至：北京市西城区禄长街头条4号《食品科学》编辑部收，邮编100050。
+				<br> 帐　号：0200049209024922112
 			</p>
 		</div>
 	</div>
@@ -333,11 +364,11 @@
 </div>
 <div class="main_bg" style="margin:0;">
 	<div class="main">
-		<h2><span><a href="#">查看更多+</a></span><img src="<%=path%>/static/spkx/images/ico_tt.png" alt=""/><a href="#">报名方式</a></h2>
+		<h2><span><a href="${ctx}/bmfs.jsp">查看更多+</a></span><img src="<%=path%>/static/spkx/images/ico_tt.png" alt=""/><a href="${ctx}/bmfs.jsp">报名方式</a></h2>
 		<div class="bmfs">
 			<div class="time">
-				<h4>会议注册截止时间 </h4> 论文征集截止日期： 2017 年7 月5 日
-				<br>会议报名截止日期： 2017年 7月 25 日
+				<h4>会议注册截止时间 </h4> 论文征集截止日期： 2017年7月15日
+				<br>会议报名截止日期： 2017年8月10日
 			</div>
 			<h3>1、网上报名</h3>
 			<p>1）手机微信扫描下方二维码报名</p>
@@ -349,7 +380,7 @@
 				<br> 会务组收到报名信息后，会尽快向参会代表电子邮箱发送电子版邀请函，同时邮寄纸质版邀请函，请务必准确填写电子邮箱、详细地址及邮编、电话号码。
 			</p>
 			<p>更多会议信息请关注食品科学微博和微信</p>
-			<div class="ewm"><span class="col-sm-6 col-xs-12" style="padding-top:0;"><img src="<%=path%>/static/spkx/images/ewm02.png"><span>食品科学订阅号</span></span><span class="col-sm-6 col-xs-12" style="padding-top:0;"><img src="<%=path%>/static/spkx/images/ewm01.png"><span>食品科学服务号</span></span></div>
+			<div class="ewm"><span class="col-sm-4 col-xs-12" style="padding-top:0;"><img src="<%=path%>/static/spkx/images/ewm02.png"><span>食品科学微信订阅号</span></span><span class="col-sm-4 col-xs-12" style="padding-top:0;"><img src="<%=path%>/static/spkx/images/ewm01.png"><span>食品科学微信服务号</span></span><span class="col-sm-4 col-xs-12" style="padding-top:0;"><img src="<%=path%>/static/spkx/images/ewm03.png"><span>食品科学微博</span></span></div>
 		</div>
 	</div>
 </div>

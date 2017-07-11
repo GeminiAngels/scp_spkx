@@ -30,113 +30,17 @@
                 <div class="controls">
                     <div class="input-append">
                         <input type="text" class="form-control" style="width:160px;" id="condition"
-                               placeholder="手机号 / 邮箱 / 姓名">
+                               placeholder="手机号 / 邮箱 / 姓名" value="${reg.telphone}">
                         <button type="button" class="btn btn-default" id="btn-query">查询</button>
-                        <button type="button" class="btn btn-default" id="btn-print">批量打印胸卡</button>
+                        <button type="button" class="btn btn-default" id="btn-print">打印胸卡</button>
                         <button type="button" class="btn btn-default" id="btn-import">导入</button>
+                        <span style="margin-left:20px;">提示：代表信息更新的 <b style="color:#a94442">红色</b> 字体显示</span>
                     </div>
                 </div>
             </div>
         </div>
     </div>
     <div class="row-fluid">
-        <%--<div class="col-md-4">
-            <div style="position:fixed;width: 30%">
-                <div class="alert alert-info" id="opt-info">点击右侧表格需要修改的行进行编辑</div>
-                <form class="form-horizontal" id="form-user">
-                    <input type="hidden" id="id">
-                    <div class="form-group">
-                        <label for="gjzt" class="col-sm-3 control-label">稿件状态</label>
-                        <div class="col-sm-9">
-                            <select id="gjzt" name="gjzt">
-                                <option value="收稿">收稿</option>
-                                <option value="初审">初审</option>
-                                <option value="待交稿件处理费">待交稿件处理费</option>
-                                <option value="已交稿件处理费">已交稿件处理费</option>
-                                <option value="送审">送审</option>
-                                <option value="外审">外审</option>
-                                <option value="终审">终审</option>
-                                <option value="终审退修">终审退修</option>
-                                <option value="复审">复审</option>
-                                <option value="复审退修">复审退修</option>
-                                <option value="待发录用通知">待发录用通知</option>
-                                <option value="发录用通知">发录用通知</option>
-                                <option value="登记版面费">登记版面费</option>
-                                <option value="已到款">已到款</option>
-                                <option value="编辑加工">编辑加工</option>
-                                <option value="排版">排版</option>
-                                <option value="校对">校对</option>
-                                <option value="定稿">定稿</option>
-                                <option value="组版">组版</option>
-                            </select>
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <label for="invoice" class="col-sm-3 control-label">会议费</label>
-                        <div class="col-sm-9">
-                            <select id="invoice" name="invoice">
-                                <option value="1400元">1400元</option>
-                                <option value="2000元">2000元</option>
-                            </select>
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <label for="zfflag" class="col-sm-3 control-label">缴费状态</label>
-                        <div class="col-sm-9">
-                            <select id="zfflag" name="zfflag">
-                                <option value=0>未缴纳会议费</option>
-                                <option value=1>已缴纳会议费</option>
-                                <option value=2>收到电子版汇款单</option>
-                            </select>
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <label for="yqhfszt" class="col-sm-3 control-label">电子版邀请函发送状态</label>
-                        <div class="col-sm-9">
-                            <select id="yqhfszt" name="yqhfszt">
-                                <option value="未发送">未发送</option>
-                                <option value="已发送，请查收电子邮箱">已发送，请查收电子邮箱</option>
-                            </select>
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <label for="zzyqhfszt" class="col-sm-3 control-label">纸质版邀请函发送状态</label>
-                        <div class="col-sm-9">
-                            <select id="zzyqhfszt" name="zzyqhfszt">
-                                <option value="未邮寄">未邮寄</option>
-                                <option value="纸质版邀请函已经邮寄">纸质版邀请函已经邮寄</option>
-                                <option value="会议签到现场领取">会议签到现场领取</option>
-                            </select>
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <label for="registertime" class="col-sm-3 control-label">注册时间</label>
-                        <div class="col-sm-9">
-                            <div class="input-group date" id="input-registertime">
-                                <input class="form-control input-sm" id="registertime" type="text" value=""
-                                       name="sampleTime" data-bv-feedbackicons="false">
-                                <span class="input-group-addon"><span
-                                        class="glyphicon glyphicon-calendar"></span></span>
-                            </div>
-                            &lt;%&ndash;<input type="text" class="form-control" id="registertime" placeholder="建议英文缩写帐号">&ndash;%&gt;
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <label for="hwzbz" class="col-sm-3 control-label">会务组备注</label>
-                        <div class="col-sm-9">
-                            <textarea type="text" class="form-control" id="hwzbz" placeholder="会务组备注"></textarea>
-                        </div>
-                    </div>
-
-                    <div class="form-group">
-                        <div class="col-sm-offset-3 col-sm-9">
-                            &lt;%&ndash;<a type="reset" class="cbtn o-plus" id="btn-user-add" title="新增（清空表单）"></a>&ndash;%&gt;
-                            <a type="button" class="cbtn o-ok pull-right" id="btn-commit" title="提交"></a>
-                        </div>
-                    </div>
-                </form>
-            </div>
-        </div>--%>
         <div class="col-md-12">
             <table class="table table-hover table-striped table-bordered">
                 <thead style="background-color:#ccc">
@@ -150,14 +54,16 @@
                     <%--<th>注册时间</th>--%>
                     <th>工作信息</th>
                     <th>邀请函发送状态</th>
-                    <th style="width:60px;min-width: 60px;">稿件状态</th>
+                    <th style="width:100px;min-width: 100px;">稿件状态</th>
                     <th>会议费/缴费状态</th>
-                    <th>会务组备注</th>
+                    <%--<th>会务组备注</th>--%>
                     <%--<th>发票抬头</th>--%>
                     <%--<th>缴费凭据</th>--%>
                     <%--<th>缴费</th>--%>
-                    <th>启停<a id="icon-refresh" class="cbtn o-cancel" title="重新加载表格数据"></a></th>
-                    <th>操作</th>
+                    <%--<th>允许登录</th>--%>
+                    <th>修改时间</th>
+                    <th>确认签到</th>
+                    <th>操作<a id="icon-refresh" class="cbtn o-cancel" title="重新加载表格数据"></a></th>
                 </tr>
                 </thead>
                 <tbody id="data-content">
@@ -202,7 +108,7 @@
                         <div class="group">
                             <label class="col-sm-2 control-label">性别</label>
                             <div class="col-sm-4">
-                                <div class="form-control" >
+                                <div class="form-control" style="line-height:20px;border:none">
                                     <label class="radio-inline">
                                         <input type="radio" name="sex" id="sex1" value="男"  > 男
                                     </label>
@@ -214,20 +120,12 @@
                         </div>
                     </div>
                     <div class="form-group">
-                        <%--<div class="group">
-                            <label class="col-sm-2 control-label">会员密码</label>
-                            <div class="col-sm-4">
-                                <input type="text" name="password" id="password" value="" class="form-control" autocomplete="off"  />
-                            </div>
-                        </div>--%>
                         <div class="group">
                             <label class="col-sm-2 control-label">职务</label>
                             <div class="col-sm-4">
                                 <input type="text" name="job" id="job" class="form-control" autocomplete="off"  >
                             </div>
                         </div>
-                    </div>
-                    <div class="form-group">
                         <div class="group">
                             <label class="col-sm-2 control-label">职称</label>
                             <div class="col-sm-4">
@@ -255,6 +153,8 @@
                                 </select>
                             </div>
                         </div>
+                    </div>
+                    <div class="form-group">
                         <div class="group">
                             <label class="col-sm-2 control-label">单位</label>
                             <div class="col-sm-4">
@@ -411,11 +311,11 @@
                                 <table style="width:100%">
                                     <tr>
                                         <td class="date">
-                                            <input type="text" name="zskssj" id="zskssj" class="form-control" style="width:130px;" autocomplete="off" />
+                                            <input type="text" name="zskssj" id="zskssj" class="form-control" style="width:130px;" autocomplete="off" readonly="readonly" />
                                         </td>
                                         <td width="20" style="padding:2px 4px">到</td>
                                         <td align="right">
-                                            <input type="text" name="zsjssj" id="zsjssj"  class="form-control" style="width:130px;" autocomplete="off" />
+                                            <input type="text" name="zsjssj" id="zsjssj"  class="form-control" style="width:130px;" autocomplete="off" readonly="readonly" />
                                         </td>
                                     </tr>
                                 </table>
@@ -454,10 +354,11 @@
                         <div class="group">
                             <label for="invoice" class="col-sm-2 control-label">会议费</label>
                             <div class="col-sm-4">
-                                <select id="invoice" name="invoice">
-                                    <option value="1400元">1400元</option>
-                                    <option value="2000元">2000元</option>
-                                </select>
+                                <%--<select id="invoice" name="invoice">--%>
+                                    <%--<option value="1400元">1400元</option>--%>
+                                    <%--<option value="2000元">2000元</option>--%>
+                                <%--</select>--%>
+                                <input type="text" name="invoice" id="invoice" value="${register.invoice}" class="form-control" autocomplete="off" />
                             </div>
                         </div>
                     </div>
@@ -470,6 +371,7 @@
                                     <option value=0>未缴纳会议费</option>
                                     <option value=1>已缴纳会议费</option>
                                     <option value=2>收到电子版汇款单</option>
+                                    <option value=3>现场缴纳现金</option>
                                 </select>
                             </div>
                         </div>
@@ -582,12 +484,29 @@
             language: 'zh-CN',
             autoclose: true
         });
-        $('#zskssj,#zsjssj').datetimepicker({
+        $('#zskssj').datetimepicker({
             minView: "month", //选择日期后，不会再跳转去选择时分秒
             format: 'yyyy-mm-dd',
             language: 'zh-CN',
             autoclose:true ,//选择日期后自动关闭
-            width:'100%'
+            width:'100%',
+            startDate:new Date().getMonth()<=7?'2017-08-01':new Date(),
+            endDate:'2017-08-31'
+        }).on('changeDate',function(e){
+            var startTime = e.date;
+            $('#zsjssj').datetimepicker('setStartDate',startTime);
+        });
+        $('#zsjssj').datetimepicker({
+            minView: "month", //选择日期后，不会再跳转去选择时分秒
+            format: 'yyyy-mm-dd',
+            language: 'zh-CN',
+            autoclose:true ,//选择日期后自动关闭
+            width:'100%',
+            startDate:new Date().getMonth()<=7?'2017-08-01':new Date(),
+            endDate:'2017-08-31'
+        }).on('changeDate',function(e){
+            var endTime = e.date;
+            $('#zskssj').datetimepicker('setEndDate',endTime);
         });
     })(jQuery);
 
@@ -667,10 +586,10 @@
                     item.zfflag = '';
                 }
 
-                var tr = $('<tr dataId=' + item.id + '>' +
+                var tr = $('<tr dataId=' + item.id + ' style="'+(item.isupdated==1?'color:#a94442':'')+'">' +
                     '<td width="30"><input class="input-control" type="checkbox" value="" /></td>'
                     + '<td width="60">' + item.id * 1 + '</td>'
-                    + '<td>' + item.nickname + '</td>'
+                    + '<td width="60">' + item.nickname + '</td>'
 //					+'<td>'+item.sex+'</td>'
 //					+'<td>'+item.telphone+'</td>'
 //					+'<td>'+item.email+'</td>'
@@ -678,17 +597,22 @@
 //					+'<td>'+(item.registertime?item.registertime.substr(0,16):'')+'</td>'
 
                     + '<td>单位:' + item.company + ' <br>职务:' + item.job + '</td>'
-                    + '<td>电子版:' + item.yqhfszt + ' <br>纸质版:' + item.zzyqhfszt + '</td>'
+                    + '<td width="100">电子版:' + item.yqhfszt + ' <br>纸质版:' + item.zzyqhfszt + '</td>'
                     + '<td>' + (item.gjzt ? item.gjzt : "") + '</td>'
-                    + '<td>会议费:' + (item.invoice ? item.invoice : "") + ' <br>缴费状态:' + item.zfflag + '</td>'
-                    + '<td>' + (item.hwzbz ? item.hwzbz : "") + '</td>'
+                    + '<td width="100">会议费:' + (item.invoice ? item.invoice : "") + ' <br>缴费状态:' + item.zfflag + '</td>'
+//                    + '<td>' + (item.hwzbz ? item.hwzbz : "") + '</td>'
 //					+'<td>'+item.fptt+'</td>'
 //					+"<td >"+getfiles(item.tid,item.id,item.zfflag)+"</td>"
 //					+"<td align='center' width='100' ><label  class='toggle"+(item.zfflag!=0?'':'  toggle-off') +"' title='已缴/未交'><input type='checkbox' onclick='confirmPayment(this,"+item.id*1+")' class='visi-hidden'></label></td>"
-                    + '<td align="center" width="100"><label class="toggle'
-                    + (item.status != 1 ? '' : '  toggle-off')
-                    + '" title="启用/禁用"><input type="checkbox" onclick="updateRegisterStatus(this,' + item.id * 1 + ')" class="visi-hidden"></label></td>' +
-                    '<td style="text-align: center;" title=""><a class="cbtn o-edit" href="javascript:editData(this,' + item.id * 1 + ')" title="修改">&nbsp;&nbsp;</a>&nbsp;<a class="cbtn o-trash" href="javascript:deleteRegister(' + item.id * 1 + ')" title="删除">&nbsp;&nbsp;</a></td></tr>');
+//                    + '<td align="center" width="100"><label class="toggle'
+//                    + (item.status != 1 ? '' : '  toggle-off')
+//                    + '" title="'+(item.status!=1?'有权':'无权')+'"><input type="checkbox" onclick="updateRegisterStatus(this,' + item.id * 1 + ')" class="visi-hidden"></label></td>'
+                    + '<td width="120">'+(item.updatetime ? item.updatetime.substr(0, 16) : '')+'</td>'
+                    +'<td align="center" width="100"><label class="toggle'
+                    +(item.signin==1?'':'  toggle-off')
+                    +'" title="'+(item.signin==1?'已签到':'未签到')+'"><input type="checkbox" onclick="updateRegisterSignin(this,'+item.id*1+')" class="visi-hidden"></label></td>'
+                    + '<td width="100" style="text-align: center;" title=""><a class="cbtn o-edit" href="javascript:editData(this,' + item.id * 1 + ')" title="修改">&nbsp;&nbsp;</a>&nbsp;<a class="cbtn o-trash" href="javascript:deleteRegister(' + item.id * 1 + ')" title="删除">&nbsp;&nbsp;</a></td>'
+                    +'</tr>');
                 tbody.append(tr);
             }
             /*$("#data-content tr").bind("click", function () {
@@ -710,8 +634,8 @@
             $('#hwzbz').val(register.huzbz);
             $('#opt-info').text('当前编辑会员姓名：' + register.nickname);
 
-            $('#zskssj').val(register.zskssj ? (register.zskssj).format('yyyy-MM-dd') : '');
-            $('#zsjssj').val(register.zsjssj ? (register.zsjssj).format('yyyy-MM-dd') : '');
+            $('#zskssj').val(register.zskssj);
+            $('#zsjssj').val(register.zsjssj);
             $('#nickname').val(register.nickname);
             if(register.sex=="男"){
                 $('input[name="sex"]')[0].checked=true;
@@ -820,6 +744,23 @@
         });
     }
 
+    //改变会员签到状态
+    function updateRegisterSignin(_self,registerid){
+        var that = $(_self);
+        var checked = !that.parent().hasClass('toggle-off');
+        if(checked){
+            that.prop('checked','checked');
+            that.parent().removeClass('toggle')
+            that.parent().addClass('toggle toggle-off');
+        } else {
+            that.removeProp('checked');
+            that.parent().removeClass('toggle toggle-off')
+            that.parent().addClass('toggle');
+        }
+        RegisterService.updateRegisterSignin(registerid,checked?0:1,function(msg){
+        });
+    }
+
     function deleteRegister(fileid) {
 
 
@@ -845,6 +786,10 @@
             else
                 $(this).parent().parent().remove();
         });
+        if(ids.length==0) {
+            alert('请至少选择一条需要打印的信息！');
+            return;
+        }
         window.ids = ids.join(",");
         openwindow('<%=path%>/report/reportJsp/ewm.jsp?time=' + Math.random() * 10000000000000000, "", 1010, 600);
 
