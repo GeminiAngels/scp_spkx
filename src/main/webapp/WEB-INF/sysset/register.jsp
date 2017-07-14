@@ -270,6 +270,7 @@
                                     <option value="《肉类研究》" ${not empty register and register.journalname eq '《肉类研究》'?'selected="selected"':''}>《肉类研究》</option>
                                     <option value="《乳业科学与技术》" ${not empty register and register.journalname eq '《乳业科学与技术》'?'selected="selected"':''}>《乳业科学与技术》</option>
                                     <option value="《Food Science and Human Wellness》" ${not empty register and register.journalname eq '《Food Science and Human Wellness》'?'selected="selected"':''}>《Food Science and Human Wellness》</option>
+                                    <option value="《Current Topics in Nutraceutical Research》" ${not empty register and register.journalname eq '《Current Topics in Nutraceutical Research》'?'selected="selected"':''}>《Current Topics in Nutraceutical Research》</option>
                                 </select>
                             </div>
                         </div>
@@ -674,11 +675,11 @@
             $('#gjbh').val(register.gjbh);
             $('#gjtm').val(register.gjtm);
             if(register.zsyq=="不住宿"){
-                $('input[name="sffblw"]')[0].checked=true;
+                $('input[name="zsyq"]')[0].checked=true;
             }else  if(register.zsyq=="标间"){
-                $('input[name="sffblw"]')[1].checked=true;
+                $('input[name="zsyq"]')[1].checked=true;
             }else  if(register.zsyq=="单床合住"){
-                $('input[name="sffblw"]')[2].checked=true;
+                $('input[name="zsyq"]')[2].checked=true;
             }
 
         });

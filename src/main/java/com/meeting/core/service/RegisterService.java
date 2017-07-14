@@ -51,7 +51,7 @@ public class RegisterService {
 				"job=?,title=?,company=?,officephone=?,telphone=?," +
 				"email=?,address=?,postcode=?,sfztlw=?," +
 				"sfsqhyfy=?,fytm=?,fynrzy=?," +
-				"fyrjj=?,sffblw=?,journalname=?,gjbh=?,gjtm=?,zsyq=? , isupdated=1 , updatetime = now() where id=?");
+				"fyrjj=?,sffblw=?,journalname=?,gjbh=?,gjtm=?,zsyq=? , isupdated=0 , updatetime = now() where id=?");
 		System.out.println(sql.toString());
 		success = db.execute(sql.toString(), new Object[]{
 				reg.getGjzt(), reg.getZfflag(), reg.getInvoice()
@@ -425,7 +425,7 @@ public class RegisterService {
 
 	public String importFiles(InputStream file, String fileName) {
 		String msg="";
-		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd ");
+		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
 		//文件上传
 		if (file != null && fileName != null && !"".equals(fileName)) {
 			HSSFWorkbook hwb = null;
@@ -460,13 +460,13 @@ public class RegisterService {
 							throw new SystemException("在导入第" + (i + 1) + "张表单的第" + (j + 1) + "行第二格时出错,请检查！");
 						}
 						try {
-//							String registertime = getCellValue(row.getCell(2));
-//							reg.setRegistertime(registertime);
+							String registertime = getCellValue(row.getCell(2));
+							reg.setRegistertime(registertime);
 
-							if (row.getCell(2) != null && row.getCell(2).getDateCellValue() != null) {
-								Date registertime = row.getCell(2).getDateCellValue();
-								reg.setRegistertime(sdf.format(registertime));
-							}
+//							if (row.getCell(2) != null && row.getCell(2).getDateCellValue() != null) {
+//								Date registertime = row.getCell(2).getDateCellValue();
+//								reg.setRegistertime(sdf.format(registertime));
+//							}
 
 						} catch (Exception e) {
 							e.printStackTrace();
@@ -676,13 +676,13 @@ public class RegisterService {
 						}
 						//住宿开始时间
 						try {
-//							String zskssj = getCellValue(row.getCell(25));
-//							reg.setZskssj(zskssj);
+							String zskssj = getCellValue(row.getCell(25));
+							reg.setZskssj(zskssj);
 
-							if (row.getCell(25) != null && row.getCell(25).getDateCellValue() != null) {
-								Date zskssj = row.getCell(25).getDateCellValue();
-								reg.setZskssj(sdf.format(zskssj));
-							}
+//							if (row.getCell(25) != null && row.getCell(25).getDateCellValue() != null) {
+//								Date zskssj = row.getCell(25).getDateCellValue();
+//								reg.setZskssj(sdf.format(zskssj));
+//							}
 
 						} catch (Exception e) {
 							e.printStackTrace();
@@ -691,13 +691,13 @@ public class RegisterService {
 						}
 						//住宿结束时间
 						try {
-//							String zsjssj = getCellValue(row.getCell(26));
-//							reg.setZsjssj(zsjssj);
+							String zsjssj = getCellValue(row.getCell(26));
+							reg.setZsjssj(zsjssj);
 
-							if (row.getCell(26) != null && row.getCell(26).getDateCellValue() != null) {
-								Date zsjssj = row.getCell(26).getDateCellValue();
-								reg.setZsjssj(sdf.format(zsjssj));
-							}
+//							if (row.getCell(26) != null && row.getCell(26).getDateCellValue() != null) {
+//								Date zsjssj = row.getCell(26).getDateCellValue();
+//								reg.setZsjssj(sdf.format(zsjssj));
+//							}
 						} catch (Exception e) {
 							e.printStackTrace();
 							msg="在导入第" + (i + 1) + "张表单的第" + (j + 1) + "行时出错,请检查！";
@@ -787,8 +787,8 @@ public class RegisterService {
 								, "", "", reg.getAddress(), reg.getZsyq(), reg.getInvoice(), "", "", ""
 								, reg.getOfficephone(), "", "", reg.getTitle(), reg.getSffblw()
 								, reg.getGjbh(), reg.getGjtm(), reg.getGjzt(), reg.getSfztlw(), reg.getSfsqhyfy()
-								, reg.getFytm(), reg.getFynrzy(), reg.getFyrjj(),reg.getSfzs(), reg.getZskssj()!=null?sdf.parse(reg.getZskssj()):null, reg.getZsjssj()!=null?sdf.parse(reg.getZsjssj()):null, reg.getYqhfszt()
-								,reg.getRegistertime()!=null?sdf.parse(reg.getRegistertime()):null});
+								, reg.getFytm(), reg.getFynrzy(), reg.getFyrjj(),reg.getSfzs(), StringUtil.isNotEmpty(reg.getZskssj())?sdf.parse(reg.getZskssj()):null, StringUtil.isNotEmpty(reg.getZsjssj())?sdf.parse(reg.getZsjssj()):null, reg.getYqhfszt()
+								,StringUtil.isNotEmpty(reg.getRegistertime())?sdf.parse(reg.getRegistertime()):null});
 					}
 				}
 				msg="导入成功!!";
@@ -803,29 +803,30 @@ public class RegisterService {
 	private String getCellValue(HSSFCell cell) {
 		String value = null;
 		// 简单的查检列类型
-		switch (cell.getCellType()) {
-			case HSSFCell.CELL_TYPE_STRING:// 字符串
-				value = cell.getRichStringCellValue().getString();
-				break;
-			case HSSFCell.CELL_TYPE_NUMERIC:// 数字
-				double dd = (double) cell.getNumericCellValue();
-				value = dd + "";
-				break;
-			case HSSFCell.CELL_TYPE_BLANK: // 空
-				value = "";
-				break;
-			case HSSFCell.CELL_TYPE_FORMULA:
-				value = String.valueOf(cell.getCellFormula());
-				break;
-			case HSSFCell.CELL_TYPE_BOOLEAN:// boolean型值
-				value = String.valueOf(cell.getBooleanCellValue());
-				break;
-			case HSSFCell.CELL_TYPE_ERROR:
-				value = String.valueOf(cell.getErrorCellValue());
-				break;
-			default:
-				break;
-		}
+//		switch (cell.getCellType()) {
+//			case HSSFCell.CELL_TYPE_STRING:// 字符串
+//				value = cell.getRichStringCellValue().getString();
+//				break;
+//			case HSSFCell.CELL_TYPE_NUMERIC:// 数字
+//				double dd = (double) cell.getNumericCellValue();
+//				value = dd + "";
+//				break;
+//			case HSSFCell.CELL_TYPE_BLANK: // 空
+//				value = "";
+//				break;
+//			case HSSFCell.CELL_TYPE_FORMULA:
+//				value = String.valueOf(cell.getCellFormula());
+//				break;
+//			case HSSFCell.CELL_TYPE_BOOLEAN:// boolean型值
+//				value = String.valueOf(cell.getBooleanCellValue());
+//				break;
+//			case HSSFCell.CELL_TYPE_ERROR:
+//				value = String.valueOf(cell.getErrorCellValue());
+//				break;
+//			default:
+//				break;
+//		}
+		value = cell.getRichStringCellValue().getString();
 		return value;
 	}
 	/*public static void main(String[] args) throws ParseException {

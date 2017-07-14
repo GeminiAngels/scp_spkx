@@ -248,6 +248,7 @@
 								<option value="《肉类研究》" ${not empty register and register.journalname eq '《肉类研究》'?'selected="selected"':''}>《肉类研究》</option>
 								<option value="《乳业科学与技术》" ${not empty register and register.journalname eq '《乳业科学与技术》'?'selected="selected"':''}>《乳业科学与技术》</option>
 								<option value="《Food Science and Human Wellness》" ${not empty register and register.journalname eq '《Food Science and Human Wellness》'?'selected="selected"':''}>《Food Science and Human Wellness》</option>
+								<option value="《Current Topics in Nutraceutical Research》" ${not empty register and register.journalname eq '《Current Topics in Nutraceutical Research》'?'selected="selected"':''}>《Current Topics in Nutraceutical Research》</option>
 							</select>
 						</div>
 
