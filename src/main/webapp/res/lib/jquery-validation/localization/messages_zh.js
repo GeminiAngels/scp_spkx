@@ -4,7 +4,7 @@
  */
 (function ($) {
 	$.extend($.validator.messages, {
-		required: "必选信息",
+		required: "必填信息",
 		remote: "请修正该信息",
 		email: "请输入正确格式的电子邮件",
 		url: "请输入合法的网址",
