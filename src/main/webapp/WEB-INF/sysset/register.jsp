@@ -48,14 +48,13 @@
                     <th width="30"><input type="checkbox" class="input-control" id="table-checkbox-header"/></th>
                     <th>编码</th>
                     <th style="width:80px;min-width: 80px;">姓名</th>
-                    <th>个人信息</th>
+                    <th style="width:200px;min-width: 200px;">个人信息</th>
                     <%--<th>电话</th>--%>
                     <%--<th>邮箱</th>--%>
                     <%--<th>注册时间</th>--%>
-                    <th>工作信息</th>
-                    <th>邀请函发送状态</th>
-                    <th style="width:100px;min-width: 100px;">稿件状态</th>
-                    <th>会议费/缴费状态</th>
+                    <th>工作信息 / 论文张贴否 / 住宿安排</th>
+                    <th style="width:150px;min-width:150px;">邀请函发送状态<br>稿件状态</th>
+                    <th>会议费<br>缴费状态</th>
                     <%--<th>会务组备注</th>--%>
                     <%--<th>发票抬头</th>--%>
                     <%--<th>缴费凭据</th>--%>
@@ -594,13 +593,14 @@
 //					+'<td>'+item.sex+'</td>'
 //					+'<td>'+item.telphone+'</td>'
 //					+'<td>'+item.email+'</td>'
-                    + '<td>电话:' + item.telphone + ' <br>邮箱:' + item.email + ' <br>性别:' + item.sex + ' <br>注册时间:' + (item.registertime ? item.registertime.substr(0, 16) : '') + '</td>'
+                    + '<td>电话：' + item.telphone + ' <br>邮箱：' + item.email + ' <br>性别：' + item.sex + ' <br>注册时间：' + (item.registertime ? item.registertime.substr(0, 16) : '') + '</td>'
 //					+'<td>'+(item.registertime?item.registertime.substr(0,16):'')+'</td>'
 
-                    + '<td>单位:' + item.company + ' <br>职务:' + item.job + '</td>'
-                    + '<td width="100">电子版:' + item.yqhfszt + ' <br>纸质版:' + item.zzyqhfszt + '</td>'
-                    + '<td>' + (item.gjzt ? item.gjzt : "") + '</td>'
-                    + '<td width="100">会议费:' + (item.invoice ? item.invoice : "") + ' <br>缴费状态:' + item.zfflag + '</td>'
+                    + '<td>单位：' + item.company + ' <br>职称：' + item.title + '<br>论文张贴：'+item.sfztlw
+                    + (item.zsyq?('<br>住宿要求：'+item.zsyq+(item.zsyq != '不住宿'?('('+item.zskssj.substr(0, 10)+' -- '+item.zsjssj.substr(0, 10) +')'):'')):'')
+                    +'</td>'
+                    + '<td width="100">电子版：' + item.yqhfszt + ' <br>纸质版：' + item.zzyqhfszt + '<br>稿件状态：'+(item.gjzt ? item.gjzt : "")+'</td>'
+                    + '<td width="100">会议费：' + (item.invoice ? item.invoice : "") + ' <br>缴费状态：' + item.zfflag + '</td>'
 //                    + '<td>' + (item.hwzbz ? item.hwzbz : "") + '</td>'
 //					+'<td>'+item.fptt+'</td>'
 //					+"<td >"+getfiles(item.tid,item.id,item.zfflag)+"</td>"
