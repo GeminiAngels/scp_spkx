@@ -597,7 +597,7 @@
 //					+'<td>'+(item.registertime?item.registertime.substr(0,16):'')+'</td>'
 
                     + '<td>单位：' + item.company + ' <br>职称：' + item.title + '<br>论文张贴：'+item.sfztlw
-                    + (item.zsyq?('<br>住宿要求：'+item.zsyq+(item.zsyq != '不住宿'?('('+item.zskssj.substr(0, 10)+' -- '+item.zsjssj.substr(0, 10) +')'):'')):'')
+                    + (item.zsyq?('<br>住宿要求：'+item.zsyq+(item.zsyq != '不住宿'?('('+(item.zskssj?item.zskssj.substr(0, 10):'')+' -- '+(item.zsjssj?item.zsjssj.substr(0, 10):'') +')'):'')):'')
                     +'</td>'
                     + '<td width="100">电子版：' + item.yqhfszt + ' <br>纸质版：' + item.zzyqhfszt + '<br>稿件状态：'+(item.gjzt ? item.gjzt : "")+'</td>'
                     + '<td width="100">会议费：' + (item.invoice ? item.invoice : "") + ' <br>缴费状态：' + item.zfflag + '</td>'
