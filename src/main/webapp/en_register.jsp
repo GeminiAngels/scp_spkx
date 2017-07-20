@@ -31,6 +31,7 @@
 	<script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
 	<![endif]-->
 
+	<link href="<%=path%>/res/lib/jquery-validation/jquery.validate.min.css" rel="stylesheet">
 </head>
 
 <body>
@@ -49,7 +50,6 @@
 					</div>
 				</div>
 				<div class="row">
-					<!-- <c:if test="${register.zfflag ne '1'}"> -->
 					<input type="text" name="id" id="id" class="hide"  value="${register.id}">
 					<div class="col-sm-4 col-sm-offset-2">
 						<div class="inputContainer">
@@ -146,7 +146,7 @@
 					<div class="col-sm-8 col-sm-offset-2">
 						<div class="inputContainer">
 							<label class="screen-reader-text">Email:</label>
-							<input type="text" name="email" id="email" class="form-control" autocomplete="off" ${not empty register?'disabled="disabled"':''} value="${register.email}"/>
+							<input type="text" name="email" id="email" class="form-control" autocomplete="off" value="${register.email}"/>
 						</div>
 					</div>
 					<div class="col-sm-4 col-sm-offset-2">
@@ -411,9 +411,6 @@
 							</c:otherwise>
 						</c:choose>
 
-						<!-- <c:if test="${not empty register}">
-						<button id="payBtn" name="submit" type="button" class="btn btn-primary btn-lg" ${register.zfflag eq '1'?'disabled="disabled"':''}>${register.invoice eq '不需要'?'确定':'生成订单并支付'}</button>
-						</c:if> -->
 					</div>
 					<c:if test="${not empty register}">
 						<div class="col-sm-4 col-sm-offset-4" style="padding-top: 20px">
@@ -423,107 +420,6 @@
 
 						</div>
 					</c:if>
-
-					<!-- </c:if> -->
-					<!-- <c:if test="${register.zfflag eq '1'}">
-						<h3 style="padding-left:10px;">个人信息</h3>
-						<table id="user_table" class="table table-bordered table-stripted table-hover">
-							<tr>
-								<th>学员姓名</th>
-								<td style="min-width: 100px;">${register.nickname}</td>
-								<th>性　　别</th>
-								<td>${register.sex}</td>
-							</tr>
-							<tr>
-								<th>学　　历</th>
-								<td>${register.degree}</td>
-								<th>职　　称</th>
-								<td>${register.job}</td>
-							</tr>
-							<tr>
-								<th>　 Email</th>
-								<td>${register.email}</td>
-								<th>联系电话</th>
-								<td>${register.telphone}</td>
-							</tr>
-							<tr>
-								<th>单　　位</th>
-								<td>${register.company}</td>
-								<th>邮　　编</th>
-								<td>${register.postcode}</td>
-							</tr>
-							<tr>
-								<th>地　　址</th>
-								<td colspan="3">${register.address}</td>
-							</tr>
-							<tr>
-								<th>住宿要求</th>
-								<td>${register.zsyq}</td>
-								<th>实习情况</th>
-								<td>${register.sxxl}</td>
-							</tr>
-							<tr>
-								<th>发票抬头</th>
-								<td><c:if test="${register.invoice ne '不需要'}">${register.fptt}</c:if>&nbsp;</td>
-								<th>开票内容</th>
-								<td>${register.invoice}</td>
-							</tr>
-						</table>
-						<h3 style="padding-left:10px;">我的订单</h3>
-						<div class="alert alert-info">提示：如“待支付”订单长时间未完成支付，请移除订单重新支付；如订单信息与实际付款信息不符，请<a href="javascript:;" class="btn-newpay"> 点击重新支付</a></div>
-						<table id="pay_listtable" class="table table-bordered table-stripted table-hover">
-							<tr>
-								<th class="pc_show">会员名</th>
-								<th class="pc_show">支付方式</th>
-								<th class="pc_show">订单时间</th>
-								<th class="pc_hide" style="min-width: 120px;">订单信息</th>
-								<th style="min-width: 80px;">金额(元)</th>
-								<th class="pc_show">支付帐号</th>
-								<th>支付状态</th>
-								<th style="min-width: 60px;">操作</th>
-							</tr>
-							<c:forEach items="${orderList}" var="order">
-							<tr>
-								<td class="pc_show">
-									${order.orderuname}
-								</td>
-								<td class="pc_show">
-									<c:if test="${order.ordertype eq '1'}">支付宝</c:if>
-									<c:if test="${order.ordertype eq '2'}">微信支付</c:if>
-									<c:if test="${order.ordertype eq '3'}">银联支付</c:if>
-								</td>
-								<td class="pc_show">
-									${fn:substring(order.orderdate,5,16)}
-								</td>
-								<td class="pc_hide" style="text-align: left">
-									<b>姓名</b>：${order.orderuname}
-									<div></div>
-									<b>方式</b>：<c:if test="${order.ordertype eq '1'}">支付宝</c:if>
-									<c:if test="${order.ordertype eq '2'}">微信支付</c:if>
-									<c:if test="${order.ordertype eq '3'}">银联支付</c:if>
-									<div></div>
-									<b>时间</b>：${fn:substring(order.orderdate,5,16)}
-								</td>
-								<td>${order.ordermoney}</td>
-								<td class="pc_show">${order.orderaccount}</td>
-								<td>
-									<c:if test="${order.orderstatus eq '0'}"><i class="label label-info">待支付</i></c:if>
-									<c:if test="${order.orderstatus eq '1'}"><span class="label label-success">支付成功<span></c:if>
-									<c:if test="${order.orderstatus eq '-1'}">><span class="label label-warning">发生异常</span></c:if>
-								</td>
-								<td>
-									<c:if test="${order.orderstatus ne '1'}">
-									<a class="btn btn-sm btn-default btn-deleteorder" data-id="${order.id}" data-orderregisterid="${order.orderregisterid}">移除</a>
-									</c:if>
-									<a class="btn btn-sm btn-default btn-reback disabled">退款</a>
-								</td>
-							</tr>
-							</c:forEach>
-							<c:if test="${empty orderList or fn:length(orderList) eq '0'}">
-								<tr><td style="text-align:center" colspan="7">没有任何订单，您可以<a href="javascript:;" class="btn-newpay"> 发起重新支付</a></td></tr>
-							</c:if>
-						</table>
-					</c:if> -->
 				</div>
 			</div>
 		</div>
@@ -542,6 +438,9 @@
 </c:if>
 <script src="<%=path%>/static/js/jquery-1.11.1.min.js"></script>
 <script src="<%=path%>/static/js/bootstrap.min.js"></script>
+
+<script src="<%=path%>/res/lib/jquery-validation/jquery.validate.min.js"></script>
+
 <!-- bootstrap日期控件 -->
 <script src="<%=path%>/res/js/bootstrap-datetimepicker.min.js"></script>
 <!-- 格式化输入 -->
@@ -696,8 +595,92 @@
 			}
 			return v||'不需要';
 		}
+
+		jQuery.validator.addMethod("isPhone", function(value, element) {
+			var length = value.length;
+			var mobile = /^(((13[0-9]{1})|(15[0-9]{1})|(18[0-9]{1})|(17[0-9]{1}))+\d{8})$/;
+			return this.optional(element) || (length == 11 && mobile.test(value));
+		}, "The telphone is invalid!");//可以自定义默认提示信息
+
+		jQuery.validator.addMethod("isTel", function(value, element) {
+			var tel = /^\d{3,4}-?\d{7,9}$/; //电话号码格式010-12345678
+			return this.optional(element) || (tel.test(value));
+		}, "The office phone is invalid!");
+
+		// 邮政编码验证
+		jQuery.validator.addMethod("isZipCode", function(value, element) {
+			var tel = /^[0-9]{6}$/;
+			return this.optional(element) || (tel.test(value));
+		}, "The postcode is invalid!");
+
+		$("#registerForm").validate({
+			errorElement: 'i', //default input error message container
+			errorClass: 'fa fa-check', // default input error message class
+			focusInvalid: false, // do not focus the last invalid input
+			ignore: "",  // validate all fields including form hidden input
+			rules: {
+				nickname:'required',
+				password:{
+					required:true,
+					minlength:6
+				},
+				repassword:{
+					required:true,
+					equalTo:'#password'
+				},
+				job:'required',
+				title:'required',
+				company:'required',
+				officephone:{
+					required:true,
+					isTel:true
+				},
+				email: {
+					required: true,
+					email: true
+				},
+				telphone: {
+					required: true,
+					isPhone:true
+				},
+				address:'required',
+				postcode: {
+					required:true,
+					isZipCode:true
+				}
+			},
+			messages: {
+				email: "The Email is invalid！",
+				password:{
+					required:'The password is invalid!',
+					minlength:'The password length is at least 6 characters!'
+				},
+				repassword:{
+					equalTo:'Confirm password input error!'
+				}
+			},
+			errorPlacement: function (error, element) { // render error placement for each input type
+				element.attr("data-original-title", error.text()).tooltip({'container': 'body'});
+				element.attr('placeholder',error.text());
+			},
+
+			highlight: function (element) {
+				$(element).css('border','2px dotted red');
+				$(element).focus();
+			},
+
+			success: function (label, element) {
+				$(element).removeAttr("data-original-title");
+				$(element).css('border','1px solid green');
+			},
+		});
+
 		//注册按钮
 		$('#registerBtn').off('click').on('click',function(e){
+
+			if(!$('#registerForm').valid())
+				return false;
+
 			var that = this;
 			var register = {
 				username:'',
@@ -823,6 +806,13 @@
 		});
 		//修改按钮
 		$('#editBtn').off('click').on('click', function (e) {
+
+			$('#password').rules('remove');
+			$('#repassword').rules('remove');
+
+			if(!$('#registerForm').valid())
+				return false;
+
 			var that = this;
 			var register = {
 				id: $('#id').val(),
