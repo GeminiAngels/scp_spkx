@@ -151,7 +151,7 @@
 					<div class="col-sm-8 col-sm-offset-2">
 						<div class="inputContainer">
 							<label class="screen-reader-text">Email：</label>
-							<input type="text" name="email" id="email" class="form-control" autocomplete="off" ${not empty register?'disabled="disabled"':''} value="${register.email}"/>
+							<input type="text" name="email" id="email" class="form-control" autocomplete="off" value="${register.email}"/>
 							<p style="color:red ;${not empty register?'display:none':''} " >请尽量不要选择QQ邮箱，否则可能无法收到会务组发出的邮件</p>
 						</div>
 					</div>
@@ -926,6 +926,9 @@
 				alert('登录超时，请重新登录！');
 				window.location.href = app.ctx+'/login.jsp';
 			}
+
+			$('#password').rules('remove');
+			$('#repassword').rules('remove');
 
             if(!$('#registerForm').valid())
                 return false;
