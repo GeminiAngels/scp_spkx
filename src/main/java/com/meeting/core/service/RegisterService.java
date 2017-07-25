@@ -547,11 +547,11 @@ public class RegisterService {
 						//手机
 						try {
 							String telphone = getCellValue(row.getCell(11));
-							if(telphone==""||"".equals(telphone)){
+							if(StringUtil.isEmpty(telphone)){
 								msg="在导入第" + (i + 1) + "张表单的第" + (j + 1) + "行时出错,请检查！";
 								throw new SystemException("在导入第" + (i + 1) + "张表单的第" + (j + 1) + "行第12格手机号码时出错,手机号码不能为空！");
 							}
-							reg.setTelphone(telphone);
+							reg.setTelphone(telphone.trim());
 						} catch (Exception e) {
 							e.printStackTrace();
 							msg="在导入第" + (i + 1) + "张表单的第" + (j + 1) + "行时出错,请检查！";
@@ -802,31 +802,32 @@ public class RegisterService {
 	// 判断从Excel文件中解析出来数据的格式
 	private String getCellValue(HSSFCell cell) {
 		String value = null;
-		// 简单的查检列类型
-//		switch (cell.getCellType()) {
-//			case HSSFCell.CELL_TYPE_STRING:// 字符串
-//				value = cell.getRichStringCellValue().getString();
-//				break;
-//			case HSSFCell.CELL_TYPE_NUMERIC:// 数字
+		//简单的查检列类型
+		switch (cell.getCellType()) {
+			case HSSFCell.CELL_TYPE_STRING:// 字符串
+				value = cell.getRichStringCellValue().getString();
+				break;
+			case HSSFCell.CELL_TYPE_NUMERIC:// 数字
 //				double dd = (double) cell.getNumericCellValue();
 //				value = dd + "";
-//				break;
-//			case HSSFCell.CELL_TYPE_BLANK: // 空
-//				value = "";
-//				break;
-//			case HSSFCell.CELL_TYPE_FORMULA:
-//				value = String.valueOf(cell.getCellFormula());
-//				break;
-//			case HSSFCell.CELL_TYPE_BOOLEAN:// boolean型值
-//				value = String.valueOf(cell.getBooleanCellValue());
-//				break;
-//			case HSSFCell.CELL_TYPE_ERROR:
-//				value = String.valueOf(cell.getErrorCellValue());
-//				break;
-//			default:
-//				break;
-//		}
-		value = cell.getRichStringCellValue().getString();
+				cell.setCellType(HSSFCell.CELL_TYPE_STRING);
+				value = cell.getRichStringCellValue().getString();
+				break;
+			case HSSFCell.CELL_TYPE_BLANK: // 空
+				value = "";
+				break;
+			case HSSFCell.CELL_TYPE_FORMULA:
+				value = String.valueOf(cell.getCellFormula());
+				break;
+			case HSSFCell.CELL_TYPE_BOOLEAN:// boolean型值
+				value = String.valueOf(cell.getBooleanCellValue());
+				break;
+			case HSSFCell.CELL_TYPE_ERROR:
+				value = String.valueOf(cell.getErrorCellValue());
+				break;
+			default:
+				break;
+		}
 		return value;
 	}
 	/*public static void main(String[] args) throws ParseException {
