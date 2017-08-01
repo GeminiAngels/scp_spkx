@@ -108,10 +108,7 @@
 		});
 		UE.getEditor("content", {
 			wordCount: false,
-			initialFrameHeight: 200,
-			toolbars: [
-				['kityformula', 'undo', 'redo', '|', 'bold', 'italic', 'underline', 'strikethrough', '|', 'inserttable', 'deletetable', 'insertparagraphbeforetable', 'edittable', 'edittd', '|', 'spechars']
-			]
+			initialFrameHeight: 200
 		});
 
 	})(jQuery);

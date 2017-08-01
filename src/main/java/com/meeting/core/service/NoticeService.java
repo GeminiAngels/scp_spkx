@@ -31,7 +31,7 @@ public class NoticeService {
 	}
 
 	public List getAllEnabledNotice(){
-		String sql = "select * from t_notice where status=1 order by id desc limit 1";
+		String sql = "select * from t_notice where status=1 order by id desc";
 		return db.queryForList(sql);
 	}
 

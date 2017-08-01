@@ -30,7 +30,7 @@
 <%@include file="/inc/headbar.jsp" %>
 <%--头部通知滚动条--%>
 <div class="main alert alert-info">
-	<marquee behavior="scroll"  width="100%" direction="left" scrollamount="3" onmouseover="this.stop()" onmouseout="this.start()">
+	<marquee behavior="scroll"  width="100%" direction="up" scrollamount="1" onmouseover="this.stop()" onmouseout="this.start()" height="20" style="text-align:center">
 		第三届食品科学与人类健康国际研讨会_食品科学网
 	</marquee>
 	<%--<marquee class="marquee"   scrollamount="1" direction="up" onmouseover="this.stop()" onmouseout="this.start()">&nbsp;
@@ -416,14 +416,10 @@
 		}
 		//获取后台通知内容
 		NoticeService.getAllEnabledNotice(function (notices) {
-			$("marquee").html('');
-			var trs='通知：';
+			$("marquee").html('').css('text-align','center');
+			var trs='';
 			$.each(notices, function (index, n) {
-				if(notices.length==1){
-					trs+="<a href='tz.jsp?notice="+n.id+"'>"+n.title+"</a>";
-				}else{
-					trs+=(index+1)+".<a href='tz.jsp?notice="+n.id+"'>"+n.title+"</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;";
-				}
+				trs+="<p><a href='tz.jsp?notice="+n.id+"'>"+n.title+"</a></p>";
 			});
 			$("marquee").append(trs);
 		});
