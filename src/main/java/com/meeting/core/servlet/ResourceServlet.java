@@ -1,6 +1,7 @@
 package com.meeting.core.servlet;
 
 import java.io.File;
+import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
 import java.sql.Blob;
@@ -44,11 +45,12 @@ public class ResourceServlet extends BaseServlet {
 		
 		ServletFileUpload upload = new ServletFileUpload(factory);
 		upload.setSizeMax(-1);//设置上传文件限制大小,-1无上限
+
+		List<FileItem> list = null;
+		String comments = "",category = "",realFileName = "",type = "";
+		InputStream in = null;
 		try {
-			@SuppressWarnings("unchecked")
-			List<FileItem> list = upload.parseRequest(req);
-			String comments = "",category = "",realFileName = "",type = "";
-			InputStream file = null;
+			list = upload.parseRequest(req);;
 			for(FileItem item : list){
 		//		String name = item.getFieldName();
 				if(item.isFormField()){//判断是否是文件流
@@ -64,8 +66,11 @@ public class ResourceServlet extends BaseServlet {
 					int start = value.lastIndexOf("\\");
 					String fileName = value.substring(start+1);
 			//		request.setAttribute(name, fileName);
-					file = item.getInputStream();
-					item.write(new File("C:\\Program Files\\meeting\\files",fileName));
+					in = item.getInputStream();
+					File dir = new File(path);
+					if(!dir.exists())
+						dir.mkdirs();
+					item.write(new File(path,fileName));
 					int index = fileName.lastIndexOf(".");
 					realFileName = fileName.substring(0,index);
 					type = fileName.substring(index+1);
@@ -81,15 +86,29 @@ public class ResourceServlet extends BaseServlet {
 			ResourceService resourceService = new ResourceService();
 			
 			if(resource.getId()==0){
-				resourceService.insertResource(resource, file);
+				resourceService.insertResource(resource, in);
 			} else {
-				resourceService.updateResource(resource, file);
+				resourceService.updateResource(resource, in);
 			}
 		} catch (Exception e) {
 			
 			e.printStackTrace();
+		} finally {
+			if(in!=null) {
+				try {
+					in.close();
+				} catch (IOException e) {
+					e.printStackTrace();
+				}
+			}
+
+			for(FileItem item : list){
+				if(!item.isFormField()){//判断是否是文件流
+					item.delete();
+				}
+			}
+			return "redirect:auth.do?method=resource";
 		}
-		return "redirect:auth.do?method=resource";
 	}
 	
 	public String download(HttpServletRequest req , HttpServletResponse resp){

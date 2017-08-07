@@ -80,7 +80,7 @@
     </config>
     <config>
       <name>appUrlPrefix</name>
-      <value></value>
+      <value>http://hy.chnfood.cn/2017spkx</value>
     </config>
     <config>
       <name>errorPage</name>

@@ -158,7 +158,7 @@
 	}
 
 	function downloadResource(fileid){
-		window.location.href = app.ctx + '/resource.do?method=download&fileid='+fileid;
+		window.location.href = '<%=path%>/resource.do?method=download&fileid='+fileid;
 	}
 
 
